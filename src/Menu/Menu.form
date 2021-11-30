@@ -195,7 +195,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jgenerarcobro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generar Cobro"/>
               </Properties>
@@ -203,7 +203,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jreversarcobro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reversar Cobro"/>
               </Properties>
@@ -211,7 +211,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jactualizarcobro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar Cobro"/>
               </Properties>
@@ -241,7 +241,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="cusuario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Usuarios"/>
               </Properties>
@@ -249,7 +249,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="centrenador">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Entrenador"/>
               </Properties>
@@ -257,7 +257,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="clocalizacion">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Localizacion"/>
               </Properties>
@@ -265,7 +265,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="csalas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Salas"/>
               </Properties>
@@ -273,7 +273,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="cactividades">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Actividades"/>
               </Properties>
@@ -281,7 +281,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="chorariosactividades">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Horarios Actividades"/>
               </Properties>
@@ -289,7 +289,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="ccobrorango">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Cobro por Rango de Fecha"/>
               </Properties>
@@ -297,7 +297,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="ccobroclientes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Cobro por clientes"/>
               </Properties>
@@ -305,7 +305,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="cclientes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Clientes"/>
               </Properties>
@@ -313,7 +313,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="cclientespendiente">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="1"/>
+                  <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Clientes con Balance pendiente"/>
               </Properties>
@@ -346,28 +346,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="300" max="32767" attributes="0"/>
-          </Group>
+          <EmptySpace min="0" pref="685" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="263" max="32767" attributes="0"/>
-          </Group>
+          <EmptySpace min="0" pref="395" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
-  <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Probando algo"/>
-      </Properties>
-    </Component>
-  </SubComponents>
 </Form>
