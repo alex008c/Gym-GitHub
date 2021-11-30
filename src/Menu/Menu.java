@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mantenimiento = new javax.swing.JMenu();
         jmenuusuario = new javax.swing.JMenuItem();
@@ -67,6 +68,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar2.add(jMenu5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Probando algo");
 
         jMenuBar1.setBackground(new java.awt.Color(153, 153, 153));
         jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
@@ -213,11 +216,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addComponent(jButton1)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(jButton1)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,6 +278,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem clocalizacion;
     private javax.swing.JMenuItem csalas;
     private javax.swing.JMenuItem cusuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
