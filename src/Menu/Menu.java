@@ -35,6 +35,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
         jMenu4.setText("File");
@@ -78,6 +79,10 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jMenu3.setMaximumSize(new java.awt.Dimension(130, 140));
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        jMenu6.setText("Cobro");
+        jMenu3.add(jMenu6);
+
         jMenuBar1.add(jMenu3);
 
         jMenu1.setBackground(new java.awt.Color(153, 153, 153));
