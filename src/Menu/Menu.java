@@ -32,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         mantenimiento = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -57,6 +58,10 @@ public class Menu extends javax.swing.JFrame {
         mantenimiento.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         mantenimiento.setMaximumSize(new java.awt.Dimension(130, 140));
         mantenimiento.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        jMenu6.setText("De Usuarios");
+        mantenimiento.add(jMenu6);
+
         jMenuBar1.add(mantenimiento);
 
         jMenu2.setBackground(new java.awt.Color(153, 153, 153));
@@ -140,6 +145,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu mantenimiento;
