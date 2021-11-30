@@ -27,40 +27,73 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mantenimiento = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar2.add(jMenu5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Menu");
+        jMenuBar1.setBackground(new java.awt.Color(153, 153, 153));
+        jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setAlignmentX(5.0F);
+        jMenuBar1.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(25, 32769));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(20, 35));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel1)
-                .addContainerGap(179, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(260, Short.MAX_VALUE))
-        );
+        mantenimiento.setBackground(new java.awt.Color(153, 153, 153));
+        mantenimiento.setForeground(new java.awt.Color(51, 51, 51));
+        mantenimiento.setText("Mantenimiento ");
+        mantenimiento.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        mantenimiento.setMaximumSize(new java.awt.Dimension(130, 140));
+        mantenimiento.setPreferredSize(new java.awt.Dimension(100, 100));
+        jMenuBar1.add(mantenimiento);
+
+        jMenu2.setBackground(new java.awt.Color(153, 153, 153));
+        jMenu2.setForeground(new java.awt.Color(51, 51, 51));
+        jMenu2.setText("Movimientos");
+        jMenu2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jMenu2.setMaximumSize(new java.awt.Dimension(130, 140));
+        jMenu2.setPreferredSize(new java.awt.Dimension(100, 100));
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setBackground(new java.awt.Color(153, 153, 153));
+        jMenu3.setForeground(new java.awt.Color(51, 51, 51));
+        jMenu3.setText("Procesos");
+        jMenu3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jMenu3.setMaximumSize(new java.awt.Dimension(130, 140));
+        jMenu3.setPreferredSize(new java.awt.Dimension(100, 100));
+        jMenuBar1.add(jMenu3);
+
+        jMenu1.setBackground(new java.awt.Color(153, 153, 153));
+        jMenu1.setForeground(new java.awt.Color(51, 51, 51));
+        jMenu1.setText("Consultas");
+        jMenu1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jMenu1.setMaximumSize(new java.awt.Dimension(130, 140));
+        jMenu1.setPreferredSize(new java.awt.Dimension(100, 100));
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 685, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,7 +135,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu mantenimiento;
     // End of variables declaration//GEN-END:variables
 }
