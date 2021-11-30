@@ -30,7 +30,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         mantenimiento = new javax.swing.JMenu();
         jmenuusuario = new javax.swing.JMenuItem();
@@ -46,32 +45,14 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jmenucuotas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-<<<<<<< HEAD
-        generarcobro = new javax.swing.JMenuItem();
-        reversarcobro = new javax.swing.JMenuItem();
-        actualizarcobro = new javax.swing.JMenuItem();
-=======
         jMenu7 = new javax.swing.JMenu();
->>>>>>> origin/master
         jMenu1 = new javax.swing.JMenu();
-        jmenuusuario = new javax.swing.JMenuItem();
-        jmenuentrenador = new javax.swing.JMenuItem();
-        jmenulocalizacion = new javax.swing.JMenuItem();
-        jmenusalas = new javax.swing.JMenuItem();
-        jmenuactividades = new javax.swing.JMenuItem();
-        jmenuhorarioactividades = new javax.swing.JMenuItem();
-        jmenucobrofecha = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
 
         jMenu4.setText("File");
         jMenuBar2.add(jMenu4);
 
         jMenu5.setText("Edit");
         jMenuBar2.add(jMenu5);
-
-        jMenuItem11.setText("jMenuItem11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,24 +132,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setMaximumSize(new java.awt.Dimension(130, 140));
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 100));
 
-<<<<<<< HEAD
-        generarcobro.setText("Generar Cobro");
-        jMenu3.add(generarcobro);
-
-        reversarcobro.setText("Reversar Cobro");
-        reversarcobro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reversarcobroActionPerformed(evt);
-            }
-        });
-        jMenu3.add(reversarcobro);
-
-        actualizarcobro.setText("Actualizar Cobro");
-        jMenu3.add(actualizarcobro);
-=======
         jMenu7.setText("Cobro");
         jMenu3.add(jMenu7);
->>>>>>> origin/master
 
         jMenuBar1.add(jMenu3);
 
@@ -178,57 +143,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jMenu1.setMaximumSize(new java.awt.Dimension(130, 140));
         jMenu1.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        jmenuusuario.setText("De Usuario");
-        jmenuusuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmenuusuarioActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmenuusuario);
-
-        jmenuentrenador.setText("De Entrenador");
-        jmenuentrenador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmenuentrenadorActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmenuentrenador);
-
-        jmenulocalizacion.setText("De Localizacion");
-        jMenu1.add(jmenulocalizacion);
-
-        jmenusalas.setText("De Salas");
-        jmenusalas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmenusalasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmenusalas);
-
-        jmenuactividades.setText("De Actividades");
-        jMenu1.add(jmenuactividades);
-
-        jmenuhorarioactividades.setText("De Horarios de Actividades");
-        jMenu1.add(jmenuhorarioactividades);
-
-        jmenucobrofecha.setText("De Cobro por Rango Fecha");
-        jmenucobrofecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmenucobrofechaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmenucobrofecha);
-
-        jMenuItem8.setText("De Cobro por cliente");
-        jMenu1.add(jMenuItem8);
-
-        jMenuItem9.setText("De Clientes");
-        jMenu1.add(jMenuItem9);
-
-        jMenuItem10.setText("De Cliente por balance pendiente");
-        jMenu1.add(jMenuItem10);
-
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -246,26 +160,6 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void reversarcobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reversarcobroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reversarcobroActionPerformed
-
-    private void jmenuentrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuentrenadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmenuentrenadorActionPerformed
-
-    private void jmenuusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuusuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmenuusuarioActionPerformed
-
-    private void jmenusalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenusalasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmenusalasActionPerformed
-
-    private void jmenucobrofechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenucobrofechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmenucobrofechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,30 +197,14 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem actualizarcobro;
-    private javax.swing.JMenuItem generarcobro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-<<<<<<< HEAD
-=======
     private javax.swing.JMenu jMenu7;
->>>>>>> origin/master
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-<<<<<<< HEAD
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenuItem jmenuactividades;
-    private javax.swing.JMenuItem jmenucobrofecha;
-    private javax.swing.JMenuItem jmenuentrenador;
-    private javax.swing.JMenuItem jmenuhorarioactividades;
-    private javax.swing.JMenuItem jmenulocalizacion;
-=======
     private javax.swing.JMenuItem jmenuactividades;
     private javax.swing.JMenuItem jmenuclientes;
     private javax.swing.JMenuItem jmenucuotas;
@@ -336,10 +214,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmenulocalizacion;
     private javax.swing.JMenuItem jmenureseactividades;
     private javax.swing.JMenuItem jmenureservas;
->>>>>>> origin/master
     private javax.swing.JMenuItem jmenusalas;
     private javax.swing.JMenuItem jmenuusuario;
     private javax.swing.JMenu mantenimiento;
-    private javax.swing.JMenuItem reversarcobro;
     // End of variables declaration//GEN-END:variables
 }
