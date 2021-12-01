@@ -42,13 +42,13 @@ public class Menu extends javax.swing.JFrame {
         jmenuestado = new javax.swing.JMenuItem();
         jmenureservas = new javax.swing.JMenuItem();
         jmenureseactividades = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        movimietos = new javax.swing.JMenu();
         jmenucuotas = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        procesos = new javax.swing.JMenu();
         jgenerarcobro = new javax.swing.JMenuItem();
         jreversarcobro = new javax.swing.JMenuItem();
         jactualizarcobro = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        consultas = new javax.swing.JMenu();
         cusuario = new javax.swing.JMenuItem();
         centrenador = new javax.swing.JMenuItem();
         clocalizacion = new javax.swing.JMenuItem();
@@ -124,88 +124,88 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(mantenimiento);
 
-        jMenu2.setBackground(new java.awt.Color(153, 153, 153));
-        jMenu2.setForeground(new java.awt.Color(51, 51, 51));
-        jMenu2.setText("Movimientos");
-        jMenu2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jMenu2.setMaximumSize(new java.awt.Dimension(130, 140));
-        jMenu2.setPreferredSize(new java.awt.Dimension(100, 100));
+        movimietos.setBackground(new java.awt.Color(153, 153, 153));
+        movimietos.setForeground(new java.awt.Color(51, 51, 51));
+        movimietos.setText("Movimientos");
+        movimietos.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        movimietos.setMaximumSize(new java.awt.Dimension(130, 140));
+        movimietos.setPreferredSize(new java.awt.Dimension(100, 100));
 
         jmenucuotas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenucuotas.setText("Cuotas");
-        jMenu2.add(jmenucuotas);
+        movimietos.add(jmenucuotas);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(movimietos);
 
-        jMenu3.setBackground(new java.awt.Color(153, 153, 153));
-        jMenu3.setForeground(new java.awt.Color(51, 51, 51));
-        jMenu3.setText("Procesos");
-        jMenu3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jMenu3.setMaximumSize(new java.awt.Dimension(130, 140));
-        jMenu3.setPreferredSize(new java.awt.Dimension(100, 100));
+        procesos.setBackground(new java.awt.Color(153, 153, 153));
+        procesos.setForeground(new java.awt.Color(51, 51, 51));
+        procesos.setText("Procesos");
+        procesos.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        procesos.setMaximumSize(new java.awt.Dimension(130, 140));
+        procesos.setPreferredSize(new java.awt.Dimension(100, 100));
 
         jgenerarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jgenerarcobro.setText("Generar Cobro");
-        jMenu3.add(jgenerarcobro);
+        procesos.add(jgenerarcobro);
 
         jreversarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jreversarcobro.setText("Reversar Cobro");
-        jMenu3.add(jreversarcobro);
+        procesos.add(jreversarcobro);
 
         jactualizarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jactualizarcobro.setText("Actualizar Cobro");
-        jMenu3.add(jactualizarcobro);
+        procesos.add(jactualizarcobro);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(procesos);
 
-        jMenu1.setBackground(new java.awt.Color(153, 153, 153));
-        jMenu1.setForeground(new java.awt.Color(51, 51, 51));
-        jMenu1.setText("Consultas");
-        jMenu1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jMenu1.setMaximumSize(new java.awt.Dimension(130, 140));
-        jMenu1.setPreferredSize(new java.awt.Dimension(100, 100));
+        consultas.setBackground(new java.awt.Color(153, 153, 153));
+        consultas.setForeground(new java.awt.Color(51, 51, 51));
+        consultas.setText("Consultas");
+        consultas.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        consultas.setMaximumSize(new java.awt.Dimension(130, 140));
+        consultas.setPreferredSize(new java.awt.Dimension(100, 100));
 
         cusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cusuario.setText("De Usuarios");
-        jMenu1.add(cusuario);
+        consultas.add(cusuario);
 
         centrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         centrenador.setText("De Entrenador");
-        jMenu1.add(centrenador);
+        consultas.add(centrenador);
 
         clocalizacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         clocalizacion.setText("De Localizacion");
-        jMenu1.add(clocalizacion);
+        consultas.add(clocalizacion);
 
         csalas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         csalas.setText("De Salas");
-        jMenu1.add(csalas);
+        consultas.add(csalas);
 
         cactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cactividades.setText("De Actividades");
-        jMenu1.add(cactividades);
+        consultas.add(cactividades);
 
         chorariosactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         chorariosactividades.setText("De Horarios Actividades");
-        jMenu1.add(chorariosactividades);
+        consultas.add(chorariosactividades);
 
         ccobrorango.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ccobrorango.setText("De Cobro por Rango de Fecha");
-        jMenu1.add(ccobrorango);
+        consultas.add(ccobrorango);
 
         ccobroclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ccobroclientes.setText("De Cobro por clientes");
-        jMenu1.add(ccobroclientes);
+        consultas.add(ccobroclientes);
 
         cclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cclientes.setText("De Clientes");
-        jMenu1.add(cclientes);
+        consultas.add(cclientes);
 
         cclientespendiente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cclientespendiente.setText("De Clientes con Balance pendiente");
-        jMenu1.add(cclientespendiente);
+        consultas.add(cclientespendiente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(consultas);
 
         setJMenuBar(jMenuBar1);
 
@@ -267,11 +267,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem centrenador;
     private javax.swing.JMenuItem chorariosactividades;
     private javax.swing.JMenuItem clocalizacion;
+    private javax.swing.JMenu consultas;
     private javax.swing.JMenuItem csalas;
     private javax.swing.JMenuItem cusuario;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
@@ -291,5 +289,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmenuusuario;
     private javax.swing.JMenuItem jreversarcobro;
     private javax.swing.JMenu mantenimiento;
+    private javax.swing.JMenu movimietos;
+    private javax.swing.JMenu procesos;
     // End of variables declaration//GEN-END:variables
 }
