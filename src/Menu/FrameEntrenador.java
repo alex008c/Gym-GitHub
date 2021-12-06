@@ -246,13 +246,15 @@ public class FrameEntrenador extends javax.swing.JFrame {
                            telentrenador.setText("");
                            correoentrenador.setText("");
                            search=false;
-                           estatus.setText("Modificando...");
+                           estatus.setText("Creando...");
                          }
  
                      } catch (Exception e) {
                          JOptionPane.showMessageDialog(null, "Error al leer archivo.");
                      }
-                 }  
+                 }// fin while
+                 sc.close();
+                 
                }
            } catch (IOException ex) {
                Logger.getLogger(FrameEntrenador.class.getName()).log(Level.SEVERE, null, ex);
