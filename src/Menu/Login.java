@@ -5,6 +5,9 @@
  */
 package Menu;
 
+import java.io.*;
+import java.util.Scanner;
+
 /**
  *
  * @author pedro
@@ -16,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,36 +38,36 @@ public class Login extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botoniniciar = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(153, 153, 153));
+        jTextField3.setBackground(new java.awt.Color(255, 0, 0));
         jTextField3.setFont(new java.awt.Font("Wide Latin", 3, 18)); // NOI18N
         jTextField3.setText("LOGIN");
         jTextField3.setSelectionColor(new java.awt.Color(153, 153, 153));
 
         jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(153, 153, 153));
+        jTextField4.setBackground(new java.awt.Color(255, 0, 0));
         jTextField4.setFont(new java.awt.Font("Wide Latin", 0, 14)); // NOI18N
         jTextField4.setText("Usuario");
 
         jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(153, 153, 153));
+        jTextField5.setBackground(new java.awt.Color(255, 0, 0));
         jTextField5.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         jTextField5.setText("Contraseña");
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setFont(new java.awt.Font("Wide Latin", 3, 10)); // NOI18N
-        jButton1.setText("Iniciar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botoniniciar.setBackground(new java.awt.Color(255, 0, 0));
+        botoniniciar.setFont(new java.awt.Font("Wide Latin", 3, 10)); // NOI18N
+        botoniniciar.setText("Iniciar");
+        botoniniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botoniniciarActionPerformed(evt);
             }
         });
 
@@ -87,7 +91,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addComponent(jButton1)))
+                        .addComponent(botoniniciar)))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jTextField5)
                     .addComponent(contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botoniniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
@@ -122,11 +126,67 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botoniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoniniciarActionPerformed
         // TODO add your handling code here:
+        File archivo=new File("Usuarios.txt");
+        Menu m=new Menu();
         
+        String usua=usuario.getText();
+        String contra=contraseña.getText();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try
+        {
+            if(!archivo.exists())
+            {
+                archivo.createNewFile();
+            }
+            Scanner s=new Scanner(archivo);
+            while(s.hasNextLine())
+            {
+                String linea=s.nextLine();
+                Scanner sl=new Scanner(linea);
+                sl.useDelimiter("\\s*;\\s*");
+                String usuarioarch=sl.next();
+                if(usua.equalsIgnoreCase(usuarioarch))
+                {
+                    String contr=sl.next();
+                    String nivel=sl.next();
+                    if(contra.equalsIgnoreCase(contr))
+                    {
+                        if(nivel.equals("1"))
+                        {
+                     m.setVisible(true);
+                     this.dispose();
+                        }
+                    
+                        
+                    else
+                    {
+                        //aqui va el usuario 1
+                        m.setVisible(true);
+                        
+                    }
+                    }else
+                    {
+                        System.out.println("Contraseña incorrecta");
+                    }
+                    
+                }
+                else{
+                    System.out.println("Usuario no existe");
+                }
+                
+            }
+                        
+            
+            
+        }catch(Exception e)
+        {
+            
+        }
+                  
+        
+    }//GEN-LAST:event_botoniniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,8 +224,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botoniniciar;
     private javax.swing.JPasswordField contraseña;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField3;

@@ -67,6 +67,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Usuarios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuusuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmenuentrenador">
               <Properties>
@@ -83,6 +86,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Localizaci&#xf3;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenulocalizacionActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmenusalas">
               <Properties>
@@ -91,6 +97,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Salas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenusalasActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmenuactividades">
               <Properties>
@@ -99,6 +108,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="De Actividades"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuactividadesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmenuhorario">
               <Properties>

@@ -16,6 +16,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);//centrar la ventana
     }
 
     /**
@@ -84,6 +85,11 @@ public class Menu extends javax.swing.JFrame {
 
         jmenuusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuusuario.setText("De Usuarios");
+        jmenuusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuusuarioActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuusuario);
 
         jmenuentrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -92,14 +98,29 @@ public class Menu extends javax.swing.JFrame {
 
         jmenulocalizacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenulocalizacion.setText("De Localización");
+        jmenulocalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenulocalizacionActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenulocalizacion);
 
         jmenusalas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenusalas.setText("De Salas");
+        jmenusalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenusalasActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenusalas);
 
         jmenuactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuactividades.setText("De Actividades");
+        jmenuactividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuactividadesActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuactividades);
 
         jmenuhorario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -222,6 +243,34 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmenuusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuusuarioActionPerformed
+        // TODO add your handling code here:
+        FrameUsuario fr = new FrameUsuario();
+        fr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuusuarioActionPerformed
+
+    private void jmenulocalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenulocalizacionActionPerformed
+        // TODO add your handling code here:
+        FrameLocalizacion fl=new FrameLocalizacion();
+        fl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenulocalizacionActionPerformed
+
+    private void jmenusalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenusalasActionPerformed
+        // TODO add your handling code here:
+        FrameSalas fs=new FrameSalas();
+        fs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenusalasActionPerformed
+
+    private void jmenuactividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuactividadesActionPerformed
+        // TODO add your handling code here:
+        FrameActividades fa=new FrameActividades();
+        fa.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuactividadesActionPerformed
 
     /**
      * @param args the command line arguments
