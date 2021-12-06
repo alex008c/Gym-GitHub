@@ -31,10 +31,54 @@ boolean encontrado;
      */
     public FrameSalas() {
         initComponents();
+        botonaceptar.setEnabled(false);
        this.setLocationRelativeTo(null);
         
     }
-
+public void validar()
+{
+     if(idsala.getText().isEmpty())
+        {
+            campsala.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campsala.setText("");
+        }
+      if(nombresala.getText().isEmpty())
+        {
+            campnombre.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campnombre.setText("");
+        }
+       if(descripcionsala.getText().isEmpty())
+        {
+            campdescrip.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campdescrip.setText("");
+        }
+        if(localizacionsala.getText().isEmpty())
+        {
+            camplocal.setText("Campo Obligatorio");
+        }
+        else
+        {
+            camplocal.setText("");
+        }
+        
+        if(idsala.getText().isEmpty() || nombresala.getText().isEmpty()||descripcionsala.getText().isEmpty()||localizacionsala.getText().isEmpty())
+        {
+            botonaceptar.setEnabled(false);
+        }
+        else
+        {
+            botonaceptar.setEnabled(true);
+        }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,10 +96,14 @@ boolean encontrado;
         nombresala = new javax.swing.JTextField();
         descripcionsala = new javax.swing.JTextField();
         localizacionsala = new javax.swing.JTextField();
-        Botonsalas = new javax.swing.JButton();
+        botonaceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         accion = new javax.swing.JTextPane();
         BOTONMENU = new javax.swing.JButton();
+        campsala = new javax.swing.JLabel();
+        campnombre = new javax.swing.JLabel();
+        campdescrip = new javax.swing.JLabel();
+        camplocal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,12 +119,10 @@ boolean encontrado;
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("ID LOCALIZACION SALA");
 
-        idsala.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idsalaActionPerformed(evt);
-            }
-        });
         idsala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idsalaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 idsalaKeyTyped(evt);
             }
@@ -87,23 +133,32 @@ boolean encontrado;
                 nombresalaActionPerformed(evt);
             }
         });
-
-        localizacionsala.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                localizacionsalaActionPerformed(evt);
+        nombresala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nombresalaKeyReleased(evt);
             }
         });
+
+        descripcionsala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                descripcionsalaKeyReleased(evt);
+            }
+        });
+
         localizacionsala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                localizacionsalaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 localizacionsalaKeyTyped(evt);
             }
         });
 
-        Botonsalas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Botonsalas.setText("ACEPTAR");
-        Botonsalas.addActionListener(new java.awt.event.ActionListener() {
+        botonaceptar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonaceptar.setText("ACEPTAR");
+        botonaceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonsalasActionPerformed(evt);
+                botonaceptarActionPerformed(evt);
             }
         });
 
@@ -119,40 +174,57 @@ boolean encontrado;
             }
         });
 
+        campsala.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campsala.setForeground(new java.awt.Color(255, 0, 0));
+
+        campnombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campnombre.setForeground(new java.awt.Color(255, 0, 0));
+
+        campdescrip.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campdescrip.setForeground(new java.awt.Color(255, 0, 0));
+
+        camplocal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        camplocal.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 457, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(Botonsalas)
-                        .addGap(62, 62, 62)
-                        .addComponent(BOTONMENU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(63, 63, 63)))
-                            .addComponent(jLabel1))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idsala, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(descripcionsala)
-                                .addComponent(localizacionsala, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addComponent(nombresala)))))
-                .addGap(107, 107, 107))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(63, 63, 63)))
+                    .addComponent(jLabel1))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idsala, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(descripcionsala)
+                        .addComponent(localizacionsala, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(nombresala)))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campsala)
+                    .addComponent(campnombre)
+                    .addComponent(campdescrip)
+                    .addComponent(camplocal))
+                .addGap(134, 134, 134))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(201, 201, 201)
+                .addComponent(botonaceptar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(208, 208, 208))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,26 +234,32 @@ boolean encontrado;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(idsala, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idsala, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campsala))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombresala, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(nombresala, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campnombre)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(descripcionsala, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(campdescrip))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(localizacionsala, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4)
+                            .addComponent(camplocal)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BOTONMENU)
-                    .addComponent(Botonsalas))
+                    .addComponent(botonaceptar))
                 .addGap(31, 31, 31))
         );
 
@@ -192,7 +270,7 @@ boolean encontrado;
         // TODO add your handling code here:
     }//GEN-LAST:event_nombresalaActionPerformed
 
-    private void BotonsalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonsalasActionPerformed
+    private void botonaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonaceptarActionPerformed
         
 String idsa=idsala.getText();
 String nombre=nombresala.getText();
@@ -224,32 +302,32 @@ try
     System.out.println("ERROR"+e);
 } 
           
-            if(idsala.getText().isEmpty())
-  {
-      JOptionPane.showMessageDialog(this, "ID SALA OBLIGATORIA ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-  }
-                      
-            if(nombresala.getText().isEmpty())
-  {
-      JOptionPane.showMessageDialog(this, "NOMBRE SALA OBLIGATORIO ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-  }
-                      
-            if(descripcionsala.getText().isEmpty())
-  {
-      JOptionPane.showMessageDialog(this, "DESCRIPCION OBLIGATORIA ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-  }
-                      
-            if(localizacionsala.getText().isEmpty())
-  {
-      JOptionPane.showMessageDialog(this, "ID LOCALIZACION OBLIGATORIA ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-  }
-
+  
 
     
-    }//GEN-LAST:event_BotonsalasActionPerformed
+    }//GEN-LAST:event_botonaceptarActionPerformed
 
-    private void idsalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idsalaActionPerformed
+    private void idsalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idsalaKeyTyped
+char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_idsalaKeyTyped
+
+    private void localizacionsalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_localizacionsalaKeyTyped
         // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_localizacionsalaKeyTyped
+
+    private void BOTONMENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONMENUActionPerformed
+        // TODO add your handling code here:
+        Menu m=new Menu();
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BOTONMENUActionPerformed
+
+    private void idsalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idsalaKeyReleased
+        // TODO add your handling code here:
+        validar();
          encontrado=false;
         ManejoSallas mn=new ManejoSallas();
         String idsa=idsala.getText();
@@ -285,13 +363,12 @@ try
             System.out.println("ERROR" + e);
         }
 
-    
-        
-    }//GEN-LAST:event_idsalaActionPerformed
+    }//GEN-LAST:event_idsalaKeyReleased
 
-    private void localizacionsalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localizacionsalaActionPerformed
+    private void localizacionsalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_localizacionsalaKeyReleased
         // TODO add your handling code here:
-     encontrado = false;
+        validar();
+         encontrado = false;
  ManejoLocalizacion ml=new ManejoLocalizacion();
  String idlocal=localizacionsala.getText();
  ArrayList<String> retorno=new ArrayList<String>();
@@ -306,10 +383,7 @@ try
         
         
     }
-    else
-    {
-        localizacionsala.setText("");
-    }
+
                 
      
      
@@ -317,26 +391,17 @@ try
  {
      System.out.println("ERROR"+e);
  }
+    }//GEN-LAST:event_localizacionsalaKeyReleased
 
-    }//GEN-LAST:event_localizacionsalaActionPerformed
-
-    private void idsalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idsalaKeyTyped
-char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
-    }//GEN-LAST:event_idsalaKeyTyped
-
-    private void localizacionsalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_localizacionsalaKeyTyped
+    private void nombresalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombresalaKeyReleased
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-    }//GEN-LAST:event_localizacionsalaKeyTyped
+        validar();
+    }//GEN-LAST:event_nombresalaKeyReleased
 
-    private void BOTONMENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONMENUActionPerformed
+    private void descripcionsalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcionsalaKeyReleased
         // TODO add your handling code here:
-        Menu m=new Menu();
-        m.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_BOTONMENUActionPerformed
+        validar();
+    }//GEN-LAST:event_descripcionsalaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -386,8 +451,12 @@ char c=evt.getKeyChar();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BOTONMENU;
-    private javax.swing.JButton Botonsalas;
     private javax.swing.JTextPane accion;
+    private javax.swing.JButton botonaceptar;
+    private javax.swing.JLabel campdescrip;
+    private javax.swing.JLabel camplocal;
+    private javax.swing.JLabel campnombre;
+    private javax.swing.JLabel campsala;
     private javax.swing.JTextField descripcionsala;
     private javax.swing.JTextField idsala;
     private javax.swing.JLabel jLabel1;

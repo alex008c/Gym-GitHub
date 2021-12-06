@@ -22,9 +22,9 @@ public class ManejoActividades {
     try
     {
         if(!f.exists())
-                {
+           {
                     f.createNewFile();
-                }
+            }
         escribir=new FileWriter(f,true);
         linea=new PrintWriter(escribir);
         linea.print(idactividad+";");

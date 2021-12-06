@@ -28,17 +28,80 @@ import javax.swing.JRadioButton;
 public class FrameUsuario extends javax.swing.JFrame {
 
     private static Scanner leer;
-//FondoPanel fondo=new FondoPanel(); 
- // ImageIcon iconLogo = new ImageIcon("Images/aceptar.png");
+
 
     public FrameUsuario() {
-       // this.setContentPane(fondo);
+       
         initComponents();
-     
-// In init() method write this code
-//botonregistrar.setIcon(iconLogo);
+    
+botonregistrar.setEnabled(false);
   this.setLocationRelativeTo(null);
     
+    }
+    public void validar(){
+        if(lusuario.getText().isEmpty())
+        {
+            campusuario.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campusuario.setText("");
+        }
+               if(lcontraseña.getText().isEmpty())
+        {
+            campcontra.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campcontra.setText("");
+        }
+          if(lnivelacceso.getText().isEmpty())
+        {
+            campnivel.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campnivel.setText("");
+        }
+                 if(lnombre.getText().isEmpty())
+        {
+            campnombre.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campnombre.setText("");
+        }
+         if(lapellido.getText().isEmpty())
+        {
+            campapellido.setText("Campo Obligatorio");
+        }
+        else
+        {
+            campapellido.setText("");
+        }
+          if(!lcorreo.getText().contains("@") || !lcorreo.getText().contains("."))
+                 {
+                            campcorreo.setText("Correo Invalido");
+                            botonregistrar.setEnabled(false);
+                  }
+              else
+                        {
+                            campcorreo.setText("");
+                            
+                        }
+                                    
+        
+                   
+                    
+        if(lusuario.getText().isEmpty() || lcontraseña.getText().isEmpty() || lnivelacceso.getText().isEmpty()||lnombre.getText().isEmpty()||lapellido.getText().isEmpty() )
+        {
+            botonregistrar.setEnabled(false);
+        }
+        else
+        {
+            botonregistrar.setEnabled(true);
+        }
+        
     }
 
     /**
@@ -65,15 +128,27 @@ public class FrameUsuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         botonregistrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        campusuario = new javax.swing.JLabel();
+        campcontra = new javax.swing.JLabel();
+        campnivel = new javax.swing.JLabel();
+        campnombre = new javax.swing.JLabel();
+        campapellido = new javax.swing.JLabel();
+        campcorreo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lusuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lusuarioKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Usuario");
 
-        lcontraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lcontraseñaActionPerformed(evt);
+        lcontraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lcontraseñaKeyReleased(evt);
             }
         });
 
@@ -81,6 +156,9 @@ public class FrameUsuario extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         lnivelacceso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lnivelaccesoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 lnivelaccesoKeyTyped(evt);
             }
@@ -89,9 +167,21 @@ public class FrameUsuario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Nivel Acceso");
 
-        lnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnombreActionPerformed(evt);
+        lnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lnombreKeyReleased(evt);
+            }
+        });
+
+        lapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lapellidoKeyReleased(evt);
+            }
+        });
+
+        lcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lcorreoKeyReleased(evt);
             }
         });
 
@@ -118,6 +208,24 @@ public class FrameUsuario extends javax.swing.JFrame {
             }
         });
 
+        campusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campusuario.setForeground(new java.awt.Color(255, 0, 0));
+
+        campcontra.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campcontra.setForeground(new java.awt.Color(255, 0, 0));
+
+        campnivel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campnivel.setForeground(new java.awt.Color(255, 0, 0));
+
+        campnombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campnombre.setForeground(new java.awt.Color(255, 0, 0));
+
+        campapellido.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campapellido.setForeground(new java.awt.Color(255, 0, 0));
+
+        campcorreo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        campcorreo.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,41 +233,52 @@ public class FrameUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
-                        .addComponent(lusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel3)
-                        .addGap(90, 90, 90)
-                        .addComponent(lnivelacceso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel4)
-                        .addGap(41, 41, 41)
-                        .addComponent(lnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel5)
-                        .addGap(39, 39, 39)
-                        .addComponent(lapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel6)
-                        .addGap(39, 39, 39)
-                        .addComponent(lcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(jLabel1)
+                                .addGap(30, 30, 30)
+                                .addComponent(lusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(167, 167, 167)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(lcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(165, 165, 165)
+                                .addComponent(jLabel3)
+                                .addGap(90, 90, 90)
+                                .addComponent(lnivelacceso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(jLabel4)
+                                .addGap(41, 41, 41)
+                                .addComponent(lnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(jLabel5)
+                                .addGap(39, 39, 39)
+                                .addComponent(lapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campapellido)
+                            .addComponent(campnombre)
+                            .addComponent(campnivel)
+                            .addComponent(campcontra)
+                            .addComponent(campusuario)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(86, 86, 86)
-                        .addComponent(botonregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                        .addComponent(botonregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(jLabel6)
+                        .addGap(39, 39, 39)
+                        .addComponent(lcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(campcorreo)))
+                .addGap(170, 170, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,37 +288,48 @@ public class FrameUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1))
-                    .addComponent(lusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campusuario)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel2))
-                    .addComponent(lcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campcontra))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel3))
-                    .addComponent(lnivelacceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lnivelacceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campnivel)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel4))
-                    .addComponent(lnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campnombre)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel5))
-                    .addComponent(lapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campapellido)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel6))
-                    .addComponent(lcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +366,7 @@ public class FrameUsuario extends javax.swing.JFrame {
 
         int nivel;
         nivel=Integer.parseInt(lnivelacceso.getText());
-
+ 
         archivo=new File("Usuarios.txt");
         if(!archivo.exists())
         {
@@ -273,47 +403,27 @@ public class FrameUsuario extends javax.swing.JFrame {
                 escribir=new FileWriter(archivo,true);
                 linea=new PrintWriter(escribir);
                 linea.print(lusuario.getText()+";");
-                linea.print(String.valueOf(lcontraseña.getPassword()+";"));
+                String contraa=new String(lcontraseña.getPassword());
+                linea.print((contraa+";"));
                 linea.print(nivel+";");
                 linea.print(lnombre.getText()+";");
                 linea.print(lapellido.getText()+";");
                 linea.print(lcorreo.getText()+"\n");
                 linea.close();
                 escribir.close();
-            } catch (IOException ex) {
+                
+            
+            
+            
+  
+        }catch (IOException ex) {
                 Logger.getLogger(FrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+        
         }
-
-        if(lusuario.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Usuario obligatorio ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(lcontraseña.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Contraseña obligatorio ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        if(lnivelacceso.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Nivel obligatorio ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        if(lnombre.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Nombre obligatorio ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(lapellido.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Apellido obligatorio ", "Campo en blanco", JOptionPane.INFORMATION_MESSAGE);
-        }
-
+blanquear();
     }//GEN-LAST:event_botonregistrarActionPerformed
-
-    private void lnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnombreActionPerformed
 
     private void lnivelaccesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnivelaccesoKeyTyped
         // TODO add your handling code here:
@@ -322,9 +432,31 @@ public class FrameUsuario extends javax.swing.JFrame {
         if(lnivelacceso.getText().length()>=1)evt.consume();
     }//GEN-LAST:event_lnivelaccesoKeyTyped
 
-    private void lcontraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lcontraseñaActionPerformed
+    private void lusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lusuarioKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_lcontraseñaActionPerformed
+        validar();
+    }//GEN-LAST:event_lusuarioKeyReleased
+
+    private void lcontraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lcontraseñaKeyReleased
+ validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_lcontraseñaKeyReleased
+
+    private void lnivelaccesoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnivelaccesoKeyReleased
+ validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_lnivelaccesoKeyReleased
+
+    private void lnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnombreKeyReleased
+ validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_lnombreKeyReleased
+
+    private void lapellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lapellidoKeyReleased
+ validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_lapellidoKeyReleased
+
+    private void lcorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lcorreoKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_lcorreoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -364,6 +496,12 @@ public class FrameUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonregistrar;
+    private javax.swing.JLabel campapellido;
+    private javax.swing.JLabel campcontra;
+    private javax.swing.JLabel campcorreo;
+    private javax.swing.JLabel campnivel;
+    private javax.swing.JLabel campnombre;
+    private javax.swing.JLabel campusuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -379,19 +517,20 @@ public class FrameUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField lnombre;
     private javax.swing.JTextField lusuario;
     // End of variables declaration//GEN-END:variables
-    class FondoPanel extends JPanel
+
+    
+    public void blanquear()
     {
-        private Image imagen;
-        @Override
-        public void paint(Graphics g)
-        {
-            imagen=new ImageIcon(getClass().getResource("/imagenes/1.jpg")).getImage();
-            g.drawImage(imagen, 0, 0,getWidth(),getHeight(),this);
-            setOpaque(false);
-            super.paint(g);
-        }
+        lusuario.setText("");
+        lcontraseña.setText("");
+        lnivelacceso.setText("");
+        lnombre.setText("");
+        lapellido.setText("");
+        lcorreo.setText("");
     }
     
-}
+    }
+    
+
 
 
