@@ -248,14 +248,14 @@ public class FrameEntrenador extends javax.swing.JFrame {
            Scanner sc;
            try {
                File file=new File("Entrenador.txt");
-               sc=new Scanner(file);
                
                if(!file.exists()){
                file.createNewFile();
                }
                else{
-                   
-                 while(sc.hasNextLine() && !search){
+                 sc=new Scanner(file);
+
+                 while(sc.hasNextLine() && search!=false){
                      System.out.println("ola3");
                   String line=sc.nextLine();
                   Scanner sc1=new Scanner(line);
