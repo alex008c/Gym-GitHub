@@ -18,6 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class FrameEntrenador extends javax.swing.JFrame {
 
+    private boolean crear;
+    private String premody;
+
     /**
      * Creates new form FrameEntrenador
      */
@@ -53,6 +56,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         estatus = new javax.swing.JTextPane();
+        limpiar = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -94,7 +98,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
         correoentrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         correoentrenador.setText("Correo Entrenador");
 
-        menu.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        menu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         menu.setText("Menu");
         menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,12 +106,17 @@ public class FrameEntrenador extends javax.swing.JFrame {
             }
         });
 
-        registrar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        registrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         registrar.setText("Registrar");
-
-        campoid.addActionListener(new java.awt.event.ActionListener() {
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoidActionPerformed(evt);
+                registrarActionPerformed(evt);
+            }
+        });
+
+        campoid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoidKeyReleased(evt);
             }
         });
 
@@ -117,6 +126,14 @@ public class FrameEntrenador extends javax.swing.JFrame {
         estatus.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         estatus.setEnabled(false);
         jScrollPane1.setViewportView(estatus);
+
+        limpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,20 +155,22 @@ public class FrameEntrenador extends javax.swing.JFrame {
                     .addComponent(campocorreo)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 46, Short.MAX_VALUE)))
                 .addGap(22, 22, 22))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(menu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(registrar)
-                .addGap(69, 69, 69))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(156, 156, 156)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(menu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(limpiar)
+                .addGap(52, 52, 52)
+                .addComponent(registrar)
+                .addGap(46, 46, 46))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +199,12 @@ public class FrameEntrenador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menu)
-                    .addComponent(registrar))
-                .addGap(21, 21, 21))
+                    .addComponent(limpiar)
+                    .addComponent(registrar)
+                    .addComponent(menu))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +218,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -211,46 +231,62 @@ public class FrameEntrenador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
                                                                         
-    private void campoidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoidActionPerformed
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+       campoid.setText("");
+       camponombre.setText("");
+       campoapellido.setText("");
+       campotel.setText("");
+       campocorreo.setText("");
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
        //Conversion de texto a numeros
-        int id=Integer.parseInt(campoid.getText());
-        boolean search=false;
+       boolean search=false;
+        int id;
+        id=Integer.parseInt(campoid.getText());
            //Creando file
+           Scanner sc;
            try {
                File file=new File("Entrenador.txt");
-               Scanner sc=new Scanner(file); 
+               sc=new Scanner(file);
                
                if(!file.exists()){
                file.createNewFile();
                }
-               
                else{
+                   
                  while(sc.hasNextLine() && !search){
+                     System.out.println("ola3");
                   String line=sc.nextLine();
                   Scanner sc1=new Scanner(line);
-                  sc1.useDelimiter("\\s*|\\s*");
+                  sc1.useDelimiter("\\s*;\\s*");
                      try {
-                         if (id==Integer.parseInt(sc1.next())) {
-                           identrenador.setText(sc1.next());
-                           nombreentrenador.setText(sc1.next());
-                           apellidoentrenador.setText(sc1.next());
-                           telentrenador.setText(sc1.next());
-                           correoentrenador.setText(sc1.next());
+                         System.out.println("ola4");
+                         if (id==Integer.parseInt(sc1.next())){
+                           campoid.setText(sc1.next());
+                           camponombre.setText(sc1.next());
+                           campoapellido.setText(sc1.next());
+                           campotel.setText(sc1.next());
+                           campocorreo.setText(sc1.next());
                            search=true;
+                           crear=true;
+                           premody=(campoid.getText() + ";" + camponombre.getText() + ";" + campoapellido.getText() + ";" + campotel.getText() + ";" + campocorreo.getText());
                            estatus.setText("Modificando...");
                          }
                          else{
-                           identrenador.setText("");
-                           nombreentrenador.setText("");
-                           apellidoentrenador.setText("");
-                           telentrenador.setText("");
-                           correoentrenador.setText("");
-                           search=false;
+                             System.out.println("ola5");
+                           campoid.setText("");
+                           camponombre.setText("");
+                           campoapellido.setText("");
+                           campotel.setText("");
+                           campocorreo.setText("");
+                           search=true;
+                           crear=false;
                            estatus.setText("Creando...");
                          }
  
-                     } catch (Exception e) {
-                         JOptionPane.showMessageDialog(null, "Error al leer archivo.");
+                     } catch (Exception el) {
+                         JOptionPane.showMessageDialog(null, "Error al leer archivo."+el);
                      }
                  }// fin while
                  sc.close();
@@ -259,7 +295,40 @@ public class FrameEntrenador extends javax.swing.JFrame {
            } catch (IOException ex) {
                Logger.getLogger(FrameEntrenador.class.getName()).log(Level.SEVERE, null, ex);
            }
-    }//GEN-LAST:event_campoidActionPerformed
+    }//GEN-LAST:event_campoidKeyReleased
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+      String id1="";
+      String nom="";
+      String ape="";
+      String tel="";
+      String corr="";
+      String posmody="";
+      
+      ManejoEntrenador me=new ManejoEntrenador();
+      id1=campoid.getText();
+      nom=camponombre.getText();
+      ape=campoapellido.getText();
+      tel=campotel.getText();
+      corr=campocorreo.getText();
+      
+        try {
+            if (crear==false) {
+             me.GuardarDatos(id1, ape, ape, tel, corr);
+            }
+            else{
+            posmody=(id1 + ";" + nom + ";" + ape + ";" + tel + ";" + corr);
+            me.ModificarDatos(premody, posmody);
+            }
+            campoid.setText("");
+            camponombre.setText("");
+            campoapellido.setText("");
+            campotel.setText("");
+            campocorreo.setText("");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_registrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +381,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
     javax.swing.JScrollPane jScrollPane1;
+    javax.swing.JButton limpiar;
     javax.swing.JButton menu;
     javax.swing.JLabel nombreentrenador;
     javax.swing.JButton registrar;
