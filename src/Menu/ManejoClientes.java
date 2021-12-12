@@ -118,7 +118,7 @@ UnsupportedEncodingException, IOException
         System.out.println("ERROR "+e);
     }
               
-    return ArrayEntrenador;
+    return ArrayCliente;
 }
 public void ModificarDatos(String idactividades,String nombre,String descripcion,String localizacion,String entrenador)
 {
