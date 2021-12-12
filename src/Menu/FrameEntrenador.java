@@ -5,12 +5,14 @@
  */
 package Menu;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,11 +58,15 @@ public class FrameEntrenador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         estatus = new javax.swing.JTextPane();
         limpiar = new javax.swing.JButton();
+        HOME = new javax.swing.JLabel();
+        CLEAR = new javax.swing.JLabel();
+        SAVE = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
+        setTitle("GYM");
+        setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(25, 25, 25));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 5));
@@ -110,9 +116,11 @@ public class FrameEntrenador extends javax.swing.JFrame {
         correoentrenador.setText("Correo Entrenador");
 
         menu.setBackground(new java.awt.Color(0, 0, 0));
-        menu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        menu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         menu.setForeground(new java.awt.Color(204, 204, 204));
         menu.setText("Menu");
+        menu.setMaximumSize(new java.awt.Dimension(96, 35));
+        menu.setMinimumSize(new java.awt.Dimension(96, 35));
         menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuActionPerformed(evt);
@@ -120,7 +128,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
         });
 
         registrar.setBackground(new java.awt.Color(0, 0, 0));
-        registrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        registrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         registrar.setForeground(new java.awt.Color(204, 204, 204));
         registrar.setText("Registrar");
         registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +170,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(estatus);
 
         limpiar.setBackground(new java.awt.Color(0, 0, 0));
-        limpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         limpiar.setForeground(new java.awt.Color(204, 204, 204));
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +179,12 @@ public class FrameEntrenador extends javax.swing.JFrame {
             }
         });
 
+        HOME.setBackground(new java.awt.Color(0, 0, 0));
+
+        CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+
+        SAVE.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -178,38 +192,44 @@ public class FrameEntrenador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(apellidoentrenador)
+                            .addComponent(telentrenador)
+                            .addComponent(correoentrenador)
+                            .addComponent(nombreentrenador)
+                            .addComponent(identrenador))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campotel)
+                            .addComponent(campoapellido)
+                            .addComponent(camponombre)
+                            .addComponent(campocorreo)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(apellidoentrenador)
-                                    .addComponent(telentrenador)
-                                    .addComponent(correoentrenador)
-                                    .addComponent(nombreentrenador)
-                                    .addComponent(identrenador))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campotel)
-                                    .addComponent(campoapellido)
-                                    .addComponent(camponombre)
-                                    .addComponent(campocorreo)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 134, Short.MAX_VALUE))))
+                                .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(menu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(limpiar)
-                        .addGap(65, 65, 65)
-                        .addComponent(registrar)))
-                .addGap(46, 46, 46))
+                                .addGap(173, 173, 173))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(limpiar)
+                                .addGap(50, 50, 50)
+                                .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(registrar)
+                                .addGap(22, 22, 22)))))
+                .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,29 +255,39 @@ public class FrameEntrenador extends javax.swing.JFrame {
                     .addComponent(correoentrenador)
                     .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(limpiar)
-                    .addComponent(registrar)
-                    .addComponent(menu))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png")));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/limpiar.png")));
+        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -276,6 +306,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
        campoapellido.setText("");
        campotel.setText("");
        campocorreo.setText("");
+       estatus.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
@@ -291,7 +322,6 @@ search=false;
             RetornoEntre=me.LeerDatos(ide);
             if(!RetornoEntre.isEmpty()&&"1".equals(RetornoEntre.get(0)))
             {
-                System.out.println("ola");
                 search=true;
                 camponombre.setText(RetornoEntre.get(1));
                 campoapellido.setText(RetornoEntre.get(2));
@@ -301,7 +331,7 @@ search=false;
             }
             else
             {
-                System.out.println("ola1");
+                search=false;
                 camponombre.setText("");
                 campoapellido.setText("");
                 campotel.setText("");
@@ -312,9 +342,8 @@ search=false;
         }catch(Exception e)
         {
             System.out.println("ERROR "+e);
-        } 
-        
-    // T
+            System.out.println("campo");
+        }
     }//GEN-LAST:event_campoidKeyReleased
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
@@ -328,9 +357,11 @@ search=false;
       
         try {
             if (search==false) {
+                System.out.println("ola");
              me.GuardarDatos(id1, nom, ape, tel, corr);
             }
             else{
+                System.out.println("ola1");
              me.ModificarDatos(id1, nom, ape, tel, corr);
             }
             estatus.setText("Datos guardados");
@@ -340,7 +371,8 @@ search=false;
             campotel.setText("");
             campocorreo.setText("");
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("error"+e);
+            System.out.println("registro");
         }
     }//GEN-LAST:event_registrarActionPerformed
 
@@ -380,6 +412,9 @@ search=false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JLabel CLEAR;
+    javax.swing.JLabel HOME;
+    javax.swing.JLabel SAVE;
     javax.swing.JLabel apellidoentrenador;
     javax.swing.JTextField campoapellido;
     javax.swing.JTextField campocorreo;

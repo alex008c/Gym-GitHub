@@ -27,36 +27,42 @@ public class ManejoEntrenador{
 
 public void GuardarDatos(String id, String name, String lastname, String tel, String correo){
     try {
-        FileWriter file=new FileWriter("Entrenador.txt");
-        PrintWriter pwrite=new PrintWriter(file);
-        pwrite.println(id + ";" + name + ";" + lastname + ";" + tel + ";" + correo);
-        pwrite.close();
+        File file=new File("Entrenador.txt");
+        FileWriter fw=new FileWriter(file,true);
+        PrintWriter pw=new PrintWriter(fw);
+        if(!file.exists()){
+            file.createNewFile();
+        }
+        pw.print(id + ";" + name + ";" + lastname + ";" + tel + ";" + correo + "\n");
+        pw.close();
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(null, "Error al guardar."+ ex);
+        System.out.println("Guardar");
     }
     }
 
 public void ModificarDatos(String identre, String nombre,String apellido,String tel,String correo){
  File fileant=new File("Entrenador.txt");
  File filenue=new File("Entrenador2.txt");
-String premody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
 String posmody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
  int id=Integer.parseInt(identre);
-    BufferedReader read;
     try {
-        if(fileant.exists()){
-         read=new BufferedReader(new FileReader(fileant));
-         
+        if(fileant.exists()){ 
          String line;
-            while ((line=read.readLine()) !=null ) {
-            if(line.equals(premody)){
+         Scanner sc=new Scanner(fileant);
+            while ((sc.hasNextLine())) {
+             line=sc.next();
+            Scanner sc1=new Scanner(line);
+            sc1.useDelimiter("\\s*;\\s*");
+            int idd=Integer.parseInt(sc1.next());
+            if(id==idd){
                 write(filenue,posmody);
             }
             else{
                 write(filenue,line);
             }
             }//fin while
-            read.close();
+            sc.close();
             
             //Renombrar
             String Filant = fileant.getName();
@@ -67,7 +73,8 @@ String posmody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
             System.out.println("Fichero no existe");
         }
     } catch (Exception e) {
-        System.out.println(e);
+        System.out.println("ERROR"+e);
+        System.out.println("Modificar");
     }
     }//FIN MODIFICAR
 
@@ -81,7 +88,8 @@ void write(File file, String registro){
         wr.write(registro + "\r\n");
         wr.close();
     } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("ERROR write"+e);
+            System.out.println("write");
     }
 }//fin del write
 
@@ -92,7 +100,8 @@ void clear(File file){
             System.out.println("Fichero borrado.");
         }
     } catch (Exception e) {
-        System.out.println(e);
+        System.out.println("ERROR BORRAR"+e);
+        System.out.println("borrar");
     }
 }//fin del clear
 
@@ -122,7 +131,7 @@ UnsupportedEncodingException, IOException
             int idd=Integer.parseInt(sc1.next());
             if(idd==iden)
             {
-                search=true;
+            search=true;
             String nombre=sc1.next();
             String apellido=sc1.next();
             String tel=sc1.next();
@@ -142,7 +151,8 @@ UnsupportedEncodingException, IOException
         
     }catch(Exception e)
     {
-        System.out.println("ERROR "+e);
+        System.out.println("ERROR leer"+e);
+        System.out.println("leer");
     }
               
     return ArrayEntrenador;
