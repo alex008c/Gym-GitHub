@@ -94,48 +94,50 @@ void clear(File file){
     } catch (Exception e) {
         System.out.println(e);
     }
-}
-    // esto es para buscar el entrenador en el frame actividades
+}//fin del clear
+
     public ArrayList LeerDatos(String campoid)throws FileNotFoundException,
 UnsupportedEncodingException, IOException 
 {
  
-    boolean encontrado=false;
-    int idac=Integer.parseInt(campoid);
+    boolean search=false;
+    int iden=Integer.parseInt(campoid);
     ArrayList<String> ArrayEntrenador=new ArrayList<String>();
-    File g=new File("Entrenador.txt");
+    File file=new File("Entrenador.txt");
     try
     {
-        if(!g.exists())
+        if(!file.exists())
         {
-            g.createNewFile();
+            file.createNewFile();
         }
         
-        Scanner s=new Scanner(g);
+        Scanner sc=new Scanner(file);
         
-        while(s.hasNextLine()&& !encontrado)
+        while(sc.hasNextLine()&& !search)
             
         {
-            String linea=s.nextLine();
-            Scanner sl=new Scanner(linea);
-            sl.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sl.next());
-            if(idd==idac)
+            String linea=sc.nextLine();
+            Scanner sc1=new Scanner(linea);
+            sc1.useDelimiter("\\s*;\\s*");
+            int idd=Integer.parseInt(sc1.next());
+            if(idd==iden)
             {
-            
-            String nombre=sl.next();
-            String descripcion=sl.next();
-            String localizacion=sl.next();
-            String entrenador=sl.next();
+                search=true;
+            String nombre=sc1.next();
+            String apellido=sc1.next();
+            String tel=sc1.next();
+            String corr=sc1.next();
             ArrayEntrenador.add("1");
             ArrayEntrenador.add(nombre);
-
+            ArrayEntrenador.add(apellido);
+            ArrayEntrenador.add(tel);
+            ArrayEntrenador.add(corr);
             }
                     
         
  
         }
-        s.close();
+        sc.close();
         
         
     }catch(Exception e)
@@ -145,5 +147,5 @@ UnsupportedEncodingException, IOException
               
     return ArrayEntrenador;
 
-} //fin del clear
+} 
 }//fin del manejo

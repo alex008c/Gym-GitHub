@@ -18,10 +18,7 @@ import javax.swing.JOptionPane;
  * @author alex008c
  */
 public class FrameEntrenador extends javax.swing.JFrame {
-
-    private boolean crear;
     boolean search;
-    private String premody;
 
     /**
      * Creates new form FrameEntrenador
@@ -245,17 +242,16 @@ public class FrameEntrenador extends javax.swing.JFrame {
        //Conversion de texto a numeros
 search=false;
 //validar();
-        ManejoEntrenador ma=new ManejoEntrenador();
-        String ida=campoid.getText();
+        ManejoEntrenador me=new ManejoEntrenador();
+        String ide=campoid.getText();
         ArrayList<String> RetornoEntre =new ArrayList<String>();
         
         try
         {
-            RetornoEntre=ma.LeerDatos(ida);
+            RetornoEntre=me.LeerDatos(ide);
             if(!RetornoEntre.isEmpty()&&"1".equals(RetornoEntre.get(0)))
             {
-                String premody=(campoid+";"+camponombre+";"+campoapellido+";"+campotel+";"+campocorreo+"\n");
-                //String posmody=(campoid+";"+camponombre+";"+campoapellido+";"+campotel+";"+campocorreo+"\n");
+                System.out.println("ola");
                 search=true;
                 camponombre.setText(RetornoEntre.get(1));
                 campoapellido.setText(RetornoEntre.get(2));
@@ -265,6 +261,7 @@ search=false;
             }
             else
             {
+                System.out.println("ola1");
                 camponombre.setText("");
                 campoapellido.setText("");
                 campotel.setText("");
@@ -281,28 +278,22 @@ search=false;
     }//GEN-LAST:event_campoidKeyReleased
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-      String id1="";
-      String nom="";
-      String ape="";
-      String tel="";
-      String corr="";
-      String posmody="";
-      
+
       ManejoEntrenador me=new ManejoEntrenador();
-      id1=campoid.getText();
-      nom=camponombre.getText();
-      ape=campoapellido.getText();
-      tel=campotel.getText();
-      corr=campocorreo.getText();
+      String id1=campoid.getText();
+      String nom=camponombre.getText();
+      String ape=campoapellido.getText();
+      String tel=campotel.getText();
+      String corr=campocorreo.getText();
       
         try {
-            if (crear==false) {
-             me.GuardarDatos(id1, ape, ape, tel, corr);
+            if (search==false) {
+             me.GuardarDatos(id1, nom, ape, tel, corr);
             }
             else{
-           // posmody=(id1 + ";" + nom + ";" + ape + ";" + tel + ";" + corr);
-            me.ModificarDatos(id1,nom,ape,tel,corr);
+             me.ModificarDatos(id1, nom, ape, tel, corr);
             }
+            estatus.setText("Datos guardados");
             campoid.setText("");
             camponombre.setText("");
             campoapellido.setText("");

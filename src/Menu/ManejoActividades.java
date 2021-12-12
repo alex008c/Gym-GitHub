@@ -69,7 +69,7 @@ UnsupportedEncodingException, IOException
             int idd=Integer.parseInt(sl.next());
             if(idd==idac)
             {
-            
+            encontrado=true;
             String nombre=sl.next();
             String descripcion=sl.next();
             String localizacion=sl.next();
