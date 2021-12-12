@@ -7,6 +7,7 @@ package Menu;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 public class FrameEntrenador extends javax.swing.JFrame {
 
     private boolean crear;
+    boolean search;
     private String premody;
 
     /**
@@ -241,60 +243,41 @@ public class FrameEntrenador extends javax.swing.JFrame {
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
        //Conversion de texto a numeros
-       boolean search=false;
-        int id;
-        id=Integer.parseInt(campoid.getText());
-           //Creando file
-           Scanner sc;
-           try {
-               File file=new File("Entrenador.txt");
-               sc=new Scanner(file);
-               
-               if(!file.exists()){
-               file.createNewFile();
-               }
-               else{
-                   
-                 while(sc.hasNextLine() && !search){
-                     System.out.println("ola3");
-                  String line=sc.nextLine();
-                  Scanner sc1=new Scanner(line);
-                  sc1.useDelimiter("\\s*;\\s*");
-                     try {
-                         System.out.println("ola4");
-                         if (id==Integer.parseInt(sc1.next())){
-                           campoid.setText(sc1.next());
-                           camponombre.setText(sc1.next());
-                           campoapellido.setText(sc1.next());
-                           campotel.setText(sc1.next());
-                           campocorreo.setText(sc1.next());
-                           search=true;
-                           crear=true;
-                           premody=(campoid.getText() + ";" + camponombre.getText() + ";" + campoapellido.getText() + ";" + campotel.getText() + ";" + campocorreo.getText());
-                           estatus.setText("Modificando...");
-                         }
-                         else{
-                             System.out.println("ola5");
-                           campoid.setText("");
-                           camponombre.setText("");
-                           campoapellido.setText("");
-                           campotel.setText("");
-                           campocorreo.setText("");
-                           search=true;
-                           crear=false;
-                           estatus.setText("Creando...");
-                         }
- 
-                     } catch (Exception el) {
-                         JOptionPane.showMessageDialog(null, "Error al leer archivo."+el);
-                     }
-                 }// fin while
-                 sc.close();
-                 
-               }
-           } catch (IOException ex) {
-               Logger.getLogger(FrameEntrenador.class.getName()).log(Level.SEVERE, null, ex);
-           }
+search=false;
+//validar();
+        ManejoEntrenador ma=new ManejoEntrenador();
+        String ida=campoid.getText();
+        ArrayList<String> RetornoEntre =new ArrayList<String>();
+        
+        try
+        {
+            RetornoEntre=ma.LeerDatos(ida);
+            if(!RetornoEntre.isEmpty()&&"1".equals(RetornoEntre.get(0)))
+            {
+                String premody=(campoid+";"+camponombre+";"+campoapellido+";"+campotel+";"+campocorreo+"\n");
+                //String posmody=(campoid+";"+camponombre+";"+campoapellido+";"+campotel+";"+campocorreo+"\n");
+                search=true;
+                camponombre.setText(RetornoEntre.get(1));
+                campoapellido.setText(RetornoEntre.get(2));
+                campotel.setText(RetornoEntre.get(3));
+                campocorreo.setText(RetornoEntre.get(4));
+                estatus.setText("Modificando");
+            }
+            else
+            {
+                camponombre.setText("");
+                campoapellido.setText("");
+                campotel.setText("");
+                campocorreo.setText("");
+                estatus.setText("Creando");
+            }
+            
+        }catch(Exception e)
+        {
+            System.out.println("ERROR "+e);
+        } 
+        
+    // T
     }//GEN-LAST:event_campoidKeyReleased
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
@@ -317,8 +300,8 @@ public class FrameEntrenador extends javax.swing.JFrame {
              me.GuardarDatos(id1, ape, ape, tel, corr);
             }
             else{
-            posmody=(id1 + ";" + nom + ";" + ape + ";" + tel + ";" + corr);
-            me.ModificarDatos(premody, posmody);
+           // posmody=(id1 + ";" + nom + ";" + ape + ";" + tel + ";" + corr);
+            me.ModificarDatos(id1,nom,ape,tel,corr);
             }
             campoid.setText("");
             camponombre.setText("");

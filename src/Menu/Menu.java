@@ -94,6 +94,11 @@ public class Menu extends javax.swing.JFrame {
 
         jmenuentrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuentrenador.setText("De Entrenador");
+        jmenuentrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuentrenadorActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuentrenador);
 
         jmenulocalizacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -271,6 +276,13 @@ public class Menu extends javax.swing.JFrame {
         fa.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jmenuactividadesActionPerformed
+
+    private void jmenuentrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuentrenadorActionPerformed
+        // TODO add your handling code here:
+        FrameEntrenador fm=new FrameEntrenador();
+        fm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuentrenadorActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,10 +36,12 @@ public void GuardarDatos(String id, String name, String lastname, String tel, St
     }
     }
 
-public void ModificarDatos(String premody, String posmody ){
+public void ModificarDatos(String identre, String nombre,String apellido,String tel,String correo){
  File fileant=new File("Entrenador.txt");
  File filenue=new File("Entrenador2.txt");
- 
+String premody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
+String posmody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
+ int id=Integer.parseInt(identre);
     BufferedReader read;
     try {
         if(fileant.exists()){
@@ -94,11 +96,12 @@ void clear(File file){
     }
 }
     // esto es para buscar el entrenador en el frame actividades
-    public ArrayList LeerDatos(String idactividad)throws FileNotFoundException,
+    public ArrayList LeerDatos(String campoid)throws FileNotFoundException,
 UnsupportedEncodingException, IOException 
 {
+ 
     boolean encontrado=false;
-    int idac=Integer.parseInt(idactividad);
+    int idac=Integer.parseInt(campoid);
     ArrayList<String> ArrayEntrenador=new ArrayList<String>();
     File g=new File("Entrenador.txt");
     try

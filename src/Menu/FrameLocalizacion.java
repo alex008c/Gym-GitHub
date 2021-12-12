@@ -190,9 +190,7 @@ boolean encontrado;
         
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
-       
-        
-        
+ 
         
     }//GEN-LAST:event_idlocalizacionKeyTyped
 

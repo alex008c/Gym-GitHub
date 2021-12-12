@@ -201,11 +201,11 @@ public class Login extends javax.swing.JFrame {
                 Scanner sl=new Scanner(linea);
                 sl.useDelimiter("\\s*;\\s*");
                 String usuarioarch=sl.next();
-                if(usua.equalsIgnoreCase(usuarioarch))
+                if(usua.equals(usuarioarch))
                 {
                     String contr=sl.next();
                     String nivel=sl.next();
-                    if(contra.equalsIgnoreCase(contr))
+                    if(contra.equals(contr))
                     {
                         if(nivel.equals("1"))
                         {
@@ -217,6 +217,7 @@ public class Login extends javax.swing.JFrame {
                     else
                     {
                         //aqui va el usuario 1
+                        
                         m.setVisible(true);
                         
                     }
@@ -236,7 +237,7 @@ public class Login extends javax.swing.JFrame {
             
         }catch(Exception e)
         {
-            
+            System.out.println("Error "+e);
         }
                   
         
