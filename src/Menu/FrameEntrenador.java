@@ -7,6 +7,7 @@ package Menu;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,15 +21,14 @@ import javax.swing.JOptionPane;
  * @author alex008c
  */
 public class FrameEntrenador extends javax.swing.JFrame {
-    boolean search;
-
     /**
      * Creates new form FrameEntrenador
      */
     public FrameEntrenador() {
         initComponents();
     }
-
+   Boolean crear = false;
+   //public static String Satigualinea="";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,6 +143,9 @@ public class FrameEntrenador extends javax.swing.JFrame {
         campoid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidKeyTyped(evt);
             }
         });
 
@@ -260,8 +263,8 @@ public class FrameEntrenador extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,71 +313,123 @@ public class FrameEntrenador extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
-       //Conversion de texto a numeros
-search=false;
-//validar();
-        ManejoEntrenador me=new ManejoEntrenador();
-        String ide=campoid.getText();
-        ArrayList<String> RetornoEntre =new ArrayList<String>();
-        
-        try
-        {
-            RetornoEntre=me.LeerDatos(ide);
-            if(!RetornoEntre.isEmpty()&&"1".equals(RetornoEntre.get(0)))
-            {
-                search=true;
-                camponombre.setText(RetornoEntre.get(1));
-                campoapellido.setText(RetornoEntre.get(2));
-                campotel.setText(RetornoEntre.get(3));
-                campocorreo.setText(RetornoEntre.get(4));
-                estatus.setText("Modificando");
-            }
-            else
-            {
-                search=false;
-                camponombre.setText("");
-                campoapellido.setText("");
-                campotel.setText("");
-                campocorreo.setText("");
-                estatus.setText("Creando");
-            }
+      int cod;
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(campoid.getText());
+
+        Scanner s;
+        System.out.println("ola");
+        try {
+            System.out.println("ola1");
+            File f=new File("Entrenador.txt");
             
-        }catch(Exception e)
+            if(!f.exists())
+            {
+                System.out.println("ola2");
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            System.out.println("ola3");
+                while (s.hasNextLine() && !encontrado)
+                {System.out.println("ola4");
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+                            camponombre.setText(sl.next());
+                            campoapellido.setText(sl.next());
+                            campotel.setText(sl.next());
+                            campocorreo.setText(sl.next());
+                            
+                            encontrado=true;
+                            crear = true;
+                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                            estatus.setText("Modificando...");
+                        }
+                        else
+                        {  //Salida.setText("Este registro no existe");
+                            camponombre.setText("");
+                            campoapellido.setText("");
+                            campotel.setText("");
+                            campocorreo.setText("");
+ 
+                            encontrado=false;
+                            crear = false;
+                            estatus.setText("Creando...");
+                        }
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
         {
-            System.out.println("ERROR "+e);
-            System.out.println("campo");
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
+       
     }//GEN-LAST:event_campoidKeyReleased
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-
-      ManejoEntrenador me=new ManejoEntrenador();
-      String id1=campoid.getText();
-      String nom=camponombre.getText();
-      String ape=campoapellido.getText();
-      String tel=campotel.getText();
-      String corr=campocorreo.getText();
-      
+    String id="";
+    String nom="";
+    String ape="";
+    String tel="";
+    String cor="";
+    
+    ManejoEntrenador me=new ManejoEntrenador();
+        id=campoid.getText();
+        nom=camponombre.getText();
+        ape=campoapellido.getText();
+        tel=campotel.getText();
+        if(campocorreo.getText().isEmpty()){
+           cor="-"; 
+        }
+        else{
+        cor=campocorreo.getText();}
+        String Snuevalinea="";
         try {
-            if (search==false) {
-                System.out.println("ola");
-             me.GuardarDatos(id1, nom, ape, tel, corr);
+
+            if (crear==false)
+            {
+                me.GuardarDatos (id, nom, ape, tel, cor);
             }
-            else{
-                System.out.println("ola1");
-             me.ModificarDatos(id1, nom, ape, tel, corr);
+            else
+            {
+                Snuevalinea=(id + "; " + nom + "; " + ape + "; " + tel + "; " + cor);
+                me.ModificaDatos(Snuevalinea,id);
             }
-            estatus.setText("Datos guardados");
             campoid.setText("");
             camponombre.setText("");
             campoapellido.setText("");
             campotel.setText("");
             campocorreo.setText("");
-        } catch (Exception e) {
-            System.out.println("error"+e);
-            System.out.println("registro");
+            estatus.setText("");
+
+        } // fin try
+        
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void campoidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyTyped
+        // TODO add your handling code here:
+       char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_campoidKeyTyped
 
     /**
      * @param args the command line arguments

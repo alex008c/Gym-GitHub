@@ -207,9 +207,9 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="limpiar" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="registrar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="registrar" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <Component id="CLEAR" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="SAVE" min="-2" pref="35" max="-2" attributes="0"/>
@@ -331,6 +331,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoidKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoidKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="camponombre">

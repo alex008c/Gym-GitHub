@@ -25,137 +25,118 @@ import javax.swing.JOptionPane;
 public class ManejoEntrenador{
     
 
-public void GuardarDatos(String id, String name, String lastname, String tel, String correo){
-    try {
-        File file=new File("Entrenador.txt");
-        FileWriter fw=new FileWriter(file,true);
-        PrintWriter pw=new PrintWriter(fw);
-        if(!file.exists()){
-            file.createNewFile();
+public void GuardarDatos (String id, String nom, String ape, String tel, String cor) throws IOException
+    {
+    
+        try
+        {
+            FileWriter F1=new FileWriter("Entrenador.txt", true);
+            PrintWriter pw=new PrintWriter(F1);
+            pw.println(id +";"+ nom +";"+ ape +";"+ tel +";"+ cor);
+            pw.close();
+        }catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,"Error al guardar archivo"+ ex);
         }
-        pw.print(id + ";" + name + ";" + lastname + ";" + tel + ";" + correo + "\n");
-        pw.close();
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(null, "Error al guardar."+ ex);
-        System.out.println("Guardar");
-    }
     }
 
-public void ModificarDatos(String identre, String nombre,String apellido,String tel,String correo){
- File fileant=new File("Entrenador.txt");
- File filenue=new File("Entrenador2.txt");
-String posmody=(identre+";"+nombre+";"+apellido+";"+tel+";"+correo+"\n");
- int id=Integer.parseInt(identre);
-    try {
-        if(fileant.exists()){ 
-         String line;
-         Scanner sc=new Scanner(fileant);
-            while ((sc.hasNextLine())) {
-             line=sc.next();
-            Scanner sc1=new Scanner(line);
-            sc1.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sc1.next());
-            if(id==idd){
-                write(filenue,posmody);
-            }
-            else{
-                write(filenue,line);
-            }
-            }//fin while
-            sc.close();
-            
-            //Renombrar
-            String Filant = fileant.getName();
-            clear(fileant);
-            filenue.renameTo(fileant);
-        }
-        else{
-            System.out.println("Fichero no existe");
-        }
-    } catch (Exception e) {
-        System.out.println("ERROR"+e);
-        System.out.println("Modificar");
-    }
-    }//FIN MODIFICAR
-
-void write(File file, String registro){
-    BufferedWriter wr;
-        try {
-        if(!file.exists()){
-            file.createNewFile();
-        }
-        wr=new BufferedWriter(new FileWriter(file, true));
-        wr.write(registro + "\r\n");
-        wr.close();
-    } catch (Exception e) {
-            System.out.println("ERROR write"+e);
-            System.out.println("write");
-    }
-}//fin del write
-
-void clear(File file){
-    try {
-        if(file.exists()){
-            file.delete();
-            System.out.println("Fichero borrado.");
-        }
-    } catch (Exception e) {
-        System.out.println("ERROR BORRAR"+e);
-        System.out.println("borrar");
-    }
-}//fin del clear
-
-    public ArrayList LeerDatos(String campoid)throws FileNotFoundException,
-UnsupportedEncodingException, IOException 
-{
- 
-    boolean search=false;
-    int iden=Integer.parseInt(campoid);
-    ArrayList<String> ArrayEntrenador=new ArrayList<String>();
-    File file=new File("Entrenador.txt");
+public void ModificaDatos(String LineaNueva, String id )
+    {
+        
+        File fNuevo= new File("Entrenador2.txt");
+        File fAntiguo= new File("Entrenador.txt");
+        
+        boolean encontrado = false;
+        //String aCadena=LineaAntigua;
+        String nCadena=LineaNueva;
+        int cod=Integer.parseInt(id); 
     try
     {
-        if(!file.exists())
+        
+        if(fAntiguo.exists())
         {
-            file.createNewFile();
-        }
+        Scanner s = new Scanner(fAntiguo);
         
-        Scanner sc=new Scanner(file);
+      //  br = new BufferedReader(new FileReader(fAntiguo));
+      
+        String linea;
         
-        while(sc.hasNextLine()&& !search)
-            
-        {
-            String linea=sc.nextLine();
-            Scanner sc1=new Scanner(linea);
-            sc1.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sc1.next());
-            if(idd==iden)
-            {
-            search=true;
-            String nombre=sc1.next();
-            String apellido=sc1.next();
-            String tel=sc1.next();
-            String corr=sc1.next();
-            ArrayEntrenador.add("1");
-            ArrayEntrenador.add(nombre);
-            ArrayEntrenador.add(apellido);
-            ArrayEntrenador.add(tel);
-            ArrayEntrenador.add(corr);
-            }
-                    
-        
- 
-        }
-        sc.close();
-        
-        
-    }catch(Exception e)
-    {
-        System.out.println("ERROR leer"+e);
-        System.out.println("leer");
-    }
-              
-    return ArrayEntrenador;
+            while (s.hasNextLine()) {
+                
+                linea=s.nextLine();
+                Scanner sl = new Scanner(linea);
+                 sl.useDelimiter("\\s*;\\s*"); 
+                int codigoArc = Integer.parseInt(sl.next()); 
+             if(cod==codigoArc) 
+             { 
+            Escribir(fNuevo,nCadena); 
+                } 
+                else 
+                   { 
+                     Escribir(fNuevo,linea); 
+                   }
+            } // fin while
 
-} 
+             s.close(); 
+             
+              // Capturo el nombre del fichero antiguo 
+            //String nAntiguo = fAntiguo.getName(); 
+            // Borro el fichero antiguo 
+            borrar(fAntiguo); 
+            //Renombro el fichero auxiliar con el nombre del fichero antiguo 
+            fNuevo.renameTo(fAntiguo); 
+    }
+    else
+    {
+        System.out.println("Fichero no Existe");
+    }
+}catch(Exception e)
+{
+    System.out.println(e);
+}
+    } //Fin metodo modifica datos
+    
+
+void Escribir(File fFichero, String cadena)
+    {
+        BufferedWriter bw;
+        
+        try
+        {
+            if(!fFichero.exists())
+            {
+                fFichero.createNewFile();
+            }
+                bw=new BufferedWriter(new FileWriter(fFichero, true));
+                bw.write(cadena+"\r\n");
+                bw.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error al procesar."+ e);
+        }
+    }
+
+public void borrar (File Ffichero)
+    {
+        try
+        {
+// Comprovamos si el fichero existe de ser así procedemos a borrar el archivo
+            if(Ffichero.exists())
+            {
+                Ffichero.delete();
+                //JOptionPane.showMessageDialog(null,"Ficherro Borrado.");
+            }
+        }catch(Exception e)
+    {
+        JOptionPane.showMessageDialog(null,"Error al Borrar." + e);
+    }
+
+    } // fin metodo borrar
+    
+    public void Delay(long milis)
+    {
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    } // fin metodo delay
 }//fin del manejo
