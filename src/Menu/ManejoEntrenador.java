@@ -46,7 +46,6 @@ public void ModificaDatos(String LineaNueva, String id )
         File fAntiguo= new File("Entrenador.txt");
         
         boolean encontrado = false;
-        //String aCadena=LineaAntigua;
         String nCadena=LineaNueva;
         int cod=Integer.parseInt(id); 
     try
@@ -56,7 +55,6 @@ public void ModificaDatos(String LineaNueva, String id )
         {
         Scanner s = new Scanner(fAntiguo);
         
-      //  br = new BufferedReader(new FileReader(fAntiguo));
       
         String linea;
         
@@ -78,11 +76,9 @@ public void ModificaDatos(String LineaNueva, String id )
 
              s.close(); 
              
-              // Capturo el nombre del fichero antiguo 
-            //String nAntiguo = fAntiguo.getName(); 
             // Borro el fichero antiguo 
             borrar(fAntiguo); 
-            //Renombro el fichero auxiliar con el nombre del fichero antiguo 
+            //Renombro el fichero 
             fNuevo.renameTo(fAntiguo); 
     }
     else
@@ -139,4 +135,66 @@ public void borrar (File Ffichero)
             e.printStackTrace();
         }
     } // fin metodo delay
+    
+    /*
+    public void Leer(String id){
+     int cod;
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(id);
+
+        Scanner s;
+        try {
+            File f=new File("Entrenador.txt");
+            
+            if(!f.exists())
+            {
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+                            camponombre.setText(sl.next());
+                            campoapellido.setText(sl.next());
+                            campotel.setText(sl.next());
+                            campocorreo.setText(sl.next());
+                            
+                            encontrado=true;
+                            crear = true;
+                            estatus.setText("Modificando...");
+                        }
+                        else
+                        { 
+                            camponombre.setText("");
+                            campoapellido.setText("");
+                            campotel.setText("");
+                            campocorreo.setText("");
+ 
+                            encontrado=false;
+                            crear = false;
+                            estatus.setText("Creando...");
+                        }
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+          
+    }*/
 }//fin del manejo

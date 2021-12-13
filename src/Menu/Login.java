@@ -183,7 +183,6 @@ public class Login extends javax.swing.JFrame {
     private void botoniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoniniciarActionPerformed
         // TODO add your handling code here:
         File archivo=new File("Usuarios.txt");
-        Menu m=new Menu();
         
         String usua=usuario.getText();
         String contra=new String(contraseña.getPassword());
@@ -207,20 +206,16 @@ public class Login extends javax.swing.JFrame {
                     String nivel=sl.next();
                     if(contra.equals(contr))
                     {
-                        if(nivel.equals("1"))
+                        if(!nivel.equals("1"))
                         {
-                     m.setVisible(true);
+                     new Menu().setVisible(true);
                      this.dispose();
+                        } 
+                        else
+                        {
+                        new MenuUsuario().setVisible(true);
+                        this.dispose();
                         }
-                    
-                        
-                    else
-                    {
-                        //aqui va el usuario 1
-                        
-                        m.setVisible(true);
-                        
-                    }
                     }else
                     {
                         System.out.println("Contraseña incorrecta");

@@ -28,7 +28,6 @@ public class FrameEntrenador extends javax.swing.JFrame {
         initComponents();
     }
    Boolean crear = false;
-   //public static String Satigualinea="";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -319,21 +318,17 @@ public class FrameEntrenador extends javax.swing.JFrame {
         cod=Integer.parseInt(campoid.getText());
 
         Scanner s;
-        System.out.println("ola");
         try {
-            System.out.println("ola1");
             File f=new File("Entrenador.txt");
             
             if(!f.exists())
             {
-                System.out.println("ola2");
                 f.createNewFile();
+                estatus.setText("Creando...");
             }
             s = new Scanner(f);
-            //else
-            System.out.println("ola3");
                 while (s.hasNextLine() && !encontrado)
-                {System.out.println("ola4");
+                {
                     String linea = s.nextLine();
 
                     Scanner sl = new Scanner(linea);
@@ -349,24 +344,24 @@ public class FrameEntrenador extends javax.swing.JFrame {
                             
                             encontrado=true;
                             crear = true;
-                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
                             estatus.setText("Modificando...");
                         }
                         else
-                        {  //Salida.setText("Este registro no existe");
+                        { 
                             camponombre.setText("");
                             campoapellido.setText("");
                             campotel.setText("");
                             campocorreo.setText("");
- 
+                            estatus.setText(""); 
                             encontrado=false;
                             crear = false;
                             estatus.setText("Creando...");
                         }
+                        
                     } // fin try
                     catch (Exception  e1)
                     {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
                        
                     }
                 } // fin while
