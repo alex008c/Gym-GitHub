@@ -149,6 +149,11 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
 
         campoidact.setBackground(new java.awt.Color(204, 204, 204));
         campoidact.setCaretColor(new java.awt.Color(0, 0, 0));
+        campoidact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoidactKeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -322,6 +327,46 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
     }//GEN-LAST:event_menuActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+    int cod;
+        boolean encontrado=false;
+        cod=Integer.parseInt(campoidact.getText());
+
+        Scanner s;
+        try {
+            File f=new File("Actividades.txt");
+            
+            
+            s = new Scanner(f);
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod!=Integer.parseInt(sl.next()))
+                        { 
+                            campoidact.setText("ID Actividad no existe");
+                            encontrado=false;
+                        }
+                        
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       JOptionPane.showMessageDialog(null,"El archivo de ID actividades no existe.");
+                       
+                    }
+                } // fin while
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"El archivo Actividades no existe. ");
+        }
+        
+        
+     //Parte en que inicia el guardado o modificacion   
     String id="";
     String dia="";
     String hora="";
@@ -458,6 +503,10 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
           campominuto.setText("");
         }
     }//GEN-LAST:event_campominutoKeyReleased
+
+    private void campoidactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidactKeyReleased
+        
+    }//GEN-LAST:event_campoidactKeyReleased
 
     /**
      * @param args the command line arguments

@@ -130,6 +130,11 @@ public class Menu extends javax.swing.JFrame {
 
         jmenuhorario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuhorario.setText("De Horarios Actividades");
+        jmenuhorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuhorarioActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuhorario);
 
         jmenuclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -283,6 +288,13 @@ public class Menu extends javax.swing.JFrame {
         fm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jmenuentrenadorActionPerformed
+
+    private void jmenuhorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuhorarioActionPerformed
+        // TODO add your handling code here:
+        FrameHorarioActividad fha=new FrameHorarioActividad();
+        fha.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuhorarioActionPerformed
 
     /**
      * @param args the command line arguments

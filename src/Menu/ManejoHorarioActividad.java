@@ -127,7 +127,5 @@ public void borrar (File Ffichero)
     } // fin metodo delay
     
     
-    public void BuscarIDActividad(){
-        
-    }
+
 }
