@@ -215,7 +215,7 @@
                 <Property name="text" type="java.lang.String" value="Generar Cobro"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jreversarcobro">
+            <MenuItem class="javax.swing.JMenuItem" name="jreservacobro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -228,7 +228,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Actualizar Cobro"/>
+                <Property name="text" type="java.lang.String" value="Actualizar Cuota"/>
               </Properties>
             </MenuItem>
           </SubComponents>

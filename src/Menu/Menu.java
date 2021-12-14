@@ -47,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         jmenucuotas = new javax.swing.JMenuItem();
         procesos = new javax.swing.JMenu();
         jgenerarcobro = new javax.swing.JMenuItem();
-        jreversarcobro = new javax.swing.JMenuItem();
+        jreservacobro = new javax.swing.JMenuItem();
         jactualizarcobro = new javax.swing.JMenuItem();
         consultas = new javax.swing.JMenu();
         cusuario = new javax.swing.JMenuItem();
@@ -174,12 +174,12 @@ public class Menu extends javax.swing.JFrame {
         jgenerarcobro.setText("Generar Cobro");
         procesos.add(jgenerarcobro);
 
-        jreversarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jreversarcobro.setText("Reversar Cobro");
-        procesos.add(jreversarcobro);
+        jreservacobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jreservacobro.setText("Reversar Cobro");
+        procesos.add(jreservacobro);
 
         jactualizarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jactualizarcobro.setText("Actualizar Cobro");
+        jactualizarcobro.setText("Actualizar Cuota");
         procesos.add(jactualizarcobro);
 
         jMenuBar1.add(procesos);
@@ -348,7 +348,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmenureservas;
     private javax.swing.JMenuItem jmenusalas;
     private javax.swing.JMenuItem jmenuusuario;
-    private javax.swing.JMenuItem jreversarcobro;
+    private javax.swing.JMenuItem jreservacobro;
     private javax.swing.JMenu mantenimiento;
     private javax.swing.JMenu movimietos;
     private javax.swing.JMenu procesos;
