@@ -54,9 +54,10 @@ public class ManejoSallas {
             f.createNewFile();
         }
         Scanner s=new Scanner(f);
+        String linea="";
         while(s.hasNextLine()&& !encontrado)
         {
-            String linea=s.nextLine();
+             linea=s.nextLine();
             Scanner s1=new Scanner(linea);
             s1.useDelimiter("\\s*;\\s*");
             int idsalaarch=Integer.parseInt(s1.next());
@@ -85,12 +86,12 @@ public class ManejoSallas {
         return ArrayListArchivo;
     }
     
-    public void ModificarDatos(String idsala,String nombresala,String descripcion, String localizacion)
+    public void ModificarDatos(String LineaNueva,String idsala)
     {
         File fl=new File("Salas1.txt");
         File fAntiguo=new File("Salas.txt");
-        String cadena=(idsala+";"+nombresala+";"+descripcion+";"+localizacion+"\n");
-        String ncadena=(idsala+";"+nombresala+";"+descripcion+";"+localizacion+"\n");
+        
+        String ncadena=LineaNueva;
         int id=Integer.parseInt(idsala);
         
         
@@ -115,11 +116,12 @@ public class ManejoSallas {
                                Escribir(fl,linea);
                            }
                            
-                           z.close();
-                           String zAntiguo=fAntiguo.getName();
+                     
+                       }
+                             z.close();
+                        
                            borrar(fAntiguo);
                            fl.renameTo(fAntiguo);
-                       }
                    }
                    else
                    {

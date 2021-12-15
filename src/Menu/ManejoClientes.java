@@ -8,12 +8,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 
 public class ManejoClientes {
 
-    public String GuardarDatos(String idcliente,String nombrecliente,String apellidopat,String apellidomat,String direc,String nacimiento,String tel,String cel,String fingreso,String status,String tipo,String correo, String balance,String valorcuo)
+    public void GuardarDatos(String idcliente,String nombrecliente,String apellidopat,String apellidomat,String direc,String dia,String mes,String anio,
+            String tel,String cel,String fingreso,String status,String tipo,String correo,
+    double balan)
 {
     String texto=null;
     File f=new File("Clientes.txt");
@@ -23,23 +26,28 @@ public class ManejoClientes {
     {
         if(!f.exists())
                 {
-                    f.createNewFile();
+      f.createNewFile();
                 }
+        
         escribir=new FileWriter(f,true);
         linea=new PrintWriter(escribir);
         linea.print(idcliente+";");
         linea.print(nombrecliente+";");
         linea.print(apellidopat+";");
         linea.print(apellidomat+";");
-        linea.print(nacimiento+";");
+        linea.print(direc+";");
+        linea.print(dia+";");
+        linea.print(mes+";");
+        linea.print(anio+";");
         linea.print(tel+";");
         linea.print(cel+";");
         linea.print(fingreso+";");
         linea.print(status+";");
         linea.print(tipo+";");
         linea.print(correo+";");
-        linea.print(balance+";");
-        linea.print(valorcuo+"\n");
+        linea.print(balan+"\n");
+        
+       
         linea.close();
         escribir.close();
         
@@ -49,121 +57,63 @@ public class ManejoClientes {
         texto=("Error"+e);
     }
     
-    return texto;
+    
 }
 
-public ArrayList LeerDatos(String idcliente)throws FileNotFoundException,
-UnsupportedEncodingException, IOException 
-{
-    boolean encontrado=false;
-    int idac=Integer.parseInt(idcliente);
-    ArrayList<String> ArrayCliente=new ArrayList<String>();
-    File g=new File("Clientes.txt");
+
+public void ModificarDatos( String LineaNueva,String id)
+{  
+        File fNuevo= new File("Clientes2.txt");
+        File fAntiguo= new File("Clientes.txt");
+        
+        boolean encontrado = false;
+        //String aCadena=LineaAntigua;
+        String nCadena=LineaNueva;
+        int cod=Integer.parseInt(id); 
     try
     {
-        if(!g.exists())
-        {
-            g.createNewFile();
-        }
         
-        Scanner s=new Scanner(g);
-        
-        while(s.hasNextLine()&& !encontrado)
-            
-        {
-            String linea=s.nextLine();
-            Scanner sl=new Scanner(linea);
-            sl.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sl.next());
-            if(idd==idac)
-            {
-            
-            String nombre=sl.next();
-            String apellidopat=sl.next();
-            String apellidomat=sl.next();
-            String direc=sl.next();
-             String fechana=sl.next();
-             String tel=sl.next();
-             String cel=sl.next();
-             String fechaing=sl.next();
-             String status=sl.next();
-             String tipo=sl.next();
-             String correo=sl.next();
-             String balance=sl.next();
-             String valorcuota=sl.next();
-            ArrayCliente.add("1");
-            ArrayCliente.add(nombre);
-            ArrayCliente.add(apellidopat);
-            ArrayCliente.add(apellidomat);
-            ArrayCliente.add(direc);
-            ArrayCliente.add(fechana);
-            ArrayCliente.add(tel);
-            ArrayCliente.add(cel);
-            ArrayCliente.add(fechaing);
-            ArrayCliente.add(status);
-            ArrayCliente.add(tipo);
-            ArrayCliente.add(correo);
-            ArrayCliente.add(balance);
-            ArrayCliente.add(valorcuota);
-            }
-                    
-        
- 
-        }
-        s.close();
-        
-        
-    }catch(Exception e)
-    {
-        System.out.println("ERROR "+e);
-    }
-              
-    return ArrayCliente;
-}
-public void ModificarDatos(String idactividades,String nombre,String descripcion,String localizacion,String entrenador)
-{
-    File fNuevo=new File("Entrenadores1.txt");
-    File fAntiguo =new File("Entrenadores.txt");
-    String cadena=(idactividades+";"+nombre+";"+descripcion+";"+localizacion+";"+entrenador+"\n");
-    String ncadena=(idactividades+";"+nombre+";"+descripcion+";"+localizacion+";"+entrenador+"\n");
-    
-    int id=Integer.parseInt(idactividades);
-   
-    try
-    {
         if(fAntiguo.exists())
         {
-           
+        Scanner s = new Scanner(fAntiguo);
         
+      //  br = new BufferedReader(new FileReader(fAntiguo));
+      
         String linea;
-        Scanner s=new Scanner(fAntiguo);
-        while(s.hasNextLine())
-        {
-            linea=s.next();
-            Scanner sl=new Scanner(linea);
-            sl.useDelimiter("\\s*;\\s*");
-            int idarch=Integer.parseInt(sl.next());
-            if(id==idarch)
-            {
-                Escribir(fNuevo,ncadena);
-            }
-            else
-            {
-                Escribir(fNuevo,linea);
-            }
-                        
-        }
-        s.close();
-        String nombreantiguo=fAntiguo.getName();
-        borrar(fAntiguo);
-        fNuevo.renameTo(fAntiguo);
-        }
-
         
-    }catch(Exception e)
-    {
-        System.out.println("ERROR" +e);
+            while (s.hasNextLine()) {
+                
+                linea=s.nextLine();
+                Scanner sl = new Scanner(linea);
+                 sl.useDelimiter("\\s*;\\s*"); 
+                int codigoArc = Integer.parseInt(sl.next()); 
+             if(cod==codigoArc) 
+             { 
+            Escribir(fNuevo,nCadena); 
+                } 
+                else 
+                   { 
+                     Escribir(fNuevo,linea); 
+                   }
+            } // fin while
+
+             s.close(); 
+             
+              // Capturo el nombre del fichero antiguo 
+            //String nAntiguo = fAntiguo.getName(); 
+            // Borro el fichero antiguo 
+            borrar(fAntiguo); 
+            //Renombro el fichero auxiliar con el nombre del fichero antiguo 
+            fNuevo.renameTo(fAntiguo); 
     }
+    else
+    {
+        System.out.println("Fichero no Existe");
+    }
+}catch(Exception e)
+{
+    System.out.println(e);
+}
              
     
 }

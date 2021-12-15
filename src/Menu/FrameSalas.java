@@ -25,7 +25,8 @@ import javax.swing.JOptionPane;
  * @author pedro
  */
 public class FrameSalas extends javax.swing.JFrame {
-boolean encontrado;
+boolean encontrado=false;
+boolean crear=false;
     /**
      * Creates new form FrameSalas
      */
@@ -272,22 +273,25 @@ public void validar()
 
     private void botonaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonaceptarActionPerformed
         
-String idsa=idsala.getText();
+String ida=idsala.getText();
 String nombre=nombresala.getText();
 String descrip=descripcionsala.getText();
 String local=localizacionsala.getText();
+
 String msj;
-ManejoSallas mn=new ManejoSallas();
+String nuevalinea="";
+ManejoSallas ma=new ManejoSallas();
 
 try
 {
-    if(encontrado==false)
+    if(crear==false)
     {
-       msj= mn.GuardarDatos(idsa,nombre,descrip,local);
+       msj= ma.GuardarDatos(ida,nombre,descrip,local);
     }
     else
     {
-        mn.ModificarDatos(idsa,nombre,descrip,local);
+        nuevalinea=(ida+"; "+nombre+"; "+descrip+"; "+local);
+        ma.ModificarDatos(nuevalinea,ida);
     }
     accion.setText("Guardando datos");
 
@@ -297,12 +301,11 @@ try
     
     
     
-}catch(IOException e)
+}catch(Exception e)
 {
     System.out.println("ERROR"+e);
 } 
           
-  
 
     
     }//GEN-LAST:event_botonaceptarActionPerformed
@@ -328,69 +331,127 @@ char c=evt.getKeyChar();
     private void idsalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idsalaKeyReleased
         // TODO add your handling code here:
         validar();
-         encontrado=false;
-        ManejoSallas mn=new ManejoSallas();
-        String idsa=idsala.getText();
-        
-        ArrayList<String> ArrayRetorno=new ArrayList<String>();
-        try
-        {
-            ArrayRetorno=mn.LeerDatos(idsa);
-            if(!ArrayRetorno.isEmpty()&&"1".equals(ArrayRetorno.get(0)))
-                    {
-                        encontrado=true;
-                        nombresala.setText(ArrayRetorno.get(1));
-                        descripcionsala.setText(ArrayRetorno.get(2));
-                        localizacionsala.setText(ArrayRetorno.get(3));
-                        accion.setText("Modificando");
-                        
-                    }
-            else
-            {
-                nombresala.setText("");
-                descripcionsala.setText("");
-                localizacionsala.setText("");
-                        accion.setText("Creando");
-            }
-        
-                     
-         }catch(UnsupportedEncodingException e)
-        {
-            System.out.println("ERROR" + e);
-        }
-        catch(IOException e)
-        {
-            System.out.println("ERROR" + e);
-        }
+        int cod;
+        boolean encontrado=false;
 
+        cod=Integer.parseInt(idsala.getText());
+
+        Scanner s;
+        
+        try {
+            
+            File f=new File("Salas.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+                            nombresala.setText(sl.next());
+                            descripcionsala.setText(sl.next());
+                            localizacionsala.setText(sl.next());
+                            
+                            
+                            encontrado=true;
+                            crear = true;
+                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                            accion.setText("Modificando...");
+                        }
+                        else
+                        {  //Salida.setText("Este registro no existe");
+                            nombresala.setText("");
+                            descripcionsala.setText("");
+                            localizacionsala.setText("");
+                            
+ 
+                            encontrado=false;
+                            crear = false;
+                            accion.setText("Creando...");
+                        }
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+       
     }//GEN-LAST:event_idsalaKeyReleased
 
     private void localizacionsalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_localizacionsalaKeyReleased
         // TODO add your handling code here:
         validar();
-         encontrado = false;
- ManejoLocalizacion ml=new ManejoLocalizacion();
- String idlocal=localizacionsala.getText();
- ArrayList<String> retorno=new ArrayList<String>();
- 
- try
- {
-    retorno=ml.LeerDatos(idlocal);
-    if(!retorno.isEmpty()&&"1".equals(retorno.get(0)))
-    {
-        encontrado=true;
-        localizacionsala.setText(retorno.get(1));
-        
-        
-    }
+ int cod;
+        boolean encontrado=false;
 
+        cod=Integer.parseInt(localizacionsala.getText());
+
+        Scanner s;
+        
+        try {
+            
+            File f=new File("Localizacion.txt");
+            
+            if(!f.exists())
+            {
                 
-     
-     
- }catch(Exception e)
- {
-     System.out.println("ERROR"+e);
- }
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+             
+                            localizacionsala.setText(sl.next());
+                            
+                       
+                        }
+                
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
     }//GEN-LAST:event_localizacionsalaKeyReleased
 
     private void nombresalaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombresalaKeyReleased

@@ -27,11 +27,12 @@ import javax.swing.JRadioButton;
  */
 public class FrameUsuario extends javax.swing.JFrame {
 
-    private static Scanner leer;
-
+    
+    boolean crear=false;
+       boolean encontrado=false;
 
     public FrameUsuario() {
-       
+   
         initComponents();
     
 botonregistrar.setEnabled(false);
@@ -134,8 +135,11 @@ botonregistrar.setEnabled(false);
         campnombre = new javax.swing.JLabel();
         campapellido = new javax.swing.JLabel();
         campcorreo = new javax.swing.JLabel();
+        accion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(25, 25, 25));
 
         lusuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -194,6 +198,8 @@ botonregistrar.setEnabled(false);
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Correo");
 
+        botonregistrar.setBackground(new java.awt.Color(0, 0, 0));
+        botonregistrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         botonregistrar.setText("Registrar");
         botonregistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +207,8 @@ botonregistrar.setEnabled(false);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setText("Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +233,8 @@ botonregistrar.setEnabled(false);
 
         campcorreo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         campcorreo.setForeground(new java.awt.Color(255, 0, 0));
+
+        accion.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -265,7 +275,8 @@ botonregistrar.setEnabled(false);
                             .addComponent(campnombre)
                             .addComponent(campnivel)
                             .addComponent(campcontra)
-                            .addComponent(campusuario)))
+                            .addComponent(campusuario)
+                            .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,12 +289,14 @@ botonregistrar.setEnabled(false);
                         .addComponent(lcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(campcorreo)))
-                .addGap(170, 170, Short.MAX_VALUE))
+                .addGap(93, 93, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(15, 15, 15)
+                .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -360,69 +373,40 @@ botonregistrar.setEnabled(false);
 
     private void botonregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonregistrarActionPerformed
 
-        File archivo;
-        FileWriter escribir;
-        PrintWriter linea;
-
-        int nivel;
-        nivel=Integer.parseInt(lnivelacceso.getText());
- 
-        archivo=new File("Usuarios.txt");
-        if(!archivo.exists())
-        {
-            try {
-                archivo.createNewFile();
-                escribir=new FileWriter(archivo,true);
-                String us=lusuario.getText();
-                String Pass=new String(lcontraseña.getPassword());
-                linea=new PrintWriter(escribir);
-                linea.print(us+";");
-                linea.print(Pass+";");
-                if(nivel<0 || nivel>1)
-                {
-
-                    JOptionPane.showInputDialog( "Ingrese el acceso correcto");
-
-                }
-                linea.print(nivel+";");
-
-                linea.print(lnombre.getText()+";");
-                linea.print(lapellido.getText()+";");
-                linea.print(lcorreo.getText()+"\n");
-                linea.close();
-                escribir.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+       ManejoUsuarios me=new ManejoUsuarios();
+       String cor="";
+       String usuario=lusuario.getText();
+        String contra=new String(lcontraseña.getPassword());
+        String nivel=lnivelacceso.getText();
+       String nombre=lnombre.getText();
+       String apellido=lapellido.getText();
+      String nuevalinea="";
+        if(lcorreo.getText().isEmpty()){
+           cor="-"; 
         }
-        else
-        {
-            try {
+        else{
+        cor=lusuario.getText();}
+       
+        try {
 
-                escribir=new FileWriter(archivo,true);
-                linea=new PrintWriter(escribir);
-                linea.print(lusuario.getText()+";");
-                String contraa=new String(lcontraseña.getPassword());
-                linea.print((contraa+";"));
-                linea.print(nivel+";");
-                linea.print(lnombre.getText()+";");
-                linea.print(lapellido.getText()+";");
-                linea.print(lcorreo.getText()+"\n");
-                linea.close();
-                escribir.close();
-                
-            
-            
-            
-  
-        }catch (IOException ex) {
-                Logger.getLogger(FrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            if (crear==false)
+            {
+                me.GuardarDatos (usuario, contra, nivel, nombre, apellido,cor);
             }
+            else
+            {
+                nuevalinea=(usuario + "; " + contra + "; " + nivel + "; " + nombre + "; " +apellido+"; "+cor);
+                me.ModificarDatos(nuevalinea,usuario);
+            }
+      
+            blanquear();
 
+        } // fin try
         
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
-blanquear();
     }//GEN-LAST:event_botonregistrarActionPerformed
 
     private void lnivelaccesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lnivelaccesoKeyTyped
@@ -435,6 +419,74 @@ blanquear();
     private void lusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lusuarioKeyReleased
         // TODO add your handling code here:
         validar();
+        String cod;
+        boolean encontrado=false;
+
+        cod=lusuario.getText();
+
+        Scanner s;
+        
+        try {
+            
+            File f=new File("Usuarios.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod.equalsIgnoreCase((sl.next())))
+                        {
+                           String k=sl.next();
+                            lnivelacceso.setText(sl.next());
+                            lnombre.setText(sl.next());
+                            lapellido.setText(sl.next());
+                            lcorreo.setText(sl.next());
+                            
+                            encontrado=true;
+                            crear = true;
+                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                            accion.setText("Modificando...");
+                        }
+                        else
+                        {  //Salida.setText("Este registro no existe");
+                            lcontraseña.setText("");
+                            lnivelacceso.setText("");
+                            lnombre.setText("");
+                            lapellido.setText("");
+                            lcorreo.setText("");
+ 
+                            encontrado=false;
+                            crear = false;
+                            accion.setText("Creando...");
+                        }
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+       
     }//GEN-LAST:event_lusuarioKeyReleased
 
     private void lcontraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lcontraseñaKeyReleased
@@ -495,6 +547,7 @@ blanquear();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField accion;
     private javax.swing.JButton botonregistrar;
     private javax.swing.JLabel campapellido;
     private javax.swing.JLabel campcontra;

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,7 +22,8 @@ import javax.swing.JOptionPane;
  * @author pedro
  */
 public class FrameLocalizacion extends javax.swing.JFrame {
-boolean encontrado;
+boolean encontrado=false;
+boolean crear=false;
     /**
      * Creates new form FrameLocalizacion
      */
@@ -198,32 +200,39 @@ boolean encontrado;
         
                   
   
-       String idl=idlocalizacion.getText();
-       String tipo=tipolocalizacion.getText();
-       String msj;
-       ManejoLocalizacion ml=new ManejoLocalizacion();
-       try
-       {
-           if(encontrado==false)
-           {
-               msj=ml.GuardarDatos(idl, tipo);
-               
-           }
-           else
-                   {
-                       ml.ModificarDatos(idl, tipo);
-                        
-                   }
-            accion.setText("Guardando datos");
-          
-           Blanquear();
-       
-       }catch(Exception e)
-       {
-           System.out.println("ERROR" +e);
-       }       
-                  
+       String ida=idlocalizacion.getText();
+String tipo=tipolocalizacion.getText();
+
+
+String msj;
+String nuevalinea="";
+ManejoLocalizacion ma=new ManejoLocalizacion();
+
+try
+{
+    if(crear==false)
+    {
+       msj= ma.GuardarDatos(ida,tipo);
+    }
+    else
+    {
+        nuevalinea=(ida+"; "+tipo);
+        ma.ModificarDatos(nuevalinea,ida);
+    }
+    accion.setText("Guardando datos");
+
     
+    Blanquear();
+                
+    
+    
+    
+}catch(Exception e)
+{
+    System.out.println("ERROR"+e);
+} 
+          
+
     }//GEN-LAST:event_botonguardarActionPerformed
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
@@ -236,35 +245,63 @@ boolean encontrado;
     private void idlocalizacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idlocalizacionKeyReleased
         // TODO add your handling code here:
         validar();
-        encontrado=false;
-        ManejoLocalizacion ml=new ManejoLocalizacion();
-        String idl=idlocalizacion.getText();
-        ArrayList<String> RetornoLocalizacion =new ArrayList<String>();
-        try
-        {
-            RetornoLocalizacion=ml.LeerDatos(idl);
-            if(!RetornoLocalizacion.isEmpty()&&"1".equals(RetornoLocalizacion.get(0)))
-            {
-                encontrado=true;
-                
-                tipolocalizacion.setText(RetornoLocalizacion.get(1));
-                accion.setText("Modificando");
-            }
-            else{
-                tipolocalizacion.setText("");
-                accion.setText("Creando");
-            }
-            
-  
-            
+        int cod;
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(idlocalizacion.getText());
+
+        Scanner s;
         
-                     }catch(UnsupportedEncodingException e)
+        try {
+            
+            File f=new File("Localizacion.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+             
+                            tipolocalizacion.setText(sl.next());
+                       encontrado=true;
+                       crear=true;
+                       accion.setText("Modificando");
+                        }
+                        else
+                        {
+                            tipolocalizacion.setText("");
+                            encontrado=false;
+                            crear=false;
+                            accion.setText("Creando");
+                        }
+                
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
         {
-            System.out.println("ERROR" + e);
-                  
-        }catch(Exception e)
-        {
-            System.out.println("ERROR"+e);
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
                    
     }//GEN-LAST:event_idlocalizacionKeyReleased

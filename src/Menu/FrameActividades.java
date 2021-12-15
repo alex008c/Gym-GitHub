@@ -5,8 +5,10 @@
  */
 package Menu;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +16,8 @@ import javax.swing.JOptionPane;
  * @author pedro
  */
 public class FrameActividades extends javax.swing.JFrame {
-boolean encontrado;
+boolean encontrado=false;
+boolean crear=false;
     /**
      * Creates new form FrameActividades
      */
@@ -316,17 +319,19 @@ String descrip=descripcionactividad.getText();
 String local=localizacionactividad.getText();
 String entrenador=entrenadoractividad.getText();
 String msj;
+String nuevalinea="";
 ManejoActividades ma=new ManejoActividades();
 
 try
 {
-    if(encontrado==false)
+    if(crear==false)
     {
        msj= ma.GuardarDatos(ida,nombre,descrip,local,entrenador);
     }
     else
     {
-        ma.ModificarDatos(ida,nombre,descrip,local,entrenador);
+        nuevalinea=(ida+"; "+nombre+"; "+descrip+"; "+local+"; "+entrenador);
+        ma.ModificarDatos(nuevalinea,ida);
     }
     accion.setText("Guardando datos");
 
@@ -364,86 +369,189 @@ try
     }//GEN-LAST:event_localizacionactividadKeyTyped
 
     private void idactividadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idactividadKeyReleased
-encontrado=false;
+
 validar();
-        ManejoActividades ma=new ManejoActividades();
-        String ida=idactividad.getText();
-        ArrayList<String> RetornoAct =new ArrayList<String>();
+        int cod;
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(idactividad.getText());
+
+        Scanner s;
         
-        try
-        {
-            RetornoAct=ma.LeerDatos(ida);
-            if(!RetornoAct.isEmpty()&&"1".equals(RetornoAct.get(0)))
-            {
-                encontrado=true;
-                nombreactividad.setText(RetornoAct.get(1));
-                descripcionactividad.setText(RetornoAct.get(2));
-                localizacionactividad.setText(RetornoAct.get(3));
-                entrenadoractividad.setText(RetornoAct.get(4));
-                accion.setText("Modificando");
-            }
-            else
-            {
-                nombreactividad.setText("");
-                descripcionactividad.setText("");
-                localizacionactividad.setText("");
-                entrenadoractividad.setText("");
-                accion.setText("Creando");
-            }
+        try {
             
-        }catch(Exception e)
+            File f=new File("Actividades.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+                            nombreactividad.setText(sl.next());
+                            descripcionactividad.setText(sl.next());
+                            localizacionactividad.setText(sl.next());
+                            entrenadoractividad.setText(sl.next());
+                            
+                            encontrado=true;
+                            crear = true;
+                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                            accion.setText("Modificando...");
+                        }
+                        else
+                        {  //Salida.setText("Este registro no existe");
+                            nombreactividad.setText("");
+                            descripcionactividad.setText("");
+                            localizacionactividad.setText("");
+                            entrenadoractividad.setText("");
+ 
+                            encontrado=false;
+                            crear = false;
+                            accion.setText("Creando...");
+                        }
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
         {
-            System.out.println("ERROR "+e);
-        }        // TODO add your handling code here:
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+       
     }//GEN-LAST:event_idactividadKeyReleased
 
     private void localizacionactividadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_localizacionactividadKeyReleased
         // TODO add your handling code here:
         validar();
-        encontrado = false;
- ManejoLocalizacion ml=new ManejoLocalizacion();
- String idlocal=localizacionactividad.getText();
- ArrayList<String> retorno=new ArrayList<String>();
- 
- try
- {
-    retorno=ml.LeerDatos(idlocal);
-    if(!retorno.isEmpty()&&"1".equals(retorno.get(0)))
-    {
-        encontrado=true;
-        localizacionactividad.setText(retorno.get(1));  
-    }
+int cod;
+        boolean encontrado=false;
 
+        cod=Integer.parseInt(localizacionactividad.getText());
 
- }catch(Exception e)
- {
-     System.out.println("ERROR"+e);
- }
+        Scanner s;
+        
+        try {
+            
+            File f=new File("Localizacion.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+             
+                            localizacionactividad.setText(sl.next());
+                       
+                        }
+                
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+       
     }//GEN-LAST:event_localizacionactividadKeyReleased
 
     private void entrenadoractividadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entrenadoractividadKeyReleased
         // TODO add your handling code here:
+        //
         validar();
-        encontrado = false;
- ManejoEntrenador me=new ManejoEntrenador();
- String identre=entrenadoractividad.getText();
- ArrayList<String> retorno=new ArrayList<String>();
- 
- try
- {
-    retorno=me.LeerDatos(identre);
-    if(!retorno.isEmpty()&&"1".equals(retorno.get(0)))
-    {
-        encontrado=true;
+   int cod;
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(entrenadoractividad.getText());
+
+        Scanner s;
         
-        entrenadoractividad.setText(retorno.get(1));  
-    }
+        try {
+            
+            File f=new File("Entrenador.txt");
+            
+            if(!f.exists())
+            {
+                
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
 
+                    Scanner sl = new Scanner(linea);
 
- }catch(Exception e)
- {
-     System.out.println("ERROR"+e);
- }
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        if(cod==Integer.parseInt(sl.next()))
+                        {
+                            entrenadoractividad.setText(sl.next());
+                         
+                            
+                           // encontrado=true;
+                           // crear = true;
+                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                           // accion.setText("Modificando...");
+                        }
+                    
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                } // fin while
+            
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+       
         
     }//GEN-LAST:event_entrenadoractividadKeyReleased
 

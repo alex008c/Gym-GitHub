@@ -34,57 +34,13 @@ public String GuardarDatos(String idlocalizacion,String tipo)
     return texto;
 }
 
-public ArrayList LeerDatos(String idlocalizacion)throws FileNotFoundException,
-UnsupportedEncodingException, IOException 
-{
-    boolean encontrado=false;
-    int idlo=Integer.parseInt(idlocalizacion);
-    ArrayList<String> ArrayLocalizacion=new ArrayList<String>();
-    File g=new File("Localizacion.txt");
-    try
-    {
-        if(!g.exists())
-        {
-            g.createNewFile();
-        }
-        
-        Scanner s=new Scanner(g);
-        
-        while(s.hasNextLine()&& !encontrado)
-            
-        {
-            String linea=s.nextLine();
-            Scanner sl=new Scanner(linea);
-            sl.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sl.next());
-            if(idd==idlo)
-            {
-            
-            String tipo=sl.next();
-            ArrayLocalizacion.add("1");
-           
-            ArrayLocalizacion.add(tipo);
-            }
-                    
-        
- 
-        }
-        s.close();
-        
-        
-    }catch(Exception e)
-    {
-        System.out.println("ERROR "+e);
-    }
-              
-    return ArrayLocalizacion;
-}
-public void ModificarDatos(String aidi,String tipo)
+
+public void ModificarDatos(String LineaNueva,String aidi)
 {
     File fNuevo=new File("Localizacion1.txt");
     File fAntiguo =new File("Localizacion.txt");
-    String cadena=(aidi+";"+tipo+"\n");
-    String ncadena=(aidi+";"+tipo+"\n");
+    
+    String ncadena=LineaNueva;
     
     int id=Integer.parseInt(aidi);
    
@@ -98,7 +54,7 @@ public void ModificarDatos(String aidi,String tipo)
         Scanner s=new Scanner(fAntiguo);
         while(s.hasNextLine())
         {
-            linea=s.next();
+            linea=s.nextLine();
             Scanner sl=new Scanner(linea);
             sl.useDelimiter("\\s*;\\s*");
             int idarch=Integer.parseInt(sl.next());

@@ -44,81 +44,29 @@ public class ManejoActividades {
     return texto;
 }
 
-public ArrayList LeerDatos(String idactividad)throws FileNotFoundException,
-UnsupportedEncodingException, IOException 
-{
-    boolean encontrado=false;
-    int idac=Integer.parseInt(idactividad);
-    ArrayList<String> ArrayActividades=new ArrayList<String>();
-    File g=new File("Actividades.txt");
-    try
-    {
-        if(!g.exists())
-        {
-            g.createNewFile();
-        }
-        
-        Scanner s=new Scanner(g);
-        
-        while(s.hasNextLine()&& !encontrado)
-            
-        {
-            String linea=s.nextLine();
-            Scanner sl=new Scanner(linea);
-            sl.useDelimiter("\\s*;\\s*");
-            int idd=Integer.parseInt(sl.next());
-            if(idd==idac)
-            {
-            encontrado=true;
-            String nombre=sl.next();
-            String descripcion=sl.next();
-            String localizacion=sl.next();
-            String entrenador=sl.next();
-            ArrayActividades.add("1");
-            ArrayActividades.add(nombre);
-            ArrayActividades.add(descripcion);
-            ArrayActividades.add(localizacion);
-           
-            ArrayActividades.add(entrenador);
-            }
-                    
-        
- 
-        }
-        s.close();
-        
-        
-    }catch(Exception e)
-    {
-        System.out.println("ERROR "+e);
-    }
-              
-    return ArrayActividades;
-}
-public void ModificarDatos(String idactividades,String nombre,String descripcion,String localizacion,String entrenador)
+
+public void ModificarDatos(String LineaNueva,String id)
 {
     File fNuevo=new File("Actividades1.txt");
     File fAntiguo =new File("Actividades.txt");
-    String cadena=(idactividades+";"+nombre+";"+descripcion+";"+localizacion+";"+entrenador+"\n");
-    String ncadena=(idactividades+";"+nombre+";"+descripcion+";"+localizacion+";"+entrenador+"\n");
-    
-    int id=Integer.parseInt(idactividades);
+    //String cadena=(idactividades+";"+nombre+";"+descripcion+";"+localizacion+";"+entrenador+"\n");
+String ncadena=LineaNueva;    
+    int ids=Integer.parseInt(id);
    
     try
     {
         if(fAntiguo.exists())
         {
            
-        
-        String linea;
         Scanner s=new Scanner(fAntiguo);
+        String linea="";
         while(s.hasNextLine())
         {
-            linea=s.next();
+            linea=s.nextLine();
             Scanner sl=new Scanner(linea);
             sl.useDelimiter("\\s*;\\s*");
             int idarch=Integer.parseInt(sl.next());
-            if(id==idarch)
+            if(ids==idarch)
             {
                 Escribir(fNuevo,ncadena);
             }
@@ -126,13 +74,17 @@ public void ModificarDatos(String idactividades,String nombre,String descripcion
             {
                 Escribir(fNuevo,linea);
             }
-                        
+                  
+              
         }
-        s.close();
-        String nombreantiguo=fAntiguo.getName();
+       
+    s.close();
+         String nombreantiguo=fAntiguo.getName();
         borrar(fAntiguo);
-        fNuevo.renameTo(fAntiguo);
+        fNuevo.renameTo(fAntiguo); 
         }
+          
+
 
         
     }catch(Exception e)
