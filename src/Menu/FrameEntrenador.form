@@ -143,7 +143,7 @@
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel3" min="-2" pref="54" max="-2" attributes="0"/>
@@ -152,10 +152,16 @@
                                   <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
+                                  <Component id="HOME" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="menu" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="CLEAR" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="limpiar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="SAVE" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="registrar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
@@ -199,12 +205,15 @@
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="limpiar" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="registrar" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="CLEAR" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="SAVE" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="HOME" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="menu" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -418,6 +427,36 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="HOME">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icons/home.png&quot;)));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="CLEAR">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icons/limpiar.png&quot;)));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SAVE">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icons/guardar.png&quot;)));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
