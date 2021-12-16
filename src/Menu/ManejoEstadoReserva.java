@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Menu;
 
 import java.io.BufferedWriter;
@@ -13,27 +17,26 @@ import javax.swing.JOptionPane;
  *
  * @author alex008c
  */
-public class ManejoHorarioActividad {
+public class ManejoEstadoReserva {
     
-    public void GuardarDatos (String id, String dia, String hora, String minuto, String idact) throws IOException
+     public void GuardarDatos (String id, String estado) throws IOException
     {
-    
         try
         {
-            FileWriter F1=new FileWriter("HorarioActividades.txt", true);
+            FileWriter F1=new FileWriter("EstadoReserva.txt", true);
             PrintWriter pw=new PrintWriter(F1);
-            pw.println(id +";"+ dia +";"+ hora +";"+ minuto +";"+ idact);
+            pw.println(id +";"+ estado);
             pw.close();
         }catch(Exception ex) {
             JOptionPane.showMessageDialog(null,"Error al guardar archivo"+ ex);
         }
     }
-    
+     
     public void ModificaDatos(String LineaNueva, String id )
     {
         
-        File fNuevo= new File("HorarioActividades2.txt");
-        File fAntiguo= new File("HorarioActividades.txt");
+        File fNuevo= new File("EstadoReserva2.txt");
+        File fAntiguo= new File("EstadoReserva.txt");
         
         boolean encontrado = false;
         String nCadena=LineaNueva;
@@ -122,5 +125,5 @@ public void borrar (File Ffichero)
             e.printStackTrace();
         }
     } // fin metodo delay
-   
+    
 }
