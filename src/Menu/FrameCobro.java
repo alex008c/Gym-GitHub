@@ -10,6 +10,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+
 
 /**
  *
@@ -22,12 +29,13 @@ boolean crear =false;
 double bala=0;
 double b=0;
 int num;
+int n;
     /**
      * Creates new form FrameCobro
      */
     public FrameCobro() {
         initComponents();
-   
+   botonpdf.setEnabled(false);
         botonguardar.setEnabled(false);
        // mescobro.setText(FechaActual());
         this.setLocationRelativeTo(null);
@@ -71,13 +79,17 @@ int num;
         cpanio = new javax.swing.JLabel();
         cpmes = new javax.swing.JLabel();
         diacobro = new javax.swing.JTextField();
+        botonpdf = new javax.swing.JButton();
+        nombreclie = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(25, 25, 25));
 
-        idcobro.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                idcobroComponentAdded(evt);
+        idcobro.setEditable(false);
+        idcobro.setOpaque(true);
+        idcobro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                idcobroMouseMoved(evt);
             }
         });
         idcobro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -189,6 +201,11 @@ int num;
         cpstatus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         cpstatus.setForeground(new java.awt.Color(255, 0, 0));
 
+        aniocobro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aniocobroActionPerformed(evt);
+            }
+        });
         aniocobro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 aniocobroKeyReleased(evt);
@@ -207,19 +224,30 @@ int num;
         diacobro.setEditable(false);
         diacobro.setText("30");
 
+        botonpdf.setBackground(new java.awt.Color(0, 0, 0));
+        botonpdf.setText("PDF");
+        botonpdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonpdfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cpstatus)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonmenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonpdf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonguardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(470, 470, 470)
+                        .addComponent(cpstatus))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(botonmenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlabel99, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -233,33 +261,39 @@ int num;
                                 .addComponent(cpmes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idcobro, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                    .addComponent(idcobro)
                                     .addComponent(clientecobro)
                                     .addComponent(valorcobro)
                                     .addComponent(conceptocobro)
                                     .addComponent(statuscobro)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(diacobro, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addComponent(diacobro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(mescobro, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(aniocobro, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel6))
-                                    .addGap(35, 35, 35)
-                                    .addComponent(cpvalor))
-                                .addComponent(cpconcep, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cpcliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cpid, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(cpanio))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cpanio)
+                                    .addComponent(cpid)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(nombreclie)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel6))
+                                        .addGap(35, 35, 35)
+                                        .addComponent(cpvalor))
+                                    .addComponent(cpconcep, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cpcliente, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addGap(162, 162, 162))
         );
         layout.setVerticalGroup(
@@ -284,15 +318,21 @@ int num;
                                     .addComponent(cpanio)
                                     .addComponent(cpmes)
                                     .addComponent(diacobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(clientecobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(cpcliente)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(clientecobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(cpcliente)
+                                            .addComponent(nombreclie)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addComponent(botonpdf, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jlabel99))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
+                                .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(valorcobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)
@@ -307,14 +347,14 @@ int num;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel5))
-                .addGap(30, 30, 30)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(statuscobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel9)
                         .addComponent(cpstatus))
                     .addComponent(jlabel333))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -333,6 +373,7 @@ int num;
         valor+=b+bala;
        String concep=conceptocobro.getText();
        boolean stat=false;
+       statuscobro.setText(Boolean.toString(stat));
       String nuevalinea="";
       ManejoCobrooo me =new ManejoCobrooo();
    
@@ -357,62 +398,12 @@ int num;
         {
             e.printStackTrace();
         }
+        
+        
+      
+       idcobro.setText(String.valueOf(n));
+       
     }//GEN-LAST:event_botonguardarActionPerformed
-
-    private void idcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idcobroKeyReleased
-        // TODO add your handling code here:
-        validar();
-        
-        boolean encontra=false;
-
-        
-
-        Scanner z;
-        
-        try {
-            
-            File g=new File("Cobros.txt");
-            
-            if(!g.exists())
-            {
-                
-                g.createNewFile();
-            }
-            z = new Scanner(g);
-            //else
-            
-                while (z.hasNextLine()&& !encontrado)
-                {
-                    String linea = z.nextLine();
-
-                    Scanner sll = new Scanner(linea);
-
-                    sll.useDelimiter("\\s*;\\s*");
-                    try {
-                        
-                        int idarch=Integer.parseInt(sll.next());
-                        if(idarch==num)
-                        num+=1;
-            idcobro.setText(String.valueOf(num));
-                     encontrado=true;
-                                }
-                    catch (Exception  e1)
-                    {
-                       System.out.println("Error"+e1);
-                       
-                    }
-                } // fin while
-            
-
-            z.close();
-        } // fin try
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-        
-  idcobro.setText(String.valueOf(num));
-    }//GEN-LAST:event_idcobroKeyReleased
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
         // TODO add your handling code here:
@@ -424,6 +415,13 @@ int num;
     private void clientecobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clientecobroKeyReleased
         // TODO add your handling code here:
         validar();
+        int a=Integer.parseInt(aniocobro.getText());
+        if(a<2021)
+        {
+            JOptionPane.showMessageDialog(this, "Año incorrecto");
+            aniocobro.setText("");
+        }
+ 
               int codd;
         boolean encontra=false;
 
@@ -469,6 +467,7 @@ int num;
                                     
                         if(codd==clie)
                         {
+                           
                             String con=sll.next();
                           b=Double.parseDouble(sll.next());
                           
@@ -527,6 +526,7 @@ int num;
                         int idarc=Integer.parseInt(sl.next());
                         if(cod==idarc)
                         {
+                            
                    String uno=sl.next();
                     String dos=sl.next();
                      String tres=sl.next();
@@ -541,6 +541,7 @@ int num;
                               String doc=sl.next();
                              String k=sl.next();
                                 bala=Double.parseDouble(sl.next());
+                                nombreclie.setText(uno+" "+tres);
                         
                            
                             
@@ -581,6 +582,7 @@ int num;
 
     private void valorcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcobroKeyReleased
 validar();        // TODO add your handling code here:
+
     }//GEN-LAST:event_valorcobroKeyReleased
 
     private void conceptocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_conceptocobroKeyReleased
@@ -593,7 +595,8 @@ validar();        // TODO add your handling code here:
 
     private void idcobroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idcobroKeyTyped
 char c=evt.getKeyChar();
-        if(c<'0'|| c>'9')evt.consume();        // TODO add your handling code here:
+        if(c<'0'|| c>'9')evt.consume(); 
+     
     }//GEN-LAST:event_idcobroKeyTyped
 
     private void clientecobroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clientecobroKeyTyped
@@ -609,12 +612,21 @@ char c=evt.getKeyChar();
     private void mescobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mescobroKeyReleased
 validar();       
 
-       
+       int m=Integer.parseInt(mescobro.getText());
+       if(m<=0 || m>12)
+       {
+           JOptionPane.showMessageDialog(this, "Mes incorrecto");
+           mescobro.setText("");
+       }
 
     }//GEN-LAST:event_mescobroKeyReleased
 
     private void aniocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aniocobroKeyReleased
 validar();        // TODO add your handling code here:
+ int a=Integer.parseInt(aniocobro.getText());
+ 
+
+
     }//GEN-LAST:event_aniocobroKeyReleased
 
     private void mescobroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mescobroKeyTyped
@@ -627,9 +639,80 @@ char c=evt.getKeyChar();
         if(c<'0'|| c>'9')evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_aniocobroKeyTyped
 
-    private void idcobroComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_idcobroComponentAdded
+    private void botonpdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonpdfActionPerformed
+    Scanner z;
+        String texto="";
+        String nombre=idcobro.getText();
+       try
+       {
+        PDDocument documento=new PDDocument();
+        PDPage pagina=new PDPage();
+        documento.addPage(pagina);
+        PDPageContentStream contenido=new PDPageContentStream(documento,pagina);
+        contenido.beginText();
+        contenido.setFont(PDType1Font.TIMES_BOLD, 12);
+        contenido.newLineAtOffset(20, pagina.getMediaBox().getHeight()-52);
+        contenido.showText(idcobro.getText()+";"+diacobro.getText()+"/"+mescobro.getText()+"/"+aniocobro.getText()
+        +";"+clientecobro.getText()+";"+valorcobro.getText()+";"+conceptocobro.getText()+";"+statuscobro.getText());
+        contenido.endText();
+        contenido.close();
+        documento.save(nombre+".pdf");
+        
+        
+         
+        }catch(Exception e)
+        {
+            System.out.println("Error " +e);
+        }
+        
+    }//GEN-LAST:event_botonpdfActionPerformed
+
+    private void idcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idcobroKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_idcobroComponentAdded
+    }//GEN-LAST:event_idcobroKeyReleased
+
+    private void aniocobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aniocobroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aniocobroActionPerformed
+
+    private void idcobroMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idcobroMouseMoved
+        // TODO add your handling code here:
+        Scanner z;
+          
+        try {
+            
+            File g=new File("Cobros.txt");
+            
+            if(!g.exists())
+            {
+                
+                g.createNewFile();
+            }
+            z = new Scanner(g);
+          
+            
+                while (z.hasNextLine())
+                {
+                    String linea = z.nextLine();
+                      num++;
+                    Scanner sll = new Scanner(linea);
+
+           
+                }
+
+            z.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+        
+  idcobro.setText(String.valueOf(num));
+  num=0;
+        n=Integer.parseInt(idcobro.getText());
+       n=n+1;
+      
+    }//GEN-LAST:event_idcobroMouseMoved
 
     /**
      * @param args the command line arguments
@@ -735,10 +818,12 @@ char c=evt.getKeyChar();
                 ||mescobro.getText().isEmpty()||aniocobro.getText().isEmpty())
         {
             botonguardar.setEnabled(false);
+            botonpdf.setEnabled(false);
         }
         else
         {
             botonguardar.setEnabled(true);
+            botonpdf.setEnabled(true);
         }
         
                 }
@@ -746,6 +831,7 @@ char c=evt.getKeyChar();
     private javax.swing.JTextField aniocobro;
     private javax.swing.JButton botonguardar;
     private javax.swing.JButton botonmenu;
+    private javax.swing.JButton botonpdf;
     private javax.swing.JTextField clientecobro;
     private javax.swing.JTextField conceptocobro;
     private javax.swing.JLabel cpanio;
@@ -769,6 +855,7 @@ char c=evt.getKeyChar();
     private javax.swing.JLabel jlabel333;
     private javax.swing.JLabel jlabel99;
     private javax.swing.JTextField mescobro;
+    private javax.swing.JLabel nombreclie;
     private javax.swing.JTextField statuscobro;
     private javax.swing.JTextField valorcobro;
     // End of variables declaration//GEN-END:variables

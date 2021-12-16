@@ -103,7 +103,6 @@ String bal="";
         labelaño = new javax.swing.JLabel();
         labelmes = new javax.swing.JLabel();
         labeldia = new javax.swing.JLabel();
-        PDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(25, 25, 25));
@@ -321,13 +320,6 @@ String bal="";
 
         labeldia.setForeground(new java.awt.Color(255, 0, 0));
 
-        PDF.setText("PDF");
-        PDF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PDFActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -405,8 +397,7 @@ String bal="";
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -538,8 +529,7 @@ String bal="";
                 .addGap(18, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonmenu)
-                    .addComponent(botonguardar)
-                    .addComponent(PDF))
+                    .addComponent(botonguardar))
                 .addGap(23, 23, 23))
         );
 
@@ -820,6 +810,18 @@ int cod;
 
     private void telefonoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoclienteKeyReleased
 validar();        // TODO add your handling code here:
+   int anio=Integer.parseInt(diacliente.getText());
+        if(anio<2021|| anio>2100)
+        {
+            JOptionPane.showMessageDialog(this,"Año incorrecto");
+           
+            
+        }
+        else
+        {
+            labelaño.setText("");
+        }
+        
     }//GEN-LAST:event_telefonoclienteKeyReleased
 
     private void celularclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularclienteKeyReleased
@@ -895,7 +897,8 @@ else
         int dia=Integer.parseInt(diacliente.getText());
         if(dia<=0|| dia>30)
         {
-            labeldia.setText("*");
+            JOptionPane.showMessageDialog(this, "Dia incorrecto");
+    
         
         }
         else
@@ -911,7 +914,8 @@ else
             int mes=Integer.parseInt(diacliente.getText());
         if(mes<=0|| mes>12)
         {
-            labelmes.setText("*");
+            JOptionPane.showMessageDialog(this, "Mes incorrecto");
+       
             
         }
         else
@@ -922,24 +926,8 @@ else
 
     private void anioclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anioclienteKeyReleased
         // TODO add your handling code here:
-            int anio=Integer.parseInt(diacliente.getText());
-        if(anio<2021|| anio>2100)
-        {
-             labelaño.setText("*");
-            
-        }
-        else
-        {
-            labelaño.setText("");
-        }
-        
+         validar();
     }//GEN-LAST:event_anioclienteKeyReleased
-
-    private void PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PDFActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_PDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1108,7 +1096,6 @@ else
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton PDF;
     private javax.swing.JTextField accion;
     private javax.swing.JRadioButton activo;
     private javax.swing.JTextField aniocliente;
