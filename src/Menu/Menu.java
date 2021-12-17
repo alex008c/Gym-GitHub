@@ -139,10 +139,20 @@ public class Menu extends javax.swing.JFrame {
 
         jmenuclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuclientes.setText("Clientes");
+        jmenuclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuclientesActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuclientes);
 
         jmenuestado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenuestado.setText("Estado Reservas");
+        jmenuestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuestadoActionPerformed(evt);
+            }
+        });
         mantenimiento.add(jmenuestado);
 
         jmenureservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -295,6 +305,16 @@ public class Menu extends javax.swing.JFrame {
         fha.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jmenuhorarioActionPerformed
+
+    private void jmenuclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuclientesActionPerformed
+        new FrameCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuclientesActionPerformed
+
+    private void jmenuestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuestadoActionPerformed
+        new FrameEstadoReserva().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuestadoActionPerformed
 
     /**
      * @param args the command line arguments

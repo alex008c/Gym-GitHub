@@ -145,10 +145,13 @@ public class FrameEstadoReserva extends javax.swing.JFrame {
         });
 
         HOME.setBackground(new java.awt.Color(0, 0, 0));
+        HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
 
         CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
 
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
+        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(25, 25, 25));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
@@ -390,6 +393,12 @@ public class FrameEstadoReserva extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrameEstadoReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
