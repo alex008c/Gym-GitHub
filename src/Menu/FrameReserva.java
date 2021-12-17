@@ -159,10 +159,14 @@ public class FrameReserva extends javax.swing.JFrame {
         });
 
         campodia.setBackground(new java.awt.Color(204, 204, 204));
+        campodia.setForeground(new java.awt.Color(0, 0, 0));
         campodia.setCaretColor(new java.awt.Color(0, 0, 0));
         campodia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campodiaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campodiaKeyTyped(evt);
             }
         });
 
@@ -171,6 +175,9 @@ public class FrameReserva extends javax.swing.JFrame {
         campoidhorareserva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidhorareservaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidhorareservaKeyTyped(evt);
             }
         });
 
@@ -189,12 +196,20 @@ public class FrameReserva extends javax.swing.JFrame {
         limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         limpiar.setForeground(new java.awt.Color(204, 204, 204));
         limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
 
         HOME.setBackground(new java.awt.Color(0, 0, 0));
+        HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
 
         CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
 
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
+        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
         correoentrenador1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         correoentrenador1.setForeground(new java.awt.Color(204, 204, 204));
@@ -218,20 +233,23 @@ public class FrameReserva extends javax.swing.JFrame {
         jLabel5.setText("AA");
 
         campomes.setBackground(new java.awt.Color(204, 204, 204));
-        campomes.setForeground(new java.awt.Color(204, 204, 204));
+        campomes.setForeground(new java.awt.Color(0, 0, 0));
         campomes.setCaretColor(new java.awt.Color(0, 0, 0));
         campomes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campomesKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campomesKeyTyped(evt);
+            }
         });
 
         campoyear.setBackground(new java.awt.Color(204, 204, 204));
-        campoyear.setForeground(new java.awt.Color(204, 204, 204));
+        campoyear.setForeground(new java.awt.Color(0, 0, 0));
         campoyear.setCaretColor(new java.awt.Color(0, 0, 0));
         campoyear.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                campoyearKeyReleased(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoyearKeyTyped(evt);
             }
         });
 
@@ -313,14 +331,15 @@ public class FrameReserva extends javax.swing.JFrame {
                     .addComponent(apellidoentrenador)
                     .addComponent(campoidclientere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telentrenador)
-                    .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(campomes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campomes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(telentrenador)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel4)
+                        .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
@@ -367,6 +386,7 @@ public class FrameReserva extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
@@ -400,7 +420,6 @@ public class FrameReserva extends javax.swing.JFrame {
                     try {
                         if(cod==Integer.parseInt(sl.next()))
                         {
-                            campoid.setText(sl.next());
                             campoidsala.setText(sl.next());
                             campoidclientere.setText(sl.next());
                             campodia.setText(sl.next());
@@ -415,7 +434,6 @@ public class FrameReserva extends javax.swing.JFrame {
                         }
                         else
                         { 
-                            campoid.setText(sl.next());
                             campoidsala.setText("");
                             campoidclientere.setText("");
                             campodia.setText("");
@@ -479,15 +497,18 @@ public class FrameReserva extends javax.swing.JFrame {
                     } // fin try
                     catch (Exception  e1)
                     {
-                       JOptionPane.showMessageDialog(null,"El archivo de actividades no existe.");
-                       
+                       JOptionPane.showMessageDialog(null,"El archivo de Salas no existe.");
+                       campoidsala.setText("");
+
                     }
                 } // fin while
             s.close();
         } // fin try
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null,"El archivo Actividades no existe. ");
+            JOptionPane.showMessageDialog(null,"El archivo Salas no existe. ");
+            campoidsala.setText("");
+
         }
     }//GEN-LAST:event_campoidsalaKeyReleased
 
@@ -523,19 +544,23 @@ public class FrameReserva extends javax.swing.JFrame {
                     } // fin try
                     catch (Exception  e1)
                     {
-                       JOptionPane.showMessageDialog(null,"El archivo de Reserva no existe.");
-                       
+                       JOptionPane.showMessageDialog(null,"El archivo de Cliente no existe.");
+                       campoidclientere.setText("");
+ 
                     }
                 } // fin while
             s.close();
         } // fin try
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null,"El archivo Reserva no existe. ");
+            JOptionPane.showMessageDialog(null,"El archivo Cliente no existe. ");
+            campoidclientere.setText("");
+
         }
     }//GEN-LAST:event_campoidclientereKeyReleased
 
     private void campoidhorareservaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidhorareservaKeyReleased
+        
         int cod;
         boolean encontrado=false;
         cod=Integer.parseInt(campoidhorareserva.getText());
@@ -568,6 +593,7 @@ public class FrameReserva extends javax.swing.JFrame {
                     catch (Exception  e1)
                     {
                        JOptionPane.showMessageDialog(null,"El archivo de ReservaActividades no existe.");
+                       campoidhorareserva.setText("");
                        
                     }
                 } // fin while
@@ -576,6 +602,8 @@ public class FrameReserva extends javax.swing.JFrame {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"El archivo ReservaActividades no existe. ");
+            campoidhorareserva.setText("");
+
         }
     }//GEN-LAST:event_campoidhorareservaKeyReleased
 
@@ -612,7 +640,8 @@ public class FrameReserva extends javax.swing.JFrame {
                     catch (Exception  e1)
                     {
                        JOptionPane.showMessageDialog(null,"El archivo de EstadoReserva no existe.");
-                       
+                       campoidestadoreserva.setText("");
+                     
                     }
                 } // fin while
             s.close();
@@ -620,48 +649,124 @@ public class FrameReserva extends javax.swing.JFrame {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"El archivo EstadoReserva no existe. ");
+            campoidestadoreserva.setText("");
+
         }
     }//GEN-LAST:event_campoidestadoreservaKeyReleased
 
-    private void campodiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodiaKeyReleased
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+    String id="";
+    String idsala="";
+    String idcliente="";
+    String dia="";
+    String mes="";
+    String anio="";
+    String idhorareser="";
+    String idestadoreser="";
+    
+    ManejoReserva mr=new ManejoReserva();
+        id=campoid.getText();
+        idsala=campoidsala.getText();
+        idcliente=campoidclientere.getText();
+        dia=campodia.getText();
+        mes=campomes.getText();
+        anio=campoyear.getText();
+        idhorareser=campoidhorareserva.getText();
+        idestadoreser=campoidestadoreserva.getText();
+
+        String Snuevalinea="";
+        try {
+
+            if (crear==false)
+            {
+                mr.GuardarDatos (id, idsala, idcliente, dia, mes, anio, idhorareser, idestadoreser);
+            }
+            else
+            {
+                Snuevalinea=(id + "; " + idsala + "; " + idcliente + "; " + dia + "; " + mes + "; " + anio + "; " + idhorareser + "; " + idestadoreser);
+                mr.ModificaDatos(Snuevalinea,id);
+            }
+            campoid.setText("");
+            campoidsala.setText("");
+            campoidclientere.setText("");
+            campodia.setText("");
+            campomes.setText("");
+            campoyear.setText("");
+            campoidhorareserva.setText("");
+            campoidestadoreserva.setText("");
+            estatus.setText(""); 
+
+        } // fin try
+        
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_registrarActionPerformed
+
+    private void campodiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodiaKeyTyped
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
         
+    }//GEN-LAST:event_campodiaKeyTyped
+
+    private void campodiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodiaKeyReleased
+
         int dia=Integer.parseInt(campodia.getText());
         if(dia<1 || dia>30)
         {
             JOptionPane.showMessageDialog(this, "Dia incorrecto");
-    
+            campodia.setText("");
         
         }
-       
     }//GEN-LAST:event_campodiaKeyReleased
 
-    private void campomesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyReleased
+    private void campomesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyTyped
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+      
+    }//GEN-LAST:event_campomesKeyTyped
+
+    private void campomesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyReleased
         
         int mes=Integer.parseInt(campomes.getText());
         if(mes<1 || mes>12)
         {
             JOptionPane.showMessageDialog(this, "Mes incorrecto");
+            campomes.setText("");
         }
     }//GEN-LAST:event_campomesKeyReleased
 
-    private void campoyearKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoyearKeyReleased
+    private void campoyearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoyearKeyTyped
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
         
+    }//GEN-LAST:event_campoyearKeyTyped
+
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+            campoid.setText("");
+            campoidsala.setText("");
+            campoidclientere.setText("");
+            campodia.setText("");
+            campomes.setText("");
+            campoyear.setText("");
+            campoidhorareserva.setText("");
+            campoidestadoreserva.setText("");
+            estatus.setText("");       
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    private void campoidhorareservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidhorareservaKeyTyped
+        //para el año
         int year=Integer.parseInt(campoyear.getText());
         if(year<2021 || year>2100)
         {
             JOptionPane.showMessageDialog(this, "Año incorrecto");
+            campoyear.setText("");
         }
-    }//GEN-LAST:event_campoyearKeyReleased
-
-    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registrarActionPerformed
+        if(campoyear.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null,"Favor, digitar año. ");
+        }
+    }//GEN-LAST:event_campoidhorareservaKeyTyped
 
     /**
      * @param args the command line arguments
