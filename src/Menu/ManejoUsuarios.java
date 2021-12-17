@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class ManejoUsuarios {
- public void GuardarDatos(String usuario,String contra,String nivel,String nombre,String apellido,String correo)
+ public void GuardarDatos(String usuario,String contra,int nivel,String nombre,String apellido,String correo)
 {
     String texto=null;
     File f=new File("Usuarios.txt");

@@ -5,6 +5,7 @@
  */
 package Menu;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -34,12 +35,16 @@ String bal="";
      */
     public FrameCliente() {
         initComponents();
-        fechaingresocliente.setText(FechaActual());
+       fechaingresocliente.setText(FechaActual());
+      this.getContentPane().setBackground(new java.awt.Color(30,30,30));
         ButtonGroup bt=new ButtonGroup();
         bt.add(activo);
         bt.add(pasivo);
         botonguardar.setEnabled(false);
         this.setLocationRelativeTo(null);
+      titulo.setForeground(Color.white);
+     
+   
     }
     
 
@@ -103,10 +108,16 @@ String bal="";
         labelaño = new javax.swing.JLabel();
         labelmes = new javax.swing.JLabel();
         labeldia = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(25, 25, 25));
 
+        idcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idclienteActionPerformed(evt);
+            }
+        });
         idcliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 idclienteKeyReleased(evt);
@@ -116,8 +127,11 @@ String bal="";
             }
         });
 
-        nombrecliente.setBackground(new java.awt.Color(102, 102, 102));
-        nombrecliente.setForeground(new java.awt.Color(255, 255, 255));
+        nombrecliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreclienteActionPerformed(evt);
+            }
+        });
         nombrecliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 nombreclienteKeyReleased(evt);
@@ -160,6 +174,11 @@ String bal="";
             }
         });
 
+        fechaingresocliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaingresoclienteActionPerformed(evt);
+            }
+        });
         fechaingresocliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fechaingresoclienteKeyReleased(evt);
@@ -169,6 +188,12 @@ String bal="";
         tipocliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tipoclienteKeyReleased(evt);
+            }
+        });
+
+        correocliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoclienteActionPerformed(evt);
             }
         });
 
@@ -188,50 +213,80 @@ String bal="";
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id (2).png"))); // NOI18N
         jLabel1.setText("ID CLIENTE");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/usuario.png"))); // NOI18N
         jLabel2.setText("NOMBRE");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dad-avatar_114341.png"))); // NOI18N
         jLabel3.setText("APELLIDO PATERNO");
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mom-avatar_114345.png"))); // NOI18N
         jLabel4.setText("APELLIDO MATERNO");
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/direccion.png"))); // NOI18N
         jLabel5.setText("DIRECCION");
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tel.png"))); // NOI18N
         jLabel6.setText("TELEFONO");
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/naci.png"))); // NOI18N
         jLabel7.setText("FECHA DE NACIMIENTO");
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cuota.png"))); // NOI18N
         jLabel8.setText("VALOR CUOTA");
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/status.png"))); // NOI18N
         jLabel9.setText("STATUS");
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/socios.png"))); // NOI18N
         jLabel10.setText("TIPO CLIENTE");
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/socialemailcircularbutton_80177 (1).png"))); // NOI18N
         jLabel11.setText("CORREO");
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/naci.png"))); // NOI18N
         jLabel12.setText("FECHA INGRESO");
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/balance.png"))); // NOI18N
         jLabel13.setText("BALANCE");
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cell.png"))); // NOI18N
         jLabel14.setText("CELULAR");
 
         botonmenu.setBackground(new java.awt.Color(0, 0, 0));
         botonmenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu/icons/home.png"))); // NOI18N
         botonmenu.setText("MENU");
         botonmenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +296,7 @@ String bal="";
 
         botonguardar.setBackground(new java.awt.Color(0, 0, 0));
         botonguardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu/icons/guardar.png"))); // NOI18N
         botonguardar.setText("GUARDAR");
         botonguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +354,11 @@ String bal="";
             }
         });
 
+        mescliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesclienteActionPerformed(evt);
+            }
+        });
         mescliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 mesclienteKeyReleased(evt);
@@ -310,8 +371,12 @@ String bal="";
             }
         });
 
+        activo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        activo.setForeground(new java.awt.Color(204, 204, 204));
         activo.setText("Activo");
 
+        pasivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pasivo.setForeground(new java.awt.Color(204, 204, 204));
         pasivo.setText("Pasivo");
 
         labelaño.setForeground(new java.awt.Color(255, 0, 0));
@@ -320,570 +385,345 @@ String bal="";
 
         labeldia.setForeground(new java.awt.Color(255, 0, 0));
 
+        titulo.setFont(new java.awt.Font("Viner Hand ITC", 1, 48)); // NOI18N
+        titulo.setText("Clientes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(34, 34, 34)
+                        .addComponent(cptel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(572, 572, 572)
+                        .addComponent(cpvalor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(cpnac, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(diacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mescliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(aniocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(cpbalance))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cpdir))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cptel)))
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cpmat))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cpnombre))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cpcliente))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cppat)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(idcliente)
-                            .addComponent(maternocliente)
-                            .addComponent(direccioncliente, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .addComponent(paternocliente)
-                            .addComponent(nombrecliente)
-                            .addComponent(telefonocliente)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                                .addComponent(cpnac)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(diacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(labeldia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelmes)))
-                        .addGap(18, 29, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(labelaño)
-                                .addGap(95, 95, 95))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(mescliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(aniocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel13)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cpstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(cpingreso)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                                .addComponent(cpingreso))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cpcorreo)
-                                    .addComponent(cptipo)
-                                    .addComponent(cpstatus))
-                                .addGap(17, 17, 17))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cpbalance)
-                                .addGap(25, 25, 25))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpvalor))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cpcel)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel5)
+                        .addGap(60, 60, 60)
+                        .addComponent(cpdir, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(celularcliente)
-                                .addComponent(fechaingresocliente)
-                                .addComponent(tipocliente)
-                                .addComponent(correocliente)
-                                .addComponent(balancecliente)
-                                .addComponent(valorcuotacliente, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
-                            .addComponent(activo)
-                            .addComponent(pasivo))
-                        .addGap(102, 102, 102))
+                        .addComponent(direccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(233, 233, 233)
+                        .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(12, 12, 12)
+                                .addComponent(cpmat, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cpnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cppat, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(paternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(62, 62, 62)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel9)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cpcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(46, 46, 46)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(activo)
+                                                    .addComponent(pasivo)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(balancecliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(correocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(valorcuotacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cptipo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(nombrecliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(231, 231, 231)
+                                        .addComponent(fechaingresocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labeldia)
+                                .addGap(12, 12, 12)
+                                .addComponent(labelmes))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(66, 66, 66)
+                        .addComponent(cpcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cpcel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(celularcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138)
+                        .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(celularcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel14)
-                    .addComponent(cpcliente)
-                    .addComponent(cpcel))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombrecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaingresocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel12)
-                    .addComponent(cpingreso)
-                    .addComponent(cpnombre))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(paternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel9)
-                            .addComponent(cppat)
-                            .addComponent(cpstatus)))
+                        .addGap(14, 14, 14)
+                        .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(activo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pasivo)))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel10)
-                    .addComponent(cpmat)
-                    .addComponent(cptipo))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(direccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(correocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel11)
-                    .addComponent(cpdir)
-                    .addComponent(cpcorreo))
-                .addGap(36, 36, 36)
+                        .addGap(29, 29, 29)
+                        .addComponent(titulo)))
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(balancecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(cpnac))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
+                        .addComponent(jLabel1)
+                        .addComponent(idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cpcliente))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(cpcel)
+                        .addComponent(celularcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cpingreso)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(nombrecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cpnombre)
+                                .addComponent(fechaingresocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cppat, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(paternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(activo)
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pasivo)
+                            .addComponent(jLabel9)
+                            .addComponent(cpstatus))))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(maternocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(tipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpmat)
+                    .addComponent(cptipo))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(direccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpdir)
+                    .addComponent(jLabel11)
+                    .addComponent(cpcorreo)
+                    .addComponent(correocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(cpbalance)
-                        .addComponent(aniocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mescliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(diacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelaño)
-                    .addComponent(labelmes)
-                    .addComponent(labeldia))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telefonocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valorcuotacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(cptel)
-                    .addComponent(cpvalor))
-                .addGap(18, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonmenu)
-                    .addComponent(botonguardar))
-                .addGap(23, 23, 23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(balancecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(diacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mescliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aniocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cpnac)
+                            .addComponent(jLabel13))))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labeldia)
+                    .addComponent(labelmes))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(cptel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cpvalor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telefonocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(valorcuotacliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonmenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
-       
-            // TODO add your handling code here:
-            String cor="";
-           /* double x,y;
-            x=Double.parseDouble(bal);
-            y=Double.parseDouble(balancecliente.getText());*/
-            double balan=0;
-  
-
-            //11
-            String id=idcliente.getText();
-            String nombre=nombrecliente.getText();
-            String apepat=paternocliente.getText();
-            String apemat=maternocliente.getText();
-            String dir=direccioncliente.getText();
-            String dia=diacliente.getText();
-            String mes=mescliente.getText();
-            String anio=aniocliente.getText();
-            String tel=telefonocliente.getText();
-            String cel=celularcliente.getText();
-            String fechaing=fechaingresocliente.getText();
-            String status=resp;
-            String tipo=tipocliente.getText();
-            if(correocliente.getText().isEmpty()){
-                cor="-";
-            }
-            else{
-                cor=correocliente.getText();
-            }
-            if(balancecliente.getText().isEmpty())
-            {
-                balancecliente.setText("0.00");
-            }
-            else
-            {
-    
-            balan=Double.parseDouble(balancecliente.getText());
-            
-            }
-            String msj;
-            String NuevaLinea="";
-            ManejoClientes mc=new ManejoClientes();
-            try
-            {
-                if(crear==false)
-                {
-                 
-                    mc.GuardarDatos(id,nombre,apepat,apemat,dir,dia,mes,anio,tel,cel,fechaing,status,tipo,cor,balan);
-                }
-                else
-                {
-                   
-                    NuevaLinea=(id+"; "+nombre+"; "+apepat+"; "+apemat+"; "+dir+"; "+dia+"; "+mes+"; "+anio+"; "+tel+"; "+cel+"; "+fechaing+"; "+status+"; "+tipo+"; "+cor+"; "+balan);
-                    mc.ModificarDatos(NuevaLinea,id);
-                }
-                accion.setText("Guardando...");
-                
-                blanquear();
-                
-            }catch(Exception e)
-            {
-                System.out.println("Error" + e);
-            }
-            
-            
-
-            
-            
-        
-        
-    
-        
-        
-    }//GEN-LAST:event_botonguardarActionPerformed
-
-    private void idclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idclienteKeyReleased
+    private void diaclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diaclienteKeyReleased
         // TODO add your handling code here:
-        validar();
-        //00
-        double b=0.00;
-                    double balan,cuota;
-            //00
-        int co;
-        boolean encontrado=false;
-        boolean v=false;
- String nom=nombrecliente.getText();
-        co=Integer.parseInt(idcliente.getText());
-
-        Scanner Z;
-        
-        try {
-            
-            File f=new File("Cobros.txt");
-            
-            if(!f.exists())
-            {
-                
-                f.createNewFile();
-            }
-            Z = new Scanner(f);
-            //else
-            
-                while (Z.hasNextLine()&& !v)
-                {
-                    String linea = Z.nextLine();
-
-                    Scanner sl = new Scanner(linea);
-
-                    sl.useDelimiter("\\s*;\\s*");
-                 
-                    try {
-                           String idcobro=sl.next();
-                        String mes=sl.next();
-                        String anio=sl.next();
-                        
-                        
-                        if(co==Integer.parseInt(sl.next()))
-                        {
-                           String con=sl.next();
-                            balancecliente.setText(sl.next());
-                          v=true;
-                           //crear = true;
-                            
-                        }
-                       else
-                        {  //Salida.setText("Este registro no existe");
-                            balancecliente.setText("0");
-                          
- //crear=false;
-                           //encontrado=false;
-                          
-                        }
-                    } // fin try
-                    catch (Exception  e1)
-                    {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
-                    }
-                } // fin while
-            
-
-            Z.close();
-        } // fin try
-        catch (Exception e)
+        int dia=Integer.parseInt(diacliente.getText());
+        if(dia<=0|| dia>30)
         {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-        //22
-        
-int cod;
-        
+            JOptionPane.showMessageDialog(this, "Dia incorrecto");
 
-        cod=Integer.parseInt(idcliente.getText());
-
-        Scanner s;
-        
-        try {
-            
-            File f=new File("Clientes.txt");
-            
-            if(!f.exists())
-            {
-                
-                f.createNewFile();
-            }
-            s = new Scanner(f);
-            //else
-            
-                while (s.hasNextLine() && !encontrado)
-                {
-                    String linea = s.nextLine();
-
-                    Scanner sl = new Scanner(linea);
-
-                    sl.useDelimiter("\\s*;\\s*");
-                    try {
-                        int idarc=Integer.parseInt(sl.next());
-                        if(cod==idarc)
-                        {
-                            nombrecliente.setText(sl.next());
-                            paternocliente.setText(sl.next());
-                            maternocliente.setText(sl.next());
-                            direccioncliente.setText(sl.next());
-                            diacliente.setText(sl.next());
-                            mescliente.setText(sl.next());
-                            aniocliente.setText(sl.next());
-                            telefonocliente.setText(sl.next());
-                            celularcliente.setText(sl.next());
-                            fechaingresocliente.setText(sl.next());
-                            if(resp.equalsIgnoreCase(sl.next())){
-                                activo.setSelected(true);
-                            }
-                            else
-                            {
-                                pasivo.setSelected(true);
-                            }
-                                
-                           
-                            tipocliente.setText(sl.next());
-                            correocliente.setText(sl.next());
-                            //balancecliente.setText(sl.next());
-                           // valorcuotacliente.setText(sl.next());
-                           
-                            
-                            encontrado=true;
-                            crear = true;
-                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
-                            accion.setText("Modificando...");
-                        }
-                        else
-                        {  //Salida.setText("Este registro no existe");
-                            nombrecliente.setText("");
-                            paternocliente.setText("");
-                            maternocliente.setText("");
-                            direccioncliente.setText("");
-                            diacliente.setText("");
-                            mescliente.setText("");
-                            aniocliente.setText("");
-                            telefonocliente.setText("");
-                            celularcliente.setText("");
-                          
-                         
-                            tipocliente.setText("");
-                            correocliente.setText("");
-                            //balancecliente.setText("");
-                            //valorcuotacliente.setText("");
-                          
-                            
- 
-                            encontrado=false;
-                            crear = false;
-                            accion.setText("Creando...");
-                        }
-                    } // fin try
-                    catch (Exception  e1)
-                    {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
-                    }
-                } // fin while
-            
-
-            s.close();
-        } // fin try
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-       
-    }//GEN-LAST:event_idclienteKeyReleased
-
-    private void nombreclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreclienteKeyReleased
-        // TODO add your handling code here:
-        validar();
-    }//GEN-LAST:event_nombreclienteKeyReleased
-
-    private void paternoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_paternoclienteKeyReleased
-        // TODO add your handling code here:
-        validar();
-    }//GEN-LAST:event_paternoclienteKeyReleased
-
-    private void maternoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maternoclienteKeyReleased
-        // TODO add your handling code here:
-        validar();
-    }//GEN-LAST:event_maternoclienteKeyReleased
-
-    private void direccionclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_direccionclienteKeyReleased
-        // TODO add your handling code here:
-        validar();
-    }//GEN-LAST:event_direccionclienteKeyReleased
-
-    private void telefonoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoclienteKeyReleased
-validar();        // TODO add your handling code here:
-   int anio=Integer.parseInt(diacliente.getText());
-        if(anio<2021|| anio>2100)
-        {
-            JOptionPane.showMessageDialog(this,"Año incorrecto");
-           
-            
         }
         else
         {
-            labelaño.setText("");
+            labeldia.setText("");
         }
-        
-    }//GEN-LAST:event_telefonoclienteKeyReleased
+    }//GEN-LAST:event_diaclienteKeyReleased
 
-    private void celularclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularclienteKeyReleased
-validar();        // TODO add your handling code here:
-    }//GEN-LAST:event_celularclienteKeyReleased
-
-    private void fechaingresoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaingresoclienteKeyReleased
-validar();        // TODO add your handling code here:
-
-    }//GEN-LAST:event_fechaingresoclienteKeyReleased
-
-    private void tipoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tipoclienteKeyReleased
-validar();        // TODO add your handling code here:
-
-
-JRadioButton[] rd={activo,pasivo};
-for(int i=0;i<rd.length;i++)
-{
-    if(rd[i].isSelected())
-    {
-        resp=rd[i].getText();
-    }
-}
-
-if(resp.equalsIgnoreCase("activo"))
-{
-    tipocliente.setText("Socio");
-}
-else
-{
-    tipocliente.setText("Invitado");
-}
-
-    }//GEN-LAST:event_tipoclienteKeyReleased
-
-    private void idclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idclienteKeyTyped
+    private void mesclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mesclienteKeyReleased
         // TODO add your handling code here:
-         char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-    }//GEN-LAST:event_idclienteKeyTyped
+        int mes=Integer.parseInt(mescliente.getText());
+        if(mes<=0|| mes>12)
+        {
+            JOptionPane.showMessageDialog(this, "Mes incorrecto");
+mescliente.setText("");
+        }
+  
+    }//GEN-LAST:event_mesclienteKeyReleased
 
-    private void telefonoclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoclienteKeyTyped
- char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoclienteKeyTyped
-
-    private void celularclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularclienteKeyTyped
- char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
-    }//GEN-LAST:event_celularclienteKeyTyped
-
-    private void balanceclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_balanceclienteKeyTyped
+    private void anioclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anioclienteKeyReleased
         // TODO add your handling code here:
-          char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-    }//GEN-LAST:event_balanceclienteKeyTyped
+        validar();
 
-    private void valorcuotaclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcuotaclienteKeyTyped
+    }//GEN-LAST:event_anioclienteKeyReleased
+
+    private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
+
         // TODO add your handling code here:
-          char c=evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-    }//GEN-LAST:event_valorcuotaclienteKeyTyped
+        String cor="";
+        /* double x,y;
+        x=Double.parseDouble(bal);
+        y=Double.parseDouble(balancecliente.getText());*/
+        double balan=0;
+
+        //11
+        String id=idcliente.getText();
+        String nombre=nombrecliente.getText();
+        String apepat=paternocliente.getText();
+        String apemat=maternocliente.getText();
+        String dir=direccioncliente.getText();
+        String dia=diacliente.getText();
+        String mes=mescliente.getText();
+        String anio=aniocliente.getText();
+        String tel=telefonocliente.getText();
+        String cel=celularcliente.getText();
+        String fechaing=fechaingresocliente.getText();
+        String status=resp;
+        String tipo=tipocliente.getText();
+        if(correocliente.getText().isEmpty()){
+            cor="-";
+        }
+        else{
+            cor=correocliente.getText();
+        }
+        if(balancecliente.getText().isEmpty())
+        {
+            balancecliente.setText("0.00");
+        }
+        else
+        {
+
+            balan=Double.parseDouble(balancecliente.getText());
+
+        }
+        String msj;
+        String NuevaLinea="";
+        ManejoClientes mc=new ManejoClientes();
+        try
+        {
+            if(crear==false)
+            {
+
+                mc.GuardarDatos(id,nombre,apepat,apemat,dir,dia,mes,anio,tel,cel,fechaing,status,tipo,cor,balan);
+            }
+            else
+            {
+
+                NuevaLinea=(id+"; "+nombre+"; "+apepat+"; "+apemat+"; "+dir+"; "+dia+"; "+mes+"; "+anio+"; "+tel+"; "+cel+"; "+fechaing+"; "+status+"; "+tipo+"; "+cor+"; "+balan);
+                mc.ModificarDatos(NuevaLinea,id);
+            }
+            accion.setText("Guardando...");
+
+            blanquear();
+
+        }catch(Exception e)
+        {
+            System.out.println("Error" + e);
+        }
+    }//GEN-LAST:event_botonguardarActionPerformed
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
         // TODO add your handling code here:
@@ -892,42 +732,281 @@ else
         this.dispose();
     }//GEN-LAST:event_botonmenuActionPerformed
 
-    private void diaclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diaclienteKeyReleased
+    private void valorcuotaclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcuotaclienteKeyTyped
         // TODO add your handling code here:
-        int dia=Integer.parseInt(diacliente.getText());
-        if(dia<=0|| dia>30)
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_valorcuotaclienteKeyTyped
+
+    private void balanceclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_balanceclienteKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_balanceclienteKeyTyped
+
+    private void tipoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tipoclienteKeyReleased
+        validar();        // TODO add your handling code here:
+
+        JRadioButton[] rd={activo,pasivo};
+        for(int i=0;i<rd.length;i++)
         {
-            JOptionPane.showMessageDialog(this, "Dia incorrecto");
+            if(rd[i].isSelected())
+            {
+                resp=rd[i].getText();
+            }
+        }
+
+        if(resp.equalsIgnoreCase("activo"))
+        {
+            tipocliente.setText("Socio");
+        }
+        else
+        {
+            tipocliente.setText("Invitado");
+        }
+    }//GEN-LAST:event_tipoclienteKeyReleased
+
+    private void fechaingresoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaingresoclienteKeyReleased
+        validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaingresoclienteKeyReleased
+
+    private void celularclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularclienteKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_celularclienteKeyTyped
+
+    private void celularclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularclienteKeyReleased
+        validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_celularclienteKeyReleased
+
+    private void telefonoclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoclienteKeyTyped
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoclienteKeyTyped
+
+    private void telefonoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoclienteKeyReleased
+        validar();        // TODO add your handling code here:
+        int anio=Integer.parseInt(aniocliente.getText());
+        if(anio<2021|| anio>2100)
+        {
+            JOptionPane.showMessageDialog(this,"Año incorrecto");
+         aniocliente.setText("");
+        }
     
-        
-        }
-        else
-        {
-            labeldia.setText("");
-        }
-     
-                    
-    }//GEN-LAST:event_diaclienteKeyReleased
+    }//GEN-LAST:event_telefonoclienteKeyReleased
 
-    private void mesclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mesclienteKeyReleased
+    private void direccionclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_direccionclienteKeyReleased
         // TODO add your handling code here:
-            int mes=Integer.parseInt(diacliente.getText());
-        if(mes<=0|| mes>12)
-        {
-            JOptionPane.showMessageDialog(this, "Mes incorrecto");
-       
-            
-        }
-        else
-        {
-            labelmes.setText("");
-        }
-    }//GEN-LAST:event_mesclienteKeyReleased
+        validar();
+    }//GEN-LAST:event_direccionclienteKeyReleased
 
-    private void anioclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anioclienteKeyReleased
+    private void maternoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maternoclienteKeyReleased
         // TODO add your handling code here:
-         validar();
-    }//GEN-LAST:event_anioclienteKeyReleased
+        validar();
+    }//GEN-LAST:event_maternoclienteKeyReleased
+
+    private void paternoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_paternoclienteKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_paternoclienteKeyReleased
+
+    private void nombreclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreclienteKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_nombreclienteKeyReleased
+
+    private void nombreclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreclienteActionPerformed
+
+    private void idclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idclienteKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_idclienteKeyTyped
+
+    private void idclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idclienteKeyReleased
+        // TODO add your handling code here:
+        validar();
+        //00
+        double b=0.00;
+        double balan,cuota;
+        //00
+        int co;
+        boolean encontrado=false;
+        boolean v=false;
+        String nom=nombrecliente.getText();
+        co=Integer.parseInt(idcliente.getText());
+
+        Scanner Z;
+
+        try {
+
+            File f=new File("Cobros.txt");
+
+            if(!f.exists())
+            {
+
+                f.createNewFile();
+            }
+            Z = new Scanner(f);
+            //else
+
+            while (Z.hasNextLine()&& !v)
+            {
+                String linea = Z.nextLine();
+
+                Scanner sl = new Scanner(linea);
+
+                sl.useDelimiter("\\s*;\\s*");
+
+                try {
+                    String idcobro=sl.next();
+                    String mes=sl.next();
+                    String anio=sl.next();
+
+                    if(co==Integer.parseInt(sl.next()))
+                    {
+                        String con=sl.next();
+                        balancecliente.setText(sl.next());
+                        v=true;
+                        //crear = true;
+
+                    }
+                    else
+                    {  //Salida.setText("Este registro no existe");
+                        balancecliente.setText("0");
+
+                        //crear=false;
+                        //encontrado=false;
+
+                    }
+                } // fin try
+                catch (Exception  e1)
+                {
+                    // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            } // fin while
+
+            Z.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+        //22
+
+        int cod;
+
+        cod=Integer.parseInt(idcliente.getText());
+
+        Scanner s;
+
+        try {
+
+            File f=new File("Clientes.txt");
+
+            if(!f.exists())
+            {
+
+                f.createNewFile();
+            }
+            s = new Scanner(f);
+            //else
+
+            while (s.hasNextLine() && !encontrado)
+            {
+                String linea = s.nextLine();
+
+                Scanner sl = new Scanner(linea);
+
+                sl.useDelimiter("\\s*;\\s*");
+                try {
+                    int idarc=Integer.parseInt(sl.next());
+                    if(cod==idarc)
+                    {
+                        nombrecliente.setText(sl.next());
+                        paternocliente.setText(sl.next());
+                        maternocliente.setText(sl.next());
+                        direccioncliente.setText(sl.next());
+                        diacliente.setText(sl.next());
+                        mescliente.setText(sl.next());
+                        aniocliente.setText(sl.next());
+                        telefonocliente.setText(sl.next());
+                        celularcliente.setText(sl.next());
+                        fechaingresocliente.setText(sl.next());
+                        if(resp.equalsIgnoreCase(sl.next())){
+                            activo.setSelected(true);
+                        }
+                        else
+                        {
+                            pasivo.setSelected(true);
+                        }
+
+                        tipocliente.setText(sl.next());
+                        correocliente.setText(sl.next());
+                        //balancecliente.setText(sl.next());
+                        // valorcuotacliente.setText(sl.next());
+
+                        encontrado=true;
+                        crear = true;
+                        //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
+                        accion.setText("Modificando...");
+                    }
+                    else
+                    {  //Salida.setText("Este registro no existe");
+                        nombrecliente.setText("");
+                        paternocliente.setText("");
+                        maternocliente.setText("");
+                        direccioncliente.setText("");
+                        diacliente.setText("");
+                        mescliente.setText("");
+                        aniocliente.setText("");
+                        telefonocliente.setText("");
+                        celularcliente.setText("");
+
+                        tipocliente.setText("");
+                        correocliente.setText("");
+                        //balancecliente.setText("");
+                        //valorcuotacliente.setText("");
+
+                        encontrado=false;
+                        crear = false;
+                        accion.setText("Creando...");
+                    }
+                } // fin try
+                catch (Exception  e1)
+                {
+                    // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            } // fin while
+
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+
+    }//GEN-LAST:event_idclienteKeyReleased
+
+    private void idclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idclienteActionPerformed
+
+    private void mesclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mesclienteActionPerformed
+
+    private void correoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoclienteActionPerformed
+
+    private void fechaingresoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaingresoclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaingresoclienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1146,6 +1225,7 @@ else
     private javax.swing.JTextField paternocliente;
     private javax.swing.JTextField telefonocliente;
     private javax.swing.JTextField tipocliente;
+    private javax.swing.JLabel titulo;
     private javax.swing.JTextField valorcuotacliente;
     // End of variables declaration//GEN-END:variables
 }
