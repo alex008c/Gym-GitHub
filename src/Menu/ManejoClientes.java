@@ -1,5 +1,7 @@
 package Menu;
 
+
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +18,7 @@ public class ManejoClientes {
 
     public void GuardarDatos(String idcliente,String nombrecliente,String apellidopat,String apellidomat,String direc,String dia,String mes,String anio,
             String tel,String cel,String fingreso,String status,String tipo,String correo,
-    double balan)
+    double balan,double cuo)
 {
     String texto=null;
     File f=new File("Clientes.txt");
@@ -45,7 +47,9 @@ public class ManejoClientes {
         linea.print(status+";");
         linea.print(tipo+";");
         linea.print(correo+";");
-        linea.print(balan+"\n");
+       
+        linea.print(balan+";");
+        linea.print(cuo+"\n");
         
        
         linea.close();
@@ -66,7 +70,7 @@ public void ModificarDatos( String LineaNueva,String id)
         File fNuevo= new File("Clientes2.txt");
         File fAntiguo= new File("Clientes.txt");
         
-        boolean encontrado = false;
+        
         //String aCadena=LineaAntigua;
         String nCadena=LineaNueva;
         int coddd=Integer.parseInt(id); 
@@ -89,10 +93,12 @@ public void ModificarDatos( String LineaNueva,String id)
                 int codigoArc = Integer.parseInt(sl.next()); 
              if(coddd==codigoArc) 
              { 
+                
             Escribir(fNuevo,nCadena); 
                 } 
                 else 
                    { 
+                     
                      Escribir(fNuevo,linea); 
                    }
             } // fin while

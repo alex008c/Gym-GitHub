@@ -1,32 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Consultas;
-
 
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author pedro
  */
-public class ConsultaUsuarios extends javax.swing.JFrame {
-  DefaultTableModel tabla;
+public class ConsultadeCobroCliente extends javax.swing.JFrame {
+DefaultTableModel tabla;
     /**
-     * Creates new form ConsultaUsuarios
+     * Creates new form ConsultadeCobroCliente
      */
-    public ConsultaUsuarios() {
+    public ConsultadeCobroCliente() {
         initComponents();
-      tabla=( DefaultTableModel)this.jTable1.getModel();
+         tabla=( DefaultTableModel)this.jTable1.getModel();
      
       this.setLocationRelativeTo(null);
-       
     }
 
     /**
@@ -38,12 +35,18 @@ public class ConsultaUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,43 +56,36 @@ public class ConsultaUsuarios extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Contraseña", "Nivel Acceso", "Nombres", "Apellidos", "Correo"
+                "ID COBRO", "FECHA", "ID CLIENTE", "VALOR", "CONCEPTO", "STATUS"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-
-        jLabel1.setText("USUARIO");
+        jLabel1.setText("ID CLIENTE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(33, 33, 33)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -101,13 +97,13 @@ public class ConsultaUsuarios extends javax.swing.JFrame {
          String cod;
         boolean encontrado=false;
 
-     String usuario,contra,nivel,nombre,apellido,correo;
+     String id,dia,mes,año,cliente,valor,concepto,stat,fecha;
 String nomb=txtBuscar.getText();
         Scanner s;
         
         try {
             
-            File f=new File("Usuarios.txt");
+            File f=new File("Cobros.txt");
             
             if(!f.exists())
             {
@@ -126,15 +122,18 @@ String nomb=txtBuscar.getText();
                     sl.useDelimiter("\\s*;\\s*");
                     try {
                         
-                           usuario=sl.next();
-                           contra=sl.next();
-                           nivel=sl.next();
-                           nombre=sl.next();
-                           apellido=sl.next();
-                           correo=sl.next();
-                           if(usuario.contains(nomb))
+                           id=sl.next();
+                           dia=sl.next();
+                           mes=sl.next();
+                           año=sl.next();
+                           cliente=sl.next();
+                           valor=sl.next();
+                           concepto=sl.next();
+                           stat=sl.next();
+                           fecha=(dia+"/"+mes+"/"+año);
+                           if(cliente.contains(nomb))
                            {
-                               tabla.addRow(new Object [] {usuario,contra,nivel,nombre,apellido});
+                               tabla.addRow(new Object [] {id,fecha,cliente,valor,concepto,stat});
                            }
                       
                         
@@ -161,7 +160,7 @@ String nomb=txtBuscar.getText();
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel se tting code (optional) ">
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
@@ -173,20 +172,20 @@ String nomb=txtBuscar.getText();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultadeCobroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultadeCobroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultadeCobroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultadeCobroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaUsuarios().setVisible(true);
+                new ConsultadeCobroCliente().setVisible(true);
             }
         });
     }

@@ -26,8 +26,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 public class FrameCobro extends javax.swing.JFrame {
 boolean encontrado=false;
 boolean crear =false;
-double valor=0;
-double bala=0;
+double valor;
+double bala,bl;
 double b=0;
 int num;
 int n;
@@ -274,43 +274,37 @@ int n;
                                 .addComponent(botonguardar)))
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jlabel99)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(jlabel333))
-                        .addGap(30, 30, 30)
+                            .addComponent(jlabel333)
+                            .addComponent(jLabel4)
+                            .addComponent(jlabel99))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idcobro, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                    .addComponent(idcobro)
                                     .addComponent(conceptocobro)
                                     .addComponent(statuscobro)
-                                    .addComponent(valorcobro)
-                                    .addComponent(clientecobro))
+                                    .addComponent(clientecobro)
+                                    .addComponent(valorcobro))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(102, 102, 102)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cpanio)
-                                            .addComponent(cpid)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(nombreclie)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jLabel8)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel6))
-                                                .addGap(35, 35, 35)
-                                                .addComponent(cpvalor))
-                                            .addComponent(cpconcep, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cpcliente, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addComponent(cpanio)
+                                    .addComponent(cpid)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel6))
+                                            .addGap(35, 35, 35)
+                                            .addComponent(cpvalor))
+                                        .addComponent(cpconcep, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cpcliente, javax.swing.GroupLayout.Alignment.TRAILING))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cpstatus)
@@ -320,7 +314,10 @@ int n;
                                         .addComponent(mescobro, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(aniocobro, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 68, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(nombreclie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,23 +348,25 @@ int n;
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(cpcliente)
-                            .addComponent(nombreclie)))
+                            .addComponent(cpcliente)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlabel99)
-                                .addComponent(clientecobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonpdf, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botonpdf, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(valorcobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(valorcobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel7)
-                            .addComponent(cpvalor))
+                            .addComponent(cpvalor)
+                            .addComponent(clientecobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlabel99)
+                            .addComponent(nombreclie))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(conceptocobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,7 +382,7 @@ int n;
                     .addComponent(jLabel9)
                     .addComponent(cpstatus)
                     .addComponent(jlabel333))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -398,7 +397,7 @@ int n;
         String mes=mescobro.getText();
       
         String cliente=clientecobro.getText();
-        valor=Double.parseDouble(valorcobro.getText());
+      
         
        String concep=conceptocobro.getText();
        boolean stat=false;
@@ -427,7 +426,7 @@ int n;
         {
             e.printStackTrace();
         }
-        
+        System.out.println(bl);
         
       
        idcobro.setText(String.valueOf(n));
@@ -445,6 +444,7 @@ int n;
         // TODO add your handling code here:
         validar();
         int a=Integer.parseInt(aniocobro.getText());
+        
         if(a<2021)
         {
             JOptionPane.showMessageDialog(this, "Año incorrecto");
@@ -524,7 +524,7 @@ int n;
         }
         int cod;
         boolean encontrado=false;
-
+ ManejoClientes ml=new ManejoClientes();
         cod=Integer.parseInt(clientecobro.getText());
 
         Scanner s;
@@ -541,7 +541,7 @@ int n;
             s = new Scanner(f);
             //else
             
-                while (s.hasNextLine() && !encontra)
+                while (s.hasNextLine() && !encontrado)
                 {
                     String linea = s.nextLine();
 
@@ -553,27 +553,30 @@ int n;
                         if(cod==idarc)
                         {
                             
-                   String uno=sl.next();
-                    String dos=sl.next();
-                     String tres=sl.next();
-                      String cuatro=sl.next();
-                       String cinco=sl.next();
-                        String sic=sl.next();
-                         String sev=sl.next();
-                          String och=sl.next();
-                           String nue=sl.next();
-                            String die=sl.next();
-                             String onc=sl.next();
-                              String doc=sl.next();
-                             String k=sl.next();
+                   String nombre=sl.next();
+                    String pat=sl.next();
+                     String mat=sl.next();
+                      String dir=sl.next();
+                       String dia=sl.next();
+                        String mes=sl.next();
+                         String año=sl.next();
+                          String tel=sl.next();
+                           String cel=sl.next();
+                            String ing=sl.next();
+                             String stat=sl.next();
+                              String tipo=sl.next();
+                             String cor=sl.next();
                                 bala=Double.parseDouble(sl.next());
-                                double bl=bala+valor;
-                                nombreclie.setText(uno+" "+tres);
-                        
-                           String nueval=(idarc+"; "+uno+"; "+dos+"; "+tres+";"+cuatro+"; "+cinco+"; "+sic+"; "+
-                                   sev+"; "+och+"; "+nue+"; "+die+"; "+onc+"; "+doc+"; "+k+"; "+bl);
-                            ManejoClientes ml=new ManejoClientes();
-                            ml.ModificarDatos(nueval, String.valueOf(idarc));
+                                double cuota=Double.parseDouble(sl.next());
+                                 bl=bala+valor;
+                                 System.out.println("Entro");
+                                nombreclie.setText(nombre+" "+pat);
+                        String id=String.valueOf(idarc);
+                           String nueval=(idarc+"; "+pat+"; "+mat+"; "+dir+";"+dia+"; "+mes+"; "+año+"; "+
+                                   tel+"; "+cel+"; "+ing+"; "+stat+"; "+tipo+"; "+cor+"; "+bl+"; "+cuota);
+                           
+                            ml.ModificarDatos(nueval,id);
+                            
                             encontrado=true;
                            
                             //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
@@ -591,6 +594,8 @@ int n;
                            
                            // accion.setText("Creando...");
                         }
+                        
+                        
                     } // fin try
                     catch (Exception  e1)
                     {
@@ -598,9 +603,7 @@ int n;
                        
                     }
                 } // fin while
-            
-
-            s.close();
+ s.close();
         } // fin try
         catch (Exception e)
         {
@@ -611,7 +614,7 @@ int n;
 
     private void valorcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcobroKeyReleased
 validar();        // TODO add your handling code here:
-
+  valor=Double.parseDouble(valorcobro.getText());
     }//GEN-LAST:event_valorcobroKeyReleased
 
     private void conceptocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_conceptocobroKeyReleased
@@ -652,7 +655,7 @@ validar();
 
     private void aniocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aniocobroKeyReleased
 validar();        // TODO add your handling code here:
- int a=Integer.parseInt(aniocobro.getText());
+
  
 
 

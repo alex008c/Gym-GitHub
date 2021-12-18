@@ -26,7 +26,7 @@ boolean crear=false;
         initComponents();
         botonguardar.setEnabled(false);
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new java.awt.Color(30,30,30));
+       this.getContentPane().setBackground(new java.awt.Color(30,30,30));
         jPanel1.setBackground(new java.awt.Color(30,30,30));
         titulo.setForeground(Color.white);
         jPanel1.setLayout(null);
@@ -36,7 +36,7 @@ boolean crear=false;
     {
          if(idactividad.getText().isEmpty())
         {
-            campact.setText("Campo Obligatorio");
+            campact.setText("*");
         }
         else
         {
@@ -44,7 +44,7 @@ boolean crear=false;
         }
           if(nombreactividad.getText().isEmpty())
         {
-            campnombre.setText("Campo Obligatorio");
+            campnombre.setText("*");
         }
         else
         {
@@ -52,7 +52,7 @@ boolean crear=false;
         }
            if(descripcionactividad.getText().isEmpty())
         {
-            campdescrip.setText("Campo Obligatorio");
+            campdescrip.setText("*");
         }
         else
         {
@@ -60,7 +60,7 @@ boolean crear=false;
         }
             if(localizacionactividad.getText().isEmpty())
         {
-            camplocal.setText("Campo Obligatorio");
+            camplocal.setText("*");
         }
         else
         {
@@ -68,7 +68,7 @@ boolean crear=false;
         }
              if(entrenadoractividad.getText().isEmpty())
         {
-            campentre.setText("Campo Obligatorio");
+            campentre.setText("*");
         }
         else
         {
@@ -114,6 +114,7 @@ boolean crear=false;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setForeground(new java.awt.Color(255, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N

@@ -439,10 +439,20 @@ String bal="";
         activo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         activo.setForeground(new java.awt.Color(204, 204, 204));
         activo.setText("Activo");
+        activo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                activoKeyReleased(evt);
+            }
+        });
 
         pasivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         pasivo.setForeground(new java.awt.Color(204, 204, 204));
         pasivo.setText("Pasivo");
+        pasivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pasivoKeyReleased(evt);
+            }
+        });
 
         labelaño.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -853,7 +863,8 @@ mescliente.setText("");
         /* double x,y;
         x=Double.parseDouble(bal);
         y=Double.parseDouble(balancecliente.getText());*/
-        double balan=0;
+        double balan=0,cuo=0;
+        
 
         //11
         String id=idcliente.getText();
@@ -879,12 +890,22 @@ mescliente.setText("");
         {
             balancecliente.setText("0.00");
         }
+
         else
         {
 
             balan=Double.parseDouble(balancecliente.getText());
 
         }
+                if(valorcuotacliente.getText().isEmpty())
+        {
+            valorcuotacliente.setText("0.00");
+        }
+              else
+                    
+                {
+                    cuo=Double.parseDouble(valorcuotacliente.getText());
+                }
         String msj;
         String NuevaLinea="";
         ManejoClientes mc=new ManejoClientes();
@@ -893,12 +914,13 @@ mescliente.setText("");
             if(crear==false)
             {
 
-                mc.GuardarDatos(id,nombre,apepat,apemat,dir,dia,mes,anio,tel,cel,fechaing,status,tipo,cor,balan);
+                mc.GuardarDatos(id,nombre,apepat,apemat,dir,dia,mes,anio,tel,cel,fechaing,status,tipo,cor,balan,cuo);
             }
             else
             {
 
-                NuevaLinea=(id+"; "+nombre+"; "+apepat+"; "+apemat+"; "+dir+"; "+dia+"; "+mes+"; "+anio+"; "+tel+"; "+cel+"; "+fechaing+"; "+status+"; "+tipo+"; "+cor+"; "+balan);
+                NuevaLinea=(id+"; "+nombre+"; "+apepat+"; "+apemat+"; "+dir+"; "+dia+"; "+mes+"; "+anio+"; "+tel+"; "+cel+"; "+fechaing+"; "+status+"; "+tipo+"; "+cor+"; "+balan
+                        +"; "+cuo);
                 mc.ModificarDatos(NuevaLinea,id);
             }
             accion.setText("Guardando...");
@@ -932,8 +954,7 @@ mescliente.setText("");
 
     private void tipoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tipoclienteKeyReleased
         validar();        // TODO add your handling code here:
-
-        JRadioButton[] rd={activo,pasivo};
+       JRadioButton[] rd={activo,pasivo};
         for(int i=0;i<rd.length;i++)
         {
             if(rd[i].isSelected())
@@ -950,6 +971,7 @@ mescliente.setText("");
         {
             tipocliente.setText("Invitado");
         }
+     
     }//GEN-LAST:event_tipoclienteKeyReleased
 
     private void fechaingresoclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaingresoclienteKeyReleased
@@ -1054,14 +1076,17 @@ mescliente.setText("");
                     if(co==Integer.parseInt(sl.next()))
                     {
                         String con=sl.next();
+                       
                         balancecliente.setText(sl.next());
+                        valorcuotacliente.setText(sl.next());
                         v=true;
                         //crear = true;
 
                     }
                     else
                     {  //Salida.setText("Este registro no existe");
-                        balancecliente.setText("0");
+                        balancecliente.setText("0.00");
+                        valorcuotacliente.setText("0.00");
 
                         //crear=false;
                         //encontrado=false;
@@ -1132,8 +1157,8 @@ mescliente.setText("");
 
                         tipocliente.setText(sl.next());
                         correocliente.setText(sl.next());
-                        //balancecliente.setText(sl.next());
-                        // valorcuotacliente.setText(sl.next());
+                        balancecliente.setText(sl.next());
+                         valorcuotacliente.setText(sl.next());
 
                         encontrado=true;
                         crear = true;
@@ -1154,8 +1179,8 @@ mescliente.setText("");
 
                         tipocliente.setText("");
                         correocliente.setText("");
-                        //balancecliente.setText("");
-                        //valorcuotacliente.setText("");
+                        balancecliente.setText("");
+                        valorcuotacliente.setText("");
 
                         encontrado=false;
                         crear = false;
@@ -1193,6 +1218,16 @@ mescliente.setText("");
     private void fechaingresoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaingresoclienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaingresoclienteActionPerformed
+
+    private void activoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_activoKeyReleased
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_activoKeyReleased
+
+    private void pasivoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pasivoKeyReleased
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_pasivoKeyReleased
 
     /**
      * @param args the command line arguments
