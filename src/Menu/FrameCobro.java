@@ -26,7 +26,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 public class FrameCobro extends javax.swing.JFrame {
 boolean encontrado=false;
 boolean crear =false;
-
+double valor=0;
 double bala=0;
 double b=0;
 int num;
@@ -398,8 +398,8 @@ int n;
         String mes=mescobro.getText();
       
         String cliente=clientecobro.getText();
-       double valor=Double.parseDouble(valorcobro.getText());
-        valor+=b+bala;
+        valor=Double.parseDouble(valorcobro.getText());
+        
        String concep=conceptocobro.getText();
        boolean stat=false;
        statuscobro.setText(Boolean.toString(stat));
@@ -492,9 +492,7 @@ int n;
                             JOptionPane.showMessageDialog(this, "NO SE PUEDEN REALIZAR MAS COBROS");
                             mescobro.setText("");
                             clientecobro.setText("");
-                        }
-                                    
-                        if(codd==clie)
+                                if(codd==clie)
                         {
                            
                             String con=sll.next();
@@ -505,11 +503,10 @@ int n;
                             encontra=true;
                             
                         }
-                        else
-                        {  
-                            encontra=false;
-                          
                         }
+                                    
+                    
+                      
                     } // fin try
                     catch (Exception  e1)
                     {
@@ -544,7 +541,7 @@ int n;
             s = new Scanner(f);
             //else
             
-                while (s.hasNextLine() && !encontrado)
+                while (s.hasNextLine() && !encontra)
                 {
                     String linea = s.nextLine();
 
@@ -570,10 +567,13 @@ int n;
                               String doc=sl.next();
                              String k=sl.next();
                                 bala=Double.parseDouble(sl.next());
+                                double bl=bala+valor;
                                 nombreclie.setText(uno+" "+tres);
                         
-                           
-                            
+                           String nueval=(idarc+"; "+uno+"; "+dos+"; "+tres+";"+cuatro+"; "+cinco+"; "+sic+"; "+
+                                   sev+"; "+och+"; "+nue+"; "+die+"; "+onc+"; "+doc+"; "+k+"; "+bl);
+                            ManejoClientes ml=new ManejoClientes();
+                            ml.ModificarDatos(nueval, String.valueOf(idarc));
                             encontrado=true;
                            
                             //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
@@ -582,7 +582,7 @@ int n;
                         else
                         {  //Salida.setText("Este registro no existe");
                      
-                     
+                     System.out.println("alo");
                           
                           
                             
@@ -678,14 +678,19 @@ char c=evt.getKeyChar();
         PDPage pagina=new PDPage();
         documento.addPage(pagina);
         PDPageContentStream contenido=new PDPageContentStream(documento,pagina);
-        contenido.beginText();
+      contenido.beginText();
         contenido.setFont(PDType1Font.TIMES_BOLD, 12);
         contenido.newLineAtOffset(20, pagina.getMediaBox().getHeight()-52);
-        contenido.showText(idcobro.getText()+";"+diacobro.getText()+"/"+mescobro.getText()+"/"+aniocobro.getText()
-        +";"+clientecobro.getText()+";"+valorcobro.getText()+";"+conceptocobro.getText()+";"+statuscobro.getText());
+        contenido.showText("ID  "+"FECHA  "+"CLIENTE  "+"COBRO  "+"CONCEPTO  "+"STATUS  ");
+      
+        
+       
+     
+        contenido.showText(idcobro.getText()+"  "+diacobro.getText()+"/"+mescobro.getText()+"/"+aniocobro.getText()
+        +"  "+clientecobro.getText()+"  "+valorcobro.getText()+"  "+conceptocobro.getText()+"  "+statuscobro.getText());
         contenido.endText();
         contenido.close();
-        documento.save(nombre+".pdf");
+        documento.save("Socio "+nombre+".pdf");
         
         
          

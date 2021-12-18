@@ -69,7 +69,7 @@ public void ModificarDatos( String LineaNueva,String id)
         boolean encontrado = false;
         //String aCadena=LineaAntigua;
         String nCadena=LineaNueva;
-        int cod=Integer.parseInt(id); 
+        int coddd=Integer.parseInt(id); 
     try
     {
         
@@ -87,7 +87,7 @@ public void ModificarDatos( String LineaNueva,String id)
                 Scanner sl = new Scanner(linea);
                  sl.useDelimiter("\\s*;\\s*"); 
                 int codigoArc = Integer.parseInt(sl.next()); 
-             if(cod==codigoArc) 
+             if(coddd==codigoArc) 
              { 
             Escribir(fNuevo,nCadena); 
                 } 
