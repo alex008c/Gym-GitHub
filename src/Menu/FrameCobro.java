@@ -88,7 +88,6 @@ int n;
         setBackground(new java.awt.Color(100, 100, 100));
 
         idcobro.setEditable(false);
-        idcobro.setOpaque(true);
         idcobro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 idcobroMouseMoved(evt);
@@ -175,7 +174,8 @@ int n;
 
         botonmenu.setBackground(new java.awt.Color(0, 0, 0));
         botonmenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        botonmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu/icons/home.png"))); // NOI18N
+        botonmenu.setForeground(new java.awt.Color(204, 204, 204));
+        botonmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         botonmenu.setText("MENU");
         botonmenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +185,7 @@ int n;
 
         botonguardar.setBackground(new java.awt.Color(0, 0, 0));
         botonguardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonguardar.setForeground(new java.awt.Color(204, 204, 204));
         botonguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
         botonguardar.setText("GUARDAR");
         botonguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,6 +246,7 @@ int n;
 
         botonpdf.setBackground(new java.awt.Color(0, 0, 0));
         botonpdf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonpdf.setForeground(new java.awt.Color(204, 204, 204));
         botonpdf.setText("PDF");
         botonpdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
