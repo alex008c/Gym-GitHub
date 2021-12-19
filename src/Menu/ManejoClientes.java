@@ -71,7 +71,6 @@ public void ModificarDatos( String LineaNueva,String id)
         File fAntiguo= new File("Clientes.txt");
         
         
-        //String aCadena=LineaAntigua;
         String nCadena=LineaNueva;
         int coddd=Integer.parseInt(id); 
     try
@@ -81,34 +80,35 @@ public void ModificarDatos( String LineaNueva,String id)
         {
         Scanner s = new Scanner(fAntiguo);
         
-      //  br = new BufferedReader(new FileReader(fAntiguo));
-      
+            System.out.println("ola");
         String linea;
         
             while (s.hasNextLine()) {
-                
+                            System.out.println("ola1");
+
                 linea=s.nextLine();
                 Scanner sl = new Scanner(linea);
                  sl.useDelimiter("\\s*;\\s*"); 
                 int codigoArc = Integer.parseInt(sl.next()); 
              if(coddd==codigoArc) 
-             { 
-                
-            Escribir(fNuevo,nCadena); 
+             {             System.out.println("ola2");
+
+                Escribir(fNuevo,nCadena); 
                 } 
                 else 
-                   { 
-                     
+                   {             System.out.println("ola3");
+
                      Escribir(fNuevo,linea); 
                    }
             } // fin while
 
              s.close(); 
-             
-              // Capturo el nombre del fichero antiguo 
-            //String nAntiguo = fAntiguo.getName(); 
+                         System.out.println("ola4");
+
             // Borro el fichero antiguo 
             borrar(fAntiguo); 
+                        System.out.println("ola5");
+
             //Renombro el fichero auxiliar con el nombre del fichero antiguo 
             fNuevo.renameTo(fAntiguo); 
     }
@@ -146,13 +146,14 @@ public void Escribir(File fichero,String zcadena)
     }
             
 }
-public void borrar(File fichero)
+public void borrar(File Ffichero)
 {
     try
     {
-        if(fichero.exists())
-        {
-            fichero.delete();
+        if(Ffichero.exists())
+        {            System.out.println("ola6");
+
+            Ffichero.delete();
         }
                     
         

@@ -391,7 +391,12 @@ int n;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
-        // TODO add your handling code here:ManejoUsuarios me=new ManejoUsuarios();
+        File fNuevo= new File("Clientes2.txt");
+        File fAntiguo= new File("Clientes.txt");
+        fAntiguo.delete();
+        fNuevo.renameTo(fAntiguo); 
+
+// TODO add your handling code here:ManejoUsuarios me=new ManejoUsuarios();
        String cor="";
        String id=idcobro.getText();
        String dia=diacobro.getText();
@@ -412,7 +417,7 @@ int n;
 
             if (crear==false)
             {
-                me.GuardarDatos (id,dia,mes,an, cliente,concep,valor,stat);
+                me.GuardarDatos (id,dia,mes,an,cliente,concep,valor,stat);
             }
             else
             {
@@ -524,9 +529,10 @@ int n;
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
+        //ciente
         int cod;
         boolean encontrado=false;
- ManejoClientes ml=new ManejoClientes();
+        ManejoClientes ml=new ManejoClientes();
         cod=Integer.parseInt(clientecobro.getText());
 
         Scanner s;
@@ -537,8 +543,7 @@ int n;
             
             if(!f.exists())
             {
-                
-                f.createNewFile();
+               JOptionPane.showMessageDialog(null, "Archivo cliente no existe.");
             }
             s = new Scanner(f);
             //else
@@ -574,7 +579,7 @@ int n;
                                  System.out.println("Entro");
                                 nombreclie.setText(nombre+" "+pat);
                         String id=String.valueOf(idarc);
-                           String nueval=(idarc+"; "+pat+"; "+mat+"; "+dir+";"+dia+"; "+mes+"; "+año+"; "+
+                           String nueval=(idarc+"; "+nombre+"; "+pat+"; "+mat+"; "+dir+";"+dia+"; "+mes+"; "+año+"; "+
                                    tel+"; "+cel+"; "+ing+"; "+stat+"; "+tipo+"; "+cor+"; "+bl+"; "+cuota);
                            
                             ml.ModificarDatos(nueval,id);
