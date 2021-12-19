@@ -223,6 +223,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Generar Cobro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jgenerarcobroActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jreservacobro">
               <Properties>

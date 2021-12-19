@@ -6,44 +6,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 
 public class ManejoCobrooo {
     
-    public void GuardarDatos(String idcobro,String dia,String mes,String anio,String cliente,String conc,double valor,boolean status)
+    public void GuardarDatos(String id,String dia,String mes,String anio,String cliente,String conc,double valor,boolean status)
 {
-    String texto=null;
-    File f=new File("Cobros.txt");
-    FileWriter escribir;
-    PrintWriter linea;
-    try
-    {
-        if(!f.exists())
-                {
-      f.createNewFile();
-                }
-        escribir=new FileWriter(f,true);
-        linea=new PrintWriter(escribir);
-        linea.print(idcobro+";");
-        linea.print(dia+";");
-        linea.print(mes+";");
-         linea.print(anio+";");
-        linea.print(cliente+";");
-        linea.print(conc+";");
-        linea.print(valor+";");
-        
-        linea.print(status+"\n");
-    
-        
-       
-        linea.close();
-        escribir.close();
-        
-        
-    }catch(Exception e)
-    {
-        texto=("Error"+e);
-    }
+     try
+        {
+            FileWriter F1=new FileWriter("Cobros.txt", true);
+            PrintWriter pw=new PrintWriter(F1);
+            pw.println(id +";"+ dia +";"+ mes +";"+ anio +";"+ cliente +";"+ conc +";"+ valor +";"+ status);
+            pw.close();
+        }catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,"Error al guardar archivo"+ ex);
+        }
 }
     public void ModificarDatos(String LineaNueva,String id)
 {  
@@ -51,7 +29,6 @@ public class ManejoCobrooo {
         File fAntiguo= new File("Cobros.txt");
         
         boolean encontrado = false;
-        //String aCadena=LineaAntigua;
         String nCadena=LineaNueva;
         int cod=Integer.parseInt(id); 
     try
@@ -61,8 +38,6 @@ public class ManejoCobrooo {
         {
         Scanner s = new Scanner(fAntiguo);
         
-      //  br = new BufferedReader(new FileReader(fAntiguo));
-      
         String linea;
         
             while (s.hasNextLine()) {
@@ -82,9 +57,6 @@ public class ManejoCobrooo {
             } // fin while
 
              s.close(); 
-             
-              // Capturo el nombre del fichero antiguo 
-            //String nAntiguo = fAntiguo.getName(); 
             // Borro el fichero antiguo 
             borrar(fAntiguo); 
             //Renombro el fichero auxiliar con el nombre del fichero antiguo 
@@ -140,5 +112,14 @@ public void borrar(File fichero)
                
     
 }
+public void Delay(long milis)
+    {
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    } // fin metodo delay
+
 
 }

@@ -187,6 +187,11 @@ public class Menu extends javax.swing.JFrame {
 
         jgenerarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jgenerarcobro.setText("Generar Cobro");
+        jgenerarcobro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jgenerarcobroActionPerformed(evt);
+            }
+        });
         procesos.add(jgenerarcobro);
 
         jreservacobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -315,6 +320,11 @@ public class Menu extends javax.swing.JFrame {
         new FrameEstadoReserva().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jmenuestadoActionPerformed
+
+    private void jgenerarcobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jgenerarcobroActionPerformed
+        new FrameCobro().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jgenerarcobroActionPerformed
 
     /**
      * @param args the command line arguments

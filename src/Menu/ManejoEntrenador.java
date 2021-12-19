@@ -118,7 +118,6 @@ public void borrar (File Ffichero)
             if(Ffichero.exists())
             {
                 Ffichero.delete();
-                //JOptionPane.showMessageDialog(null,"Ficherro Borrado.");
             }
         }catch(Exception e)
     {
