@@ -629,7 +629,7 @@ String bal="";
                                                     .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createSequentialGroup()
-                                                        .addGap(142, 142, 142)
+                                                        .addGap(44, 44, 44)
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -863,7 +863,7 @@ String bal="";
     }//GEN-LAST:event_anioclienteKeyReleased
 
     private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
-
+        System.out.println("ola");
         // TODO add your handling code here:
         String cor="";
         /* double x,y;
