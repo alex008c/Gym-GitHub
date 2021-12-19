@@ -257,7 +257,7 @@ int n;
         nombreclie.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nombreclie.setForeground(new java.awt.Color(51, 204, 0));
 
-        titulo.setFont(new java.awt.Font("Viner Hand ITC", 1, 54)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial", 1, 54)); // NOI18N
         titulo.setForeground(new java.awt.Color(204, 204, 204));
         titulo.setText("Cobros");
 
@@ -384,7 +384,7 @@ int n;
                     .addComponent(jLabel9)
                     .addComponent(cpstatus)
                     .addComponent(jlabel333))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
