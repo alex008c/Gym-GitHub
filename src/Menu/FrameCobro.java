@@ -449,15 +449,9 @@ int n;
 
     private void clientecobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clientecobroKeyReleased
         // TODO add your handling code here:
-        validar();
         int a=Integer.parseInt(aniocobro.getText());
-        
-        if(a<2021)
-        {
-            JOptionPane.showMessageDialog(this, "Año incorrecto");
-            aniocobro.setText("");
-        }
- 
+
+        validar();
               int codd;
         boolean encontra=false;
 
@@ -494,7 +488,7 @@ int n;
 
 
                         int mess=Integer.parseInt(mescobro.getText());
-                        if(mess==mes && codd==clie)
+                        if(mess==mes && anio==a && codd==clie)
                         {
                             JOptionPane.showMessageDialog(this, "NO SE PUEDEN REALIZAR MAS COBROS");
                             mescobro.setText("");
@@ -620,7 +614,14 @@ int n;
     }//GEN-LAST:event_clientecobroKeyReleased
 
     private void valorcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcobroKeyReleased
-validar();        // TODO add your handling code here:
+validar();        
+        int a=Integer.parseInt(aniocobro.getText());
+        
+        if(a<2021)
+        {
+            JOptionPane.showMessageDialog(this, "Año incorrecto");
+            aniocobro.setText("");
+        }
   valor=Double.parseDouble(valorcobro.getText());
     }//GEN-LAST:event_valorcobroKeyReleased
 

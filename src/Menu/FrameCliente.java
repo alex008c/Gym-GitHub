@@ -27,8 +27,8 @@ import javax.swing.JRadioButton;
 public class FrameCliente extends javax.swing.JFrame {
 boolean encontrado=false;
 boolean crear=false;
-String resp="";
 String bal="";
+String resp="";
     /**
      
      * Creates new form FrameCliente
@@ -884,6 +884,12 @@ String bal="";
         String tel=telefonocliente.getText();
         String cel=celularcliente.getText();
         String fechaing=fechaingresocliente.getText();
+        if(activo.isSelected()){
+         resp="Activo";   
+        }
+        else{
+         resp="Pasivo";   
+        }
         String status=resp;
         String tipo=tipocliente.getText();
         if(correocliente.getText().isEmpty()){
