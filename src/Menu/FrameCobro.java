@@ -391,10 +391,97 @@ int n;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
+        //ciente
+        int cod;
+        boolean encontrado=false;
+        ManejoClientes ml=new ManejoClientes();
+        cod=Integer.parseInt(clientecobro.getText());
+
+        Scanner s;
+        
+        try {
+            
+            File f=new File("Clientes.txt");
+            
+            if(!f.exists())
+            {
+               JOptionPane.showMessageDialog(null, "Archivo cliente no existe.");
+            }
+            s = new Scanner(f);
+            //else
+            
+                while (s.hasNextLine() && !encontrado)
+                {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        int idarc=Integer.parseInt(sl.next());
+                        if(cod==idarc)
+                        {
+                            
+                   String nombre=sl.next();
+                    String pat=sl.next();
+                     String mat=sl.next();
+                      String dir=sl.next();
+                       String dia=sl.next();
+                        String mes=sl.next();
+                         String año=sl.next();
+                          String tel=sl.next();
+                           String cel=sl.next();
+                            String ing=sl.next();
+                             String stat=sl.next();
+                              String tipo=sl.next();
+                             String cor=sl.next();
+                                bala=Double.parseDouble(sl.next());
+                                double cuota=Double.parseDouble(sl.next());
+                                 bl=bala+valor;
+                                 System.out.println("Entro");
+                                nombreclie.setText(nombre+" "+pat);
+                        String id=String.valueOf(idarc);
+                           String nueval=(idarc+"; "+nombre+"; "+pat+"; "+mat+"; "+dir+";"+dia+"; "+mes+"; "+año+"; "+
+                                   tel+"; "+cel+"; "+ing+"; "+stat+"; "+tipo+"; "+cor+"; "+bl+"; "+cuota);
+                           
+                            ml.ModificarDatos(nueval,id);
+                            
+                            encontrado=true;
+                           
+                        }
+                        else
+                        {  
+                     
+                     System.out.println("alo");
+                          
+                          
+                            
+ 
+                            encontrado=false;
+                           
+                           // accion.setText("Creando...");
+                        }
+                        
+                        
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       
+                    }
+                } // fin while
+            s.close();
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+
+        //
         File fNuevo= new File("Clientes2.txt");
         File fAntiguo= new File("Clientes.txt");
         fAntiguo.delete();
         fNuevo.renameTo(fAntiguo); 
+        
 
 // TODO add your handling code here:ManejoUsuarios me=new ManejoUsuarios();
        String cor="";
@@ -523,94 +610,7 @@ int n;
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
-        //ciente
-        int cod;
-        boolean encontrado=false;
-        ManejoClientes ml=new ManejoClientes();
-        cod=Integer.parseInt(clientecobro.getText());
-
-        Scanner s;
         
-        try {
-            
-            File f=new File("Clientes.txt");
-            
-            if(!f.exists())
-            {
-               JOptionPane.showMessageDialog(null, "Archivo cliente no existe.");
-            }
-            s = new Scanner(f);
-            //else
-            
-                while (s.hasNextLine() && !encontrado)
-                {
-                    String linea = s.nextLine();
-
-                    Scanner sl = new Scanner(linea);
-
-                    sl.useDelimiter("\\s*;\\s*");
-                    try {
-                        int idarc=Integer.parseInt(sl.next());
-                        if(cod==idarc)
-                        {
-                            
-                   String nombre=sl.next();
-                    String pat=sl.next();
-                     String mat=sl.next();
-                      String dir=sl.next();
-                       String dia=sl.next();
-                        String mes=sl.next();
-                         String año=sl.next();
-                          String tel=sl.next();
-                           String cel=sl.next();
-                            String ing=sl.next();
-                             String stat=sl.next();
-                              String tipo=sl.next();
-                             String cor=sl.next();
-                                bala=Double.parseDouble(sl.next());
-                                double cuota=Double.parseDouble(sl.next());
-                                 bl=bala+valor;
-                                 System.out.println("Entro");
-                                nombreclie.setText(nombre+" "+pat);
-                        String id=String.valueOf(idarc);
-                           String nueval=(idarc+"; "+nombre+"; "+pat+"; "+mat+"; "+dir+";"+dia+"; "+mes+"; "+año+"; "+
-                                   tel+"; "+cel+"; "+ing+"; "+stat+"; "+tipo+"; "+cor+"; "+bl+"; "+cuota);
-                           
-                            ml.ModificarDatos(nueval,id);
-                            
-                            encontrado=true;
-                           
-                            //Satigualinea=(campoid.getText() + "; " + camponombre.getText() + "; " + campoapellido.getText() + "; " + campotel.getText() + "; " + campocorreo.getText());
-                            //accion.setText("Modificando...");
-                        }
-                        else
-                        {  //Salida.setText("Este registro no existe");
-                     
-                     System.out.println("alo");
-                          
-                          
-                            
- 
-                            encontrado=false;
-                           
-                           // accion.setText("Creando...");
-                        }
-                        
-                        
-                    } // fin try
-                    catch (Exception  e1)
-                    {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
-                    }
-                } // fin while
- s.close();
-        } // fin try
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-
     }//GEN-LAST:event_clientecobroKeyReleased
 
     private void valorcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorcobroKeyReleased
