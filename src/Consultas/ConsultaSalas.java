@@ -6,6 +6,7 @@
 package Consultas;
 
 import Menu.ManejoLogin;
+import java.awt.Color;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -23,6 +24,9 @@ DefaultTableModel tabla;
     public ConsultaSalas() {
         initComponents();
           tabla=( DefaultTableModel)this.jTable1.getModel();
+          
+           this.getContentPane().setBackground(new java.awt.Color(30,30,30));
+       titulo.setForeground(Color.white);
      this.setLocationRelativeTo(null);
     }
 
@@ -63,8 +67,15 @@ DefaultTableModel tabla;
             }
         });
 
+        label.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        label.setForeground(new java.awt.Color(255, 255, 255));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id (2).png"))); // NOI18N
         label.setText("ID");
 
+        menu.setBackground(new java.awt.Color(0, 0, 0));
+        menu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        menu.setForeground(new java.awt.Color(255, 255, 255));
+        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         menu.setText("MENU");
         menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +83,8 @@ DefaultTableModel tabla;
             }
         });
 
+        titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("CONSULTAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,8 +101,8 @@ DefaultTableModel tabla;
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
             .addGroup(layout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(menu)
+                .addGap(310, 310, 310)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,7 +113,7 @@ DefaultTableModel tabla;
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label)
                     .addComponent(titulo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu)

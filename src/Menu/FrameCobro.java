@@ -36,7 +36,7 @@ int n;
      */
     public FrameCobro() {
         initComponents();
-   botonpdf.setEnabled(false);
+ 
         botonguardar.setEnabled(false);
    this.getContentPane().setBackground(new java.awt.Color(30,30,30));
         this.setLocationRelativeTo(null);
@@ -80,7 +80,6 @@ int n;
         aniocobro = new javax.swing.JTextField();
         cpanio = new javax.swing.JLabel();
         diacobro = new javax.swing.JTextField();
-        botonpdf = new javax.swing.JButton();
         nombreclie = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
 
@@ -244,16 +243,6 @@ int n;
         diacobro.setEditable(false);
         diacobro.setText("30");
 
-        botonpdf.setBackground(new java.awt.Color(0, 0, 0));
-        botonpdf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        botonpdf.setForeground(new java.awt.Color(204, 204, 204));
-        botonpdf.setText("PDF");
-        botonpdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonpdfActionPerformed(evt);
-            }
-        });
-
         nombreclie.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nombreclie.setForeground(new java.awt.Color(51, 204, 0));
 
@@ -271,9 +260,7 @@ int n;
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonmenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(botonpdf, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(botonguardar)))
+                            .addComponent(botonguardar))
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -352,14 +339,11 @@ int n;
                             .addComponent(jLabel3)
                             .addComponent(cpcliente)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonpdf, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(valorcobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))))))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(valorcobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -512,7 +496,7 @@ int n;
                 me.ModificarDatos(nuevalinea,id);
             }
       
-            blanquear();
+            
 
         } // fin try
         
@@ -524,6 +508,31 @@ int n;
         
       
        idcobro.setText(String.valueOf(n));
+           Scanner z;
+        String texto="";
+        String nombre=idcobro.getText();
+       try
+       {
+        PDDocument documento=new PDDocument();
+        PDPage pagina=new PDPage();
+        documento.addPage(pagina);
+        PDPageContentStream contenido=new PDPageContentStream(documento,pagina);
+      contenido.beginText();
+        contenido.setFont(PDType1Font.TIMES_BOLD, 12);
+        contenido.newLineAtOffset(20, pagina.getMediaBox().getHeight()-52);
+        contenido.showText(idcobro.getText()+" - "+diacobro.getText()+"/"+mescobro.getText()+"/"+aniocobro.getText()
+        +" - "+clientecobro.getText()+" - "+valorcobro.getText()+" - "+conceptocobro.getText()+" - "+statuscobro.getText());
+        contenido.endText();
+        contenido.close();
+        documento.save("Socio "+nombre+".pdf");
+        
+        
+         
+        }catch(Exception e)
+        {
+            System.out.println("Error " +e);
+        }
+        blanquear();
        
     }//GEN-LAST:event_botonguardarActionPerformed
 
@@ -679,39 +688,6 @@ char c=evt.getKeyChar();
         if(c<'0'|| c>'9')evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_aniocobroKeyTyped
 
-    private void botonpdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonpdfActionPerformed
-    Scanner z;
-        String texto="";
-        String nombre=idcobro.getText();
-       try
-       {
-        PDDocument documento=new PDDocument();
-        PDPage pagina=new PDPage();
-        documento.addPage(pagina);
-        PDPageContentStream contenido=new PDPageContentStream(documento,pagina);
-      contenido.beginText();
-        contenido.setFont(PDType1Font.TIMES_BOLD, 12);
-        contenido.newLineAtOffset(20, pagina.getMediaBox().getHeight()-52);
-        contenido.showText("ID  "+"FECHA  "+"CLIENTE  "+"COBRO  "+"CONCEPTO  "+"STATUS  ");
-      
-        
-       
-     
-        contenido.showText(idcobro.getText()+"  "+diacobro.getText()+"/"+mescobro.getText()+"/"+aniocobro.getText()
-        +"  "+clientecobro.getText()+"  "+valorcobro.getText()+"  "+conceptocobro.getText()+"  "+statuscobro.getText());
-        contenido.endText();
-        contenido.close();
-        documento.save("Socio "+nombre+".pdf");
-        
-        
-         
-        }catch(Exception e)
-        {
-            System.out.println("Error " +e);
-        }
-        
-    }//GEN-LAST:event_botonpdfActionPerformed
-
     private void idcobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idcobroKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_idcobroKeyReleased
@@ -856,12 +832,12 @@ char c=evt.getKeyChar();
                 ||mescobro.getText().isEmpty()||aniocobro.getText().isEmpty())
         {
             botonguardar.setEnabled(false);
-            botonpdf.setEnabled(false);
+            
         }
         else
         {
             botonguardar.setEnabled(true);
-            botonpdf.setEnabled(true);
+           
         }
         
                 }
@@ -869,7 +845,6 @@ char c=evt.getKeyChar();
     private javax.swing.JTextField aniocobro;
     private javax.swing.JButton botonguardar;
     private javax.swing.JButton botonmenu;
-    private javax.swing.JButton botonpdf;
     private javax.swing.JTextField clientecobro;
     private javax.swing.JTextField conceptocobro;
     private javax.swing.JLabel cpanio;

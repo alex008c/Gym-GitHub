@@ -26,9 +26,9 @@ DefaultTableModel tabla;
         initComponents();
             initComponents();
          tabla=( DefaultTableModel)this.jTable1.getModel();
-            this.getContentPane().setBackground(new java.awt.Color(30,30,30));
-       titulo.setForeground(Color.white);
-       BOTONMENU.setBackground(Color.BLACK);
+       
+       
+  
     }
 
     /**
@@ -50,8 +50,9 @@ DefaultTableModel tabla;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(25, 25, 25));
 
+        jTable1.setForeground(new java.awt.Color(102, 102, 102));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -71,8 +72,14 @@ DefaultTableModel tabla;
             }
         });
 
-        jLabel1.setText("CLIENTE");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ic-username_97587.png"))); // NOI18N
+        jLabel1.setText("ID CLIENTE");
 
+        BOTONMENU.setBackground(new java.awt.Color(0, 0, 0));
+        BOTONMENU.setForeground(new java.awt.Color(255, 255, 255));
+        BOTONMENU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         BOTONMENU.setText("MENU");
         BOTONMENU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +87,7 @@ DefaultTableModel tabla;
             }
         });
 
-        titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("CONSULTAS");
 
@@ -98,8 +105,8 @@ DefaultTableModel tabla;
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(BOTONMENU)
+                .addGap(303, 303, 303)
+                .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,9 +119,9 @@ DefaultTableModel tabla;
                     .addComponent(titulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BOTONMENU)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
