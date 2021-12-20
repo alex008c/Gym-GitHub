@@ -243,7 +243,7 @@ public class Login extends javax.swing.JFrame {
                     String nivel=sl.next();
                     if(contra.equals(contr))
                     {
-                        if(!nivel.equals("0"))
+                        if(!nivel.equals("1"))
                         {
                             JOptionPane.showMessageDialog(this, "Bienvenido admin");
                             mk.GuardarDatos(nivel);

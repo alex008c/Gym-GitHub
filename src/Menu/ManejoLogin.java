@@ -65,7 +65,7 @@ public void Leer()
                     sl.useDelimiter("\\s*;\\s*");
                     try {
                         String num=sl.next();
-                        if(num.equalsIgnoreCase("1"))
+                        if(num.equals("0"))
                         {
                             
                                 Menu me=new Menu();

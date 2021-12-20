@@ -5,6 +5,8 @@
  */
 package Menu;
 
+import java.io.File;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +40,6 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         limpiar = new javax.swing.JButton();
         HOME = new javax.swing.JLabel();
         CLEAR = new javax.swing.JLabel();
-        SAVE = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         campomes = new javax.swing.JTextField();
@@ -97,7 +98,12 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         registrar.setBackground(new java.awt.Color(0, 0, 0));
         registrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         registrar.setForeground(new java.awt.Color(204, 204, 204));
-        registrar.setText("Registrar");
+        registrar.setText("Actualizar");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
 
         limpiar.setBackground(new java.awt.Color(0, 0, 0));
         limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -110,10 +116,7 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         CLEAR.setBackground(new java.awt.Color(0, 0, 0));
         CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
 
-        SAVE.setBackground(new java.awt.Color(0, 0, 0));
-        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Buscar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/retroceder-32.png"))); // NOI18N
 
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("MM");
@@ -184,9 +187,9 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                         .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(limpiar)
-                        .addGap(73, 73, 73)
-                        .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(79, 79, 79)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(registrar)
                         .addContainerGap(16, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -208,15 +211,11 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(campomes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,26 +230,20 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65))
         );
 
         HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png")));
         CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/limpiar.png")));
-        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,11 +259,11 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
@@ -311,21 +304,86 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
     private void campomes1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomes1KeyTyped
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
         int anio=Integer.parseInt(campoyear.getText());
-        if(anio<1 || anio>12)
+        if(anio<2021 || anio>2121)
         {
-            JOptionPane.showMessageDialog(this, "Mes incorrecto");
+            JOptionPane.showMessageDialog(this, "Año incorrecto");
             campoyear.setText("");
             campomes1.setText("");
-
         }
+        
     }//GEN-LAST:event_campomes1KeyTyped
 
     private void campoyear1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoyear1KeyTyped
         char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
-        campoyear.setText("");
     }//GEN-LAST:event_campoyear1KeyTyped
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        int mes, anio, mes1, anio1;
+        boolean encontrado=false;
+
+        mes=Integer.parseInt(campomes.getText());
+        anio=Integer.parseInt(campoyear.getText());
+        mes1=Integer.parseInt(campomes1.getText());
+        anio1=Integer.parseInt(campoyear1.getText());
+
+        Scanner s;
+        try {
+            File f=new File("Cobros.txt");
+            
+           
+            s = new Scanner(f);
+                
+               do {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        String id=sl.next();
+                        String dia=sl.next();
+                        int me=Integer.parseInt(sl.next());
+                        int ani=Integer.parseInt(sl.next());
+                        if(mes==me && anio==ani)
+                        {
+                            String cod=sl.next();
+                            String concepto=sl.next();
+                            String cobro=sl.next();
+                            String estado=sl.next();
+                            if(estado=="true"){
+                            ManejoCobrooo mc=new ManejoCobrooo();
+                            String Nlinea=(id+";"+dia+";"+mes+";"+anio+";"+cod+";"+concepto+";"+cobro+";"+estado);
+                            mc.ModificarDatos2(Nlinea,id);
+                            }
+                        }
+                        
+                        
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                }while (s.hasNextLine() ); // fin while
+        
+
+            s.close();
+            
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+        File fNuevo= new File("Cobros2.txt");
+        if(fNuevo.exists()){
+        File fAntiguo= new File("Cobros.txt");
+        fAntiguo.delete();
+        fNuevo.renameTo(fAntiguo);}
+        
+    }//GEN-LAST:event_registrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,7 +423,6 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLEAR;
     private javax.swing.JLabel HOME;
-    private javax.swing.JLabel SAVE;
     private javax.swing.JTextField campomes;
     private javax.swing.JTextField campomes1;
     private javax.swing.JTextField campoyear;

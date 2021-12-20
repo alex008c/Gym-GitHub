@@ -503,7 +503,8 @@ int cod;
                                     deu=Double.parseDouble(cobro);
                              deuda=Double.parseDouble(campocobro.getText());
                             
-                            if((deu-deuda)==0){
+                            if(Double.parseDouble(cobro)!=0.0){
+                            if((deu-deuda)>=0){
                                
                                 total2=deu-deuda;
                             
@@ -511,12 +512,9 @@ int cod;
                             String Nlinea=(id+";"+dia+";"+mes+";"+anio+";"+cod+";"+concepto+";"+total2+";"+estado);
                             mc.ModificarDatos(Nlinea,campoid.getText());
                             }
-                            else if(deuda>deu){
-                                JOptionPane.showMessageDialog(null,"Ingrese una cifra menor o igual al primer cobro");
-                            }   
-                               
+                             
+                            } 
                            
-                            
                             
                         }
                         
@@ -537,6 +535,11 @@ int cod;
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
+        File FNuevo= new File("Cobros2.txt");
+       if(FNuevo.exists()){
+           File FAntiguo= new File("Cobros.txt");
+        FAntiguo.delete();
+        FNuevo.renameTo(FAntiguo);}
       //////
         
         //
@@ -586,11 +589,12 @@ int cod;
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }  /*File FNuevo= new File("Cobros2.txt");
-       if(FNuevo.exists()){
-           File FAntiguo= new File("Cobros.txt");
-        FAntiguo.delete();
-        FNuevo.renameTo(FAntiguo);}*/
+        }  
+        File fnuevo= new File("Cobros2.txt");
+       if(fnuevo.exists()){
+           File fantiguo= new File("Cobros.txt");
+        fantiguo.delete();
+        fnuevo.renameTo(fantiguo);}
        
        
        int codd;
