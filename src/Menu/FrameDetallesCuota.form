@@ -325,9 +325,6 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="campoidMouseMoved"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campofechacuota">
           <Properties>
@@ -355,9 +352,6 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoidcuotaKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campocobro">
           <Properties>
@@ -368,9 +362,6 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campocobroKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campocorreo">
           <Properties>
@@ -515,9 +506,6 @@
               <Image iconType="3" name="/icons/Buscar.png"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

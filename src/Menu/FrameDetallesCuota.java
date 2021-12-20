@@ -124,11 +124,6 @@ public class FrameDetallesCuota extends javax.swing.JFrame {
         campoid.setCaretColor(new java.awt.Color(0, 0, 0));
         campoid.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         campoid.setEnabled(false);
-        campoid.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                campoidMouseMoved(evt);
-            }
-        });
 
         campofechacuota.setBackground(new java.awt.Color(255, 255, 255));
         campofechacuota.setForeground(new java.awt.Color(0, 0, 0));
@@ -138,19 +133,9 @@ public class FrameDetallesCuota extends javax.swing.JFrame {
 
         campoidcuota.setBackground(new java.awt.Color(204, 204, 204));
         campoidcuota.setCaretColor(new java.awt.Color(0, 0, 0));
-        campoidcuota.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                campoidcuotaKeyReleased(evt);
-            }
-        });
 
         campocobro.setBackground(new java.awt.Color(204, 204, 204));
         campocobro.setCaretColor(new java.awt.Color(0, 0, 0));
-        campocobro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                campocobroKeyReleased(evt);
-            }
-        });
 
         campocorreo.setBackground(new java.awt.Color(204, 204, 204));
         campocorreo.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -201,11 +186,6 @@ public class FrameDetallesCuota extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Tabla);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Buscar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -325,100 +305,6 @@ public class FrameDetallesCuota extends javax.swing.JFrame {
         new Menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
-
-    private void campoidMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoidMouseMoved
-        Scanner z;
-
-        try {
-
-            File g=new File("Cuota.txt");
-
-            if(!g.exists())
-            {
-
-                g.createNewFile();
-            }
-            z = new Scanner(g);
-
-            while (z.hasNextLine())
-            {
-                String linea = z.nextLine();
-                num++;
-                Scanner sll = new Scanner(linea);
-
-            }
-
-            z.close();
-        } // fin try
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-
-        campoid.setText(String.valueOf(num));
-        num=0;
-        n=Integer.parseInt(campoid.getText());
-        n=n+1;
-
-    }//GEN-LAST:event_campoidMouseMoved
-
-    private void campoidcuotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcuotaKeyReleased
-
-    }//GEN-LAST:event_campoidcuotaKeyReleased
-
-    private void campocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campocobroKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocobroKeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int cod;
-        boolean encontrado=false;
-
-        cod=Integer.parseInt(campoidcuota.getText());
-
-        Scanner s;
-        try {
-            File f=new File("Cobros.txt");
-
-            s = new Scanner(f);
-
-            do {
-                String linea = s.nextLine();
-
-                Scanner sl = new Scanner(linea);
-
-                sl.useDelimiter("\\s*;\\s*");
-                try {
-                    String id=sl.next();
-                    String dia=sl.next();
-                    String mes=sl.next();
-                    String anio=sl.next();
-
-                    if(cod==Integer.parseInt(sl.next()))
-                    {
-                        String concepto= sl.next();
-                        String cobro=sl.next();
-                        String estado=sl.next();
-
-                        tabla.addRow(new Object [] {id,dia+"/"+mes+"/"+anio,cobro,concepto,estado});
-
-                    }
-
-                } // fin try
-                catch (Exception  e1)
-                {
-                    JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-
-                }
-            }while (s.hasNextLine() ); // fin while
-
-            s.close();
-        } // fin try
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
