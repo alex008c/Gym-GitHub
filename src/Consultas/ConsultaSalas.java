@@ -5,6 +5,7 @@
  */
 package Consultas;
 
+import Menu.ManejoLogin;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -38,6 +39,8 @@ DefaultTableModel tabla;
         jTable1 = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         label = new javax.swing.JLabel();
+        menu = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,17 +65,32 @@ DefaultTableModel tabla;
 
         label.setText("ID");
 
+        menu.setText("MENU");
+        menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuActionPerformed(evt);
+            }
+        });
+
+        titulo.setText("CONSULTAS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
+                .addComponent(titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(label)
                 .addGap(30, 30, 30)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(menu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,10 +98,13 @@ DefaultTableModel tabla;
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label))
+                    .addComponent(label)
+                    .addComponent(titulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(18, 18, 18)
+                .addComponent(menu)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -149,6 +170,12 @@ String nomb=txtBuscar.getText();
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
+ new ManejoLogin().Leer();
+        
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_menuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,6 +215,8 @@ String nomb=txtBuscar.getText();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel label;
+    private javax.swing.JButton menu;
+    private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

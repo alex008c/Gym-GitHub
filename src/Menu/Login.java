@@ -7,6 +7,7 @@ package Menu;
 
 import java.io.*;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -214,10 +215,14 @@ public class Login extends javax.swing.JFrame {
 
     private void botoniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoniniciarActionPerformed
         // TODO add your handling code here:
+         ManejoLogin mk=new ManejoLogin();
         File archivo=new File("Usuarios.txt");
-
+        File g=new File("Login.txt");
+        mk.borrar(g);
+       
         String usua=usuario.getText();
         String contra=new String(contraseña.getPassword());
+       
 
         try
         {
@@ -238,13 +243,18 @@ public class Login extends javax.swing.JFrame {
                     String nivel=sl.next();
                     if(contra.equals(contr))
                     {
-                        if(!nivel.equals("1"))
+                        if(!nivel.equals("0"))
                         {
+                            JOptionPane.showMessageDialog(this, "Bienvenido admin");
+                            mk.GuardarDatos(nivel);
                             new Menu().setVisible(true);
                             this.dispose();
                         }
                         else
                         {
+                       JOptionPane.showMessageDialog(this, "Bienvenido usuario");
+
+                            mk.GuardarDatos(nivel);
                             new MenuUsuario().setVisible(true);
                             this.dispose();
                         }
@@ -311,6 +321,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botoniniciar;

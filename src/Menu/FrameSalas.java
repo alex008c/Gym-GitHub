@@ -344,8 +344,8 @@ char c=evt.getKeyChar();
 
     private void BOTONMENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONMENUActionPerformed
         // TODO add your handling code here:
-        Menu m=new Menu();
-        m.setVisible(true);
+     new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_BOTONMENUActionPerformed
 

@@ -363,8 +363,8 @@ botonregistrar.setEnabled(false);
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Menu m =new Menu();
-        m.setVisible(true);
+     new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -374,7 +374,12 @@ botonregistrar.setEnabled(false);
        String cor="";
        String usuario=lusuario.getText();
         String contra=new String(lcontraseña.getPassword());
-        
+         if(nivelcero.isSelected()){
+         nivel=0;   
+        }
+        else{
+         nivel=1;   
+        }
        String nombre=lnombre.getText();
        String apellido=lapellido.getText();
       String nuevalinea="";
@@ -409,23 +414,7 @@ botonregistrar.setEnabled(false);
 
     private void lusuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lusuarioKeyReleased
         // TODO add your handling code here:
-        String resp="";
-           JRadioButton[] rd={niveluno,nivelcero};
-        for(int i=0;i<rd.length;i++)
-        {
-            if(rd[i].isSelected())
-            {
-                resp=rd[i].getText();
-            }
-        }
-        if(resp.equalsIgnoreCase("nivelcero"))
-        {
-            nivel=0;
-        }
-       else
-        {
-            nivel=1;
-        }
+   
                 
         validar();
         String cod;

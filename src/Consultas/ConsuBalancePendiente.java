@@ -15,15 +15,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author pedro
  */
-public class ConsultaClientes extends javax.swing.JFrame {
+public class ConsuBalancePendiente extends javax.swing.JFrame {
 DefaultTableModel tabla;
 DefaultTableModel tabla2;
     /**
-     * Creates new form ConsultaClientes
+     * Creates new form ConsuBalancePendiente
      */
-    public ConsultaClientes() {
+    public ConsuBalancePendiente() {
         initComponents();
-          tabla=( DefaultTableModel)this.jTable1.getModel();
+           tabla=( DefaultTableModel)this.jTable1.getModel();
           tabla2=( DefaultTableModel)this.jTable2.getModel();
      this.setLocationRelativeTo(null);
     }
@@ -37,16 +37,36 @@ DefaultTableModel tabla2;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "INGRESO", "STATUS", "TIPO", "CORREO", "BALANCE", "CUOTA"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,26 +82,7 @@ DefaultTableModel tabla2;
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-
-        jLabel1.setText("ID");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "INGRESO", "STATUS", "TIPO", "CORREO", "BALANCE", "CUOTA"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        jLabel1.setText("BALANCE");
 
         jButton1.setText("MENU");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,16 +94,16 @@ DefaultTableModel tabla2;
         titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         titulo.setText("CONSULTAS");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(65, 65, 65)
+                .addGap(72, 72, 72)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,23 +111,34 @@ DefaultTableModel tabla2;
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(titulo)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1)
+                    .addComponent(titulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,70 +146,67 @@ DefaultTableModel tabla2;
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         // TODO add your handling code here:
-         tabla.setRowCount(0);
-         tabla2.setRowCount(0);
-         String cod;
+        tabla.setRowCount(0);
+        tabla2.setRowCount(0);
+        String cod;
         boolean encontrado=false;
 
-     String id,nombre,pat,mat,dir,naci,tel,cel,ingr,stat,tipo,cor,bal,cuo,naci2,naci3,nacimiento;
-String nomb=txtBuscar.getText();
+        String id,nombre,pat,mat,dir,naci,tel,cel,ingr,stat,tipo,cor,bal,cuo,naci2,naci3,nacimiento;
+        String nomb=txtBuscar.getText();
         Scanner s;
-        
+
         try {
-            
+
             File f=new File("Clientes.txt");
-            
+
             if(!f.exists())
             {
-                
+
                 f.createNewFile();
             }
             s = new Scanner(f);
             //else
-            
-                while (s.hasNextLine() )
-                {
-                    String linea = s.nextLine();
 
-                    Scanner sl = new Scanner(linea);
+            while (s.hasNextLine() )
+            {
+                String linea = s.nextLine();
 
-                    sl.useDelimiter("\\s*;\\s*");
-                    try {
-                        
-                           id=sl.next();
-                           nombre=sl.next();
-                           pat=sl.next();
-                           mat=sl.next();
-                           dir=sl.next();
-                           naci=sl.next();
-                           naci2=sl.next();
-                           naci3=sl.next();
-                           tel=sl.next();
-                           cel=sl.next();
-                           ingr=sl.next();
-                           stat=sl.next();
-                           tipo=sl.next();
-                            cor=sl.next();
-                           bal=sl.next();
-                           cuo=sl.next();
-                        nacimiento=(naci+"/"+naci2+"/"+naci3);
-                           if(id.contains(nomb))
-                           {
-                               tabla.addRow(new Object [] {id,nombre,pat,mat,dir,nacimiento,tel,cel});
-                               tabla2.addRow(new Object [] {ingr,stat,tipo,cor,bal,cuo});
-                                 
-                           }
-                      
-                        
-                    
-                    } // fin try
-                    catch (Exception  e1)
+                Scanner sl = new Scanner(linea);
+
+                sl.useDelimiter("\\s*;\\s*");
+                try {
+
+                    id=sl.next();
+                    nombre=sl.next();
+                    pat=sl.next();
+                    mat=sl.next();
+                    dir=sl.next();
+                    naci=sl.next();
+                    naci2=sl.next();
+                    naci3=sl.next();
+                    tel=sl.next();
+                    cel=sl.next();
+                    ingr=sl.next();
+                    stat=sl.next();
+                    tipo=sl.next();
+                    cor=sl.next();
+                    bal=sl.next();
+                    cuo=sl.next();
+                    nacimiento=(naci+"/"+naci2+"/"+naci3);
+                    if(bal.contains(nomb))
                     {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
+                        tabla.addRow(new Object [] {id,nombre,pat,mat,dir,nacimiento,tel,cel});
+                        tabla2.addRow(new Object [] {ingr,stat,tipo,cor,bal,cuo});
+
                     }
-                } // fin while
-            
+
+                } // fin try
+                catch (Exception  e1)
+                {
+                    // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            } // fin while
 
             s.close();
         } // fin try
@@ -206,7 +215,6 @@ String nomb=txtBuscar.getText();
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
 
-   
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -232,20 +240,20 @@ String nomb=txtBuscar.getText();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuBalancePendiente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuBalancePendiente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuBalancePendiente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuBalancePendiente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaClientes().setVisible(true);
+                new ConsuBalancePendiente().setVisible(true);
             }
         });
     }
@@ -253,6 +261,7 @@ String nomb=txtBuscar.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

@@ -6,8 +6,6 @@
 package Consultas;
 
 import Menu.ManejoLogin;
-import java.awt.Color;
-import static java.awt.Color.black;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -17,18 +15,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author pedro
  */
-public class ConsCuotaClientes extends javax.swing.JFrame {
+public class ConsuCuotaFecha extends javax.swing.JFrame {
 DefaultTableModel tabla;
     /**
-     * Creates new form ConsCuotaClientes
+     * Creates new form ConsuCuotaFecha
      */
-    public ConsCuotaClientes() {
+    public ConsuCuotaFecha() {
         initComponents();
-            initComponents();
+                initComponents();
          tabla=( DefaultTableModel)this.jTable1.getModel();
-            this.getContentPane().setBackground(new java.awt.Color(30,30,30));
-       titulo.setForeground(Color.white);
-       BOTONMENU.setBackground(Color.BLACK);
     }
 
     /**
@@ -50,8 +45,6 @@ DefaultTableModel tabla;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -71,7 +64,7 @@ DefaultTableModel tabla;
             }
         });
 
-        jLabel1.setText("CLIENTE");
+        jLabel1.setText("FECHA");
 
         BOTONMENU.setText("MENU");
         BOTONMENU.addActionListener(new java.awt.event.ActionListener() {
@@ -81,16 +74,15 @@ DefaultTableModel tabla;
         });
 
         titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("CONSULTAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(42, 42, 42)
                 .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -105,12 +97,17 @@ DefaultTableModel tabla;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(titulo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(titulo)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +118,9 @@ DefaultTableModel tabla;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,56 +132,53 @@ DefaultTableModel tabla;
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         // TODO add your handling code here:
-           tabla.setRowCount(0);
-         String cod;
+        tabla.setRowCount(0);
+        String cod;
         boolean encontrado=false;
 
-     String id,idc,valor,stat,fecha;
-String nomb=txtBuscar.getText();
+        String id,idc,valor,stat,fecha;
+        String nomb=txtBuscar.getText();
         Scanner s;
-        
+
         try {
-            
+
             File f=new File("Cuota.txt");
-            
+
             if(!f.exists())
             {
-                
+
                 f.createNewFile();
             }
             s = new Scanner(f);
             //else
-            
-                while (s.hasNextLine() )
-                {
-                    String linea = s.nextLine();
 
-                    Scanner sl = new Scanner(linea);
+            while (s.hasNextLine() )
+            {
+                String linea = s.nextLine();
 
-                    sl.useDelimiter("\\s*;\\s*");
-                    try {
-                        
-                           id=sl.next();
-                           fecha=sl.next();
-                           idc=sl.next();
-                          valor=sl.next();
-                           stat=sl.next();
-                          
-                           if(idc.contains(nomb))
-                           {
-                               tabla.addRow(new Object [] {id,fecha,idc,valor,stat});
-                           }
-                      
-                        
-                    
-                    } // fin try
-                    catch (Exception  e1)
+                Scanner sl = new Scanner(linea);
+
+                sl.useDelimiter("\\s*;\\s*");
+                try {
+
+                    id=sl.next();
+                    fecha=sl.next();
+                    idc=sl.next();
+                    valor=sl.next();
+                    stat=sl.next();
+
+                    if(fecha.contains(nomb))
                     {
-                       // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
+                        tabla.addRow(new Object [] {id,fecha,idc,valor,stat});
                     }
-                } // fin while
-            
+
+                } // fin try
+                catch (Exception  e1)
+                {
+                    // JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            } // fin while
 
             s.close();
         } // fin try
@@ -215,20 +211,20 @@ String nomb=txtBuscar.getText();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsCuotaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuCuotaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsCuotaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuCuotaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsCuotaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuCuotaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsCuotaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsuCuotaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsCuotaClientes().setVisible(true);
+                new ConsuCuotaFecha().setVisible(true);
             }
         });
     }

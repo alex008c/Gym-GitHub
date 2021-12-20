@@ -20,6 +20,8 @@ public class FrameReservaActividades extends javax.swing.JFrame {
      */
     public FrameReservaActividades() {
         initComponents();
+            registrar.setEnabled(false);
+        this.setLocationRelativeTo(null);
     }
     boolean crear=false;
     /**
@@ -67,6 +69,13 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        campreser = new javax.swing.JLabel();
+        campfecha = new javax.swing.JLabel();
+        campbaja = new javax.swing.JLabel();
+        campestado = new javax.swing.JLabel();
+        campactividad = new javax.swing.JLabel();
+        campcliente = new javax.swing.JLabel();
+        camphorario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +132,11 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         menu.setText("Menu");
         menu.setMaximumSize(new java.awt.Dimension(96, 35));
         menu.setMinimumSize(new java.awt.Dimension(96, 35));
+        menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuActionPerformed(evt);
+            }
+        });
 
         registrar.setBackground(new java.awt.Color(0, 0, 0));
         registrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -140,6 +154,9 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         campoid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidKeyTyped(evt);
             }
         });
 
@@ -159,6 +176,9 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         campoidcli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidcliKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidcliKeyTyped(evt);
             }
         });
 
@@ -188,6 +208,9 @@ public class FrameReservaActividades extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidactiKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidactiKeyTyped(evt);
+            }
         });
 
         correoentrenador2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -199,6 +222,9 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         campoidhoraacti.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidhoraactiKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidhoraactiKeyTyped(evt);
             }
         });
 
@@ -292,6 +318,27 @@ public class FrameReservaActividades extends javax.swing.JFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
+        campreser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campreser.setForeground(new java.awt.Color(255, 0, 0));
+
+        campfecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campfecha.setForeground(new java.awt.Color(255, 0, 0));
+
+        campbaja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campbaja.setForeground(new java.awt.Color(255, 0, 0));
+
+        campestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campestado.setForeground(new java.awt.Color(255, 0, 0));
+
+        campactividad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campactividad.setForeground(new java.awt.Color(255, 0, 0));
+
+        campcliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campcliente.setForeground(new java.awt.Color(255, 0, 0));
+
+        camphorario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        camphorario.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -328,9 +375,26 @@ public class FrameReservaActividades extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(campoidacti, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(campreser, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(campoidestado)
                                 .addComponent(campoidcli)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campodia1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campomes1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campbaja, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -342,24 +406,20 @@ public class FrameReservaActividades extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(campodia1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(campomes1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(campfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(correoentrenador2)
                         .addGap(18, 18, 18)
                         .addComponent(campoidhoraacti)))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campestado, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campactividad, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camphorario, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +427,8 @@ public class FrameReservaActividades extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identrenador)
-                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campreser))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombreentrenador)
@@ -379,7 +440,8 @@ public class FrameReservaActividades extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel4)
                                 .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5)))))
+                                .addComponent(jLabel5)
+                                .addComponent(campfecha)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(apellidoentrenador)
@@ -391,23 +453,28 @@ public class FrameReservaActividades extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
                                 .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8)))))
+                                .addComponent(jLabel8)
+                                .addComponent(campbaja)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telentrenador)
-                    .addComponent(campoidestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campestado))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
-                    .addComponent(campoidcli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidcli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campcliente))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador1)
-                    .addComponent(campoidacti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidacti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campactividad))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoidhoraacti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(correoentrenador2))
+                    .addComponent(correoentrenador2)
+                    .addComponent(camphorario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +498,10 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +516,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
-       int cod;
+validar();       int cod;
         boolean encontrado=false;
 
         cod=Integer.parseInt(campoid.getText());
@@ -521,7 +591,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campodiaKeyTyped
 
     private void campodiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodiaKeyReleased
-        int dia=Integer.parseInt(campodia.getText());
+validar();        int dia=Integer.parseInt(campodia.getText());
         if(dia<1 || dia>30)
         {
             JOptionPane.showMessageDialog(this, "Dia incorrecto");
@@ -530,12 +600,12 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campodiaKeyReleased
 
     private void campomesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyTyped
-        char c=evt.getKeyChar();
+validar();        char c=evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_campomesKeyTyped
 
     private void campomesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyReleased
-        int mes=Integer.parseInt(campomes.getText());
+       validar(); int mes=Integer.parseInt(campomes.getText());
         if(mes<1 || mes>12)
         {
             JOptionPane.showMessageDialog(this, "Mes incorrecto");
@@ -551,7 +621,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campoyearKeyTyped
 
     private void campodia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodia1KeyReleased
-        int dia=Integer.parseInt(campodia1.getText());
+     validar();   int dia=Integer.parseInt(campodia1.getText());
         if(dia<1 || dia>30)
         {
             JOptionPane.showMessageDialog(this, "Dia incorrecto");
@@ -561,7 +631,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
 
     private void campodia1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodia1KeyTyped
         //para el año 1
-        int year=Integer.parseInt(campoyear.getText());
+     validar();   int year=Integer.parseInt(campoyear.getText());
         if(year<2021 || year>2100)
         {
             JOptionPane.showMessageDialog(this, "Año incorrecto");
@@ -576,7 +646,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campodia1KeyTyped
 
     private void campomes1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomes1KeyReleased
-        int  mes=Integer.parseInt(campomes1.getText());
+      validar();  int  mes=Integer.parseInt(campomes1.getText());
         if(mes<1 || mes>30)
         {
             JOptionPane.showMessageDialog(this, "Mes incorrecto");
@@ -596,7 +666,8 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campoyear1KeyTyped
 
     private void campoidestadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidestadoKeyTyped
-        //para el año 1
+    char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        //para el año 1
         int year=Integer.parseInt(campoyear1.getText());
         if(year<2021 || year>2100)
         {
@@ -609,7 +680,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_campoidestadoKeyTyped
 
     private void campoidestadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidestadoKeyReleased
-        int cod;
+       validar(); int cod;
         boolean encontrado=false;
         cod=Integer.parseInt(campoidestado.getText());
         
@@ -657,7 +728,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
 
     private void campoidcliKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcliKeyReleased
         int cod;
-        boolean encontrado=false;
+ validar();       boolean encontrado=false;
         cod=Integer.parseInt(campoidcli.getText());
 
         Scanner s;
@@ -705,7 +776,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     private void campoidactiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidactiKeyReleased
         int cod;
         boolean encontrado=false;
-        cod=Integer.parseInt(campoidacti.getText());
+      validar();  cod=Integer.parseInt(campoidacti.getText());
 
         Scanner s;
         try {
@@ -751,7 +822,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
 
     private void campoidhoraactiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidhoraactiKeyReleased
         int cod;
-        boolean encontrado=false;
+     validar();   boolean encontrado=false;
         cod=Integer.parseInt(campoidhoraacti.getText());
 
         Scanner s;
@@ -855,6 +926,32 @@ public class FrameReservaActividades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registrarActionPerformed
 
+    private void campoidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyTyped
+    char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidKeyTyped
+
+    private void campoidcliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcliKeyTyped
+    char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidcliKeyTyped
+
+    private void campoidactiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidactiKeyTyped
+    char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidactiKeyTyped
+
+    private void campoidhoraactiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidhoraactiKeyTyped
+    char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidhoraactiKeyTyped
+
+    private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
+ new ManejoLogin().Leer();
+        
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_menuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -889,9 +986,97 @@ public class FrameReservaActividades extends javax.swing.JFrame {
             }
         });
     }
+    public void validar(){
+      
+ 
+      
+        
+        
+        
+               if(campoid.getText().isEmpty())
+        {
+            campreser.setText("*");
+        }
+        else
+        {
+            campreser.setText("");
+        }
+   
+                 if(campodia.getText().isEmpty()|| campomes.getText().isEmpty()||campoyear.getText().isEmpty())
+        {
+            campfecha.setText("*");
+        }
+        else
+        {
+            campfecha.setText("");
+        }
+                           if(campodia1.getText().isEmpty()|| campomes1.getText().isEmpty()||campoyear1.getText().isEmpty())
+        {
+            campbaja.setText("*");
+        }
+        else
+        {
+            campbaja.setText("");
+        }
+          if(campoidestado.getText().isEmpty())
+        {
+            campestado.setText("*");
+        }
+        else
+        {
+            campestado.setText("");
+        }
+             if(campoidcli.getText().isEmpty())
+        {
+            campcliente.setText("*");
+        }
+        else
+        {
+            campcliente.setText("");
+        }
+                     if(campoidacti.getText().isEmpty())
+        {
+            campactividad.setText("*");
+        }
+        else
+        {
+            campactividad.setText("");
+        }
+                                    if(campoidhoraacti.getText().isEmpty())
+        {
+            camphorario.setText("*");
+        }
+        else
+        {
+            camphorario.setText("");
+        }
+  
+     
+                    
+        if(campoid.getText().isEmpty() ||campoidcli.getText().isEmpty()
+                ||campodia.getText().isEmpty()||campomes.getText().isEmpty()||campoyear.getText().isEmpty()||
+                campodia1.getText().isEmpty()||campomes1.getText().isEmpty()||campoyear1.getText().isEmpty()
+                ||campoidestado.getText().isEmpty()||campoidacti.getText().isEmpty()||campoidhoraacti.getText().isEmpty())
+        {
+            registrar.setEnabled(false);
+          
+        }
+        else
+        {
+            registrar.setEnabled(true);
+           
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoentrenador;
+    private javax.swing.JLabel campactividad;
+    private javax.swing.JLabel campbaja;
+    private javax.swing.JLabel campcliente;
+    private javax.swing.JLabel campestado;
+    private javax.swing.JLabel campfecha;
+    private javax.swing.JLabel camphorario;
     private javax.swing.JTextField campodia;
     private javax.swing.JTextField campodia1;
     private javax.swing.JTextField campoid;
@@ -903,6 +1088,7 @@ public class FrameReservaActividades extends javax.swing.JFrame {
     private javax.swing.JTextField campomes1;
     private javax.swing.JTextField campoyear;
     private javax.swing.JTextField campoyear1;
+    private javax.swing.JLabel campreser;
     private javax.swing.JLabel correoentrenador;
     private javax.swing.JLabel correoentrenador1;
     private javax.swing.JLabel correoentrenador2;

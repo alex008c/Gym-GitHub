@@ -529,8 +529,8 @@ int n;
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
         // TODO add your handling code here:
-        Menu m=new Menu();
-        m.setVisible(true);
+    new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_botonmenuActionPerformed
 

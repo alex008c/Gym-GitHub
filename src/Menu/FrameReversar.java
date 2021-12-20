@@ -334,8 +334,8 @@ public class FrameReversar extends javax.swing.JFrame {
 
     private void BotonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMenuActionPerformed
         // TODO add your handling code here:
-        Menu m=new Menu();
-        m.setVisible(true);
+        new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_BotonMenuActionPerformed
 

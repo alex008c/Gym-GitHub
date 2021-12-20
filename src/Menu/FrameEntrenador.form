@@ -131,10 +131,20 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="campoapellido" alignment="0" pref="300" max="32767" attributes="0"/>
-                      <Component id="campoid" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="campoid" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="campentre" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="camponombre" alignment="0" max="32767" attributes="0"/>
                       <Component id="campotel" alignment="0" max="32767" attributes="0"/>
                       <Component id="campocorreo" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="camptel" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="campape" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="campnom" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -172,21 +182,25 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="identrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoid" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campentre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="nombreentrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="camponombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campnom" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="apellidoentrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoapellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campape" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="telentrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campotel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="camptel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -336,6 +350,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="camponombreKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoapellido">
           <Properties>
@@ -346,6 +363,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoapellidoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campotel">
           <Properties>
@@ -356,6 +376,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campotelKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campocorreo">
           <Properties>
@@ -459,6 +482,46 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icons/guardar.png&quot;)));"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="campentre">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="campnom">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="campape">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="camptel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -5,6 +5,17 @@
  */
 package Menu;
 
+import Consultas.ConsuBalancePendiente;
+import Consultas.ConsuCobroRangoFecha;
+import Consultas.ConsultaActividades;
+import Consultas.ConsultaClientes;
+import Consultas.ConsultaEntrenador;
+import Consultas.ConsultaHActividades;
+import Consultas.ConsultaLocalizacion;
+import Consultas.ConsultaSalas;
+import Consultas.ConsultaUsuarios;
+import Consultas.ConsultadeCobroCliente;
+
 /**
  *
  * @author alex008c
@@ -31,7 +42,19 @@ public class MenuUsuario extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        mantenimiento = new javax.swing.JMenu();
+        jmenuentrenador = new javax.swing.JMenuItem();
+        jmenulocalizacion = new javax.swing.JMenuItem();
+        jmenusalas = new javax.swing.JMenuItem();
+        jmenuactividades = new javax.swing.JMenuItem();
+        jmenuhorario = new javax.swing.JMenuItem();
+        jmenuclientes = new javax.swing.JMenuItem();
+        jmenuestado = new javax.swing.JMenuItem();
+        jmenureservas = new javax.swing.JMenuItem();
+        jmenureseactividades = new javax.swing.JMenuItem();
         movimietos = new javax.swing.JMenu();
         jmenucuotas = new javax.swing.JMenuItem();
         procesos = new javax.swing.JMenu();
@@ -56,12 +79,107 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setText("USUARIO");
+
         jMenuBar1.setBackground(new java.awt.Color(153, 153, 153));
         jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setAlignmentX(5.0F);
         jMenuBar1.setMargin(new java.awt.Insets(5, 5, 5, 5));
         jMenuBar1.setMaximumSize(new java.awt.Dimension(25, 32769));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(20, 35));
+
+        mantenimiento.setBackground(new java.awt.Color(255, 0, 0));
+        mantenimiento.setForeground(new java.awt.Color(51, 51, 51));
+        mantenimiento.setText("Mantenimiento ");
+        mantenimiento.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        mantenimiento.setMaximumSize(new java.awt.Dimension(130, 140));
+        mantenimiento.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        jmenuentrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenuentrenador.setText("De Entrenador");
+        jmenuentrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuentrenadorActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenuentrenador);
+
+        jmenulocalizacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenulocalizacion.setText("De Localización");
+        jmenulocalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenulocalizacionActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenulocalizacion);
+
+        jmenusalas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenusalas.setText("De Salas");
+        jmenusalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenusalasActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenusalas);
+
+        jmenuactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenuactividades.setText("De Actividades");
+        jmenuactividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuactividadesActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenuactividades);
+
+        jmenuhorario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenuhorario.setText("De Horarios Actividades");
+        jmenuhorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuhorarioActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenuhorario);
+
+        jmenuclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenuclientes.setText("Clientes");
+        jmenuclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuclientesActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenuclientes);
+
+        jmenuestado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenuestado.setText("Estado Reservas");
+        jmenuestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuestadoActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenuestado);
+
+        jmenureservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenureservas.setText("De Reservas");
+        jmenureservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenureservasActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenureservas);
+
+        jmenureseactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jmenureseactividades.setText("Reserva Actividades");
+        jmenureseactividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenureseactividadesActionPerformed(evt);
+            }
+        });
+        mantenimiento.add(jmenureseactividades);
+
+        jMenuBar1.add(mantenimiento);
 
         movimietos.setBackground(new java.awt.Color(153, 153, 153));
         movimietos.setForeground(new java.awt.Color(51, 51, 51));
@@ -72,6 +190,11 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         jmenucuotas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jmenucuotas.setText("Cuotas");
+        jmenucuotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenucuotasActionPerformed(evt);
+            }
+        });
         movimietos.add(jmenucuotas);
 
         jMenuBar1.add(movimietos);
@@ -84,7 +207,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         procesos.setPreferredSize(new java.awt.Dimension(100, 100));
 
         jactualizarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jactualizarcobro.setText("Actualizar Cobro");
+        jactualizarcobro.setText("Actualizar Cuota");
         procesos.add(jactualizarcobro);
 
         jMenuBar1.add(procesos);
@@ -98,42 +221,92 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         cusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cusuario.setText("De Usuarios");
+        cusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cusuarioActionPerformed(evt);
+            }
+        });
         consultas.add(cusuario);
 
         centrenador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         centrenador.setText("De Entrenador");
+        centrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                centrenadorActionPerformed(evt);
+            }
+        });
         consultas.add(centrenador);
 
         clocalizacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         clocalizacion.setText("De Localizacion");
+        clocalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clocalizacionActionPerformed(evt);
+            }
+        });
         consultas.add(clocalizacion);
 
         csalas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         csalas.setText("De Salas");
+        csalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csalasActionPerformed(evt);
+            }
+        });
         consultas.add(csalas);
 
         cactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cactividades.setText("De Actividades");
+        cactividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cactividadesActionPerformed(evt);
+            }
+        });
         consultas.add(cactividades);
 
         chorariosactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         chorariosactividades.setText("De Horarios Actividades");
+        chorariosactividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chorariosactividadesActionPerformed(evt);
+            }
+        });
         consultas.add(chorariosactividades);
 
         ccobrorango.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ccobrorango.setText("De Cobro por Rango de Fecha");
+        ccobrorango.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccobrorangoActionPerformed(evt);
+            }
+        });
         consultas.add(ccobrorango);
 
         ccobroclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         ccobroclientes.setText("De Cobro por clientes");
+        ccobroclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccobroclientesActionPerformed(evt);
+            }
+        });
         consultas.add(ccobroclientes);
 
         cclientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cclientes.setText("De Clientes");
+        cclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cclientesActionPerformed(evt);
+            }
+        });
         consultas.add(cclientes);
 
         cclientespendiente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cclientespendiente.setText("De Clientes con Balance pendiente");
+        cclientespendiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cclientespendienteActionPerformed(evt);
+            }
+        });
         consultas.add(cclientespendiente);
 
         jMenuBar1.add(consultas);
@@ -144,15 +317,139 @@ public class MenuUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(571, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmenuentrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuentrenadorActionPerformed
+        // TODO add your handling code here:
+        FrameEntrenador fm=new FrameEntrenador();
+        fm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuentrenadorActionPerformed
+
+    private void jmenulocalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenulocalizacionActionPerformed
+        // TODO add your handling code here:
+        FrameLocalizacion fl=new FrameLocalizacion();
+        fl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenulocalizacionActionPerformed
+
+    private void jmenusalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenusalasActionPerformed
+        // TODO add your handling code here:
+        FrameSalas fs=new FrameSalas();
+        fs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenusalasActionPerformed
+
+    private void jmenuactividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuactividadesActionPerformed
+        // TODO add your handling code here:
+        FrameActividades fa=new FrameActividades();
+        fa.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuactividadesActionPerformed
+
+    private void jmenuhorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuhorarioActionPerformed
+        // TODO add your handling code here:
+        FrameHorarioActividad fha=new FrameHorarioActividad();
+        fha.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuhorarioActionPerformed
+
+    private void jmenuclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuclientesActionPerformed
+        new FrameCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuclientesActionPerformed
+
+    private void jmenuestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuestadoActionPerformed
+        new FrameEstadoReserva().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenuestadoActionPerformed
+
+    private void jmenureservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenureservasActionPerformed
+        new FrameReserva().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jmenureservasActionPerformed
+
+    private void jmenureseactividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenureseactividadesActionPerformed
+        // TODO add your handling code here:
+        new FrameReservaActividades().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenureseactividadesActionPerformed
+
+    private void jmenucuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenucuotasActionPerformed
+        // TODO add your handling code here:
+        new FrameCuota().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jmenucuotasActionPerformed
+
+    private void cusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusuarioActionPerformed
+        new ConsultaUsuarios().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_cusuarioActionPerformed
+
+    private void centrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centrenadorActionPerformed
+        // TODO add your handling code here:
+        ConsultaEntrenador f=new ConsultaEntrenador();
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_centrenadorActionPerformed
+
+    private void clocalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clocalizacionActionPerformed
+        new ConsultaLocalizacion().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_clocalizacionActionPerformed
+
+    private void csalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csalasActionPerformed
+        // TODO add your handling code here:
+        new ConsultaSalas().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_csalasActionPerformed
+
+    private void cactividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cactividadesActionPerformed
+        new ConsultaActividades().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_cactividadesActionPerformed
+
+    private void chorariosactividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chorariosactividadesActionPerformed
+        // TODO add your handling code here:
+        new ConsultaHActividades().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_chorariosactividadesActionPerformed
+
+    private void ccobrorangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccobrorangoActionPerformed
+        new ConsuCobroRangoFecha().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_ccobrorangoActionPerformed
+
+    private void ccobroclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccobroclientesActionPerformed
+        new ConsultadeCobroCliente().setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_ccobroclientesActionPerformed
+
+    private void cclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cclientesActionPerformed
+        // TODO add your handling code here:
+        new ConsultaClientes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cclientesActionPerformed
+
+    private void cclientespendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cclientespendienteActionPerformed
+        // TODO add your handling code here:
+        new ConsuBalancePendiente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cclientespendienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +499,24 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JMenu consultas;
     private javax.swing.JMenuItem csalas;
     private javax.swing.JMenuItem cusuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jactualizarcobro;
+    private javax.swing.JMenuItem jmenuactividades;
+    private javax.swing.JMenuItem jmenuclientes;
     private javax.swing.JMenuItem jmenucuotas;
+    private javax.swing.JMenuItem jmenuentrenador;
+    private javax.swing.JMenuItem jmenuestado;
+    private javax.swing.JMenuItem jmenuhorario;
+    private javax.swing.JMenuItem jmenulocalizacion;
+    private javax.swing.JMenuItem jmenureseactividades;
+    private javax.swing.JMenuItem jmenureservas;
+    private javax.swing.JMenuItem jmenusalas;
+    private javax.swing.JMenu mantenimiento;
     private javax.swing.JMenu movimietos;
     private javax.swing.JMenu procesos;
     // End of variables declaration//GEN-END:variables

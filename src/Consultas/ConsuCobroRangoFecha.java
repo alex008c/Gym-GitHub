@@ -5,6 +5,7 @@
  */
 package Consultas;
 
+import Menu.ManejoLogin;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -45,6 +46,7 @@ DefaultTableModel tabla;
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BOTONMENU = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,19 +81,25 @@ DefaultTableModel tabla;
             }
         });
 
+        titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        titulo.setText("CONSULTAS");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 233, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 233, Short.MAX_VALUE)
                         .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)))
+                        .addGap(178, 178, 178))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(titulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonConsulta)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -114,7 +122,8 @@ DefaultTableModel tabla;
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(txtBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo))
                 .addGap(401, 401, 401)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +228,9 @@ int nomb2=Integer.parseInt(txtBuscar2.getText());
     }//GEN-LAST:event_BotonConsultaActionPerformed
 
     private void BOTONMENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONMENUActionPerformed
-        // TODO add your handling code here:
+ new ManejoLogin().Leer();
+        
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BOTONMENUActionPerformed
 
     /**
@@ -265,6 +276,7 @@ int nomb2=Integer.parseInt(txtBuscar2.getText());
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscar2;
     // End of variables declaration//GEN-END:variables

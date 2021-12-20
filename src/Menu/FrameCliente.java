@@ -37,13 +37,15 @@ String resp="";
         initComponents();
        fechaingresocliente.setText(FechaActual());
       this.getContentPane().setBackground(new java.awt.Color(30,30,30));
+       titulo.setForeground(Color.white);
+      
+
         ButtonGroup bt=new ButtonGroup();
         bt.add(activo);
         bt.add(pasivo);
         botonguardar.setEnabled(false);
         this.setLocationRelativeTo(null);
-      titulo.setForeground(Color.white);
-     
+          
    
     }
     
@@ -947,8 +949,8 @@ String resp="";
 
     private void botonmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmenuActionPerformed
         // TODO add your handling code here:
-        Menu m=new Menu();
-        m.setVisible(true);
+      new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_botonmenuActionPerformed
 

@@ -20,6 +20,8 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
      */
     public FrameHorarioActividad() {
         initComponents();
+        registrar.setEnabled(false);
+        this.setLocationRelativeTo(null);
     }
     Boolean crear = false;
     /**
@@ -55,6 +57,10 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
         SAVE = new javax.swing.JLabel();
         CLEAR = new javax.swing.JLabel();
         HOME = new javax.swing.JLabel();
+        camphora = new javax.swing.JLabel();
+        campdia = new javax.swing.JLabel();
+        campid = new javax.swing.JLabel();
+        campida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GYM");
@@ -74,7 +80,7 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +141,11 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
 
         campodia.setBackground(new java.awt.Color(204, 204, 204));
         campodia.setCaretColor(new java.awt.Color(0, 0, 0));
+        campodia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campodiaKeyReleased(evt);
+            }
+        });
 
         campohora.setBackground(new java.awt.Color(204, 204, 204));
         campohora.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -211,6 +222,18 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
         HOME.setBackground(new java.awt.Color(0, 0, 0));
         HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
 
+        camphora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        camphora.setForeground(new java.awt.Color(255, 0, 0));
+
+        campdia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campdia.setForeground(new java.awt.Color(255, 0, 0));
+
+        campid.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campid.setForeground(new java.awt.Color(255, 0, 0));
+
+        campida.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campida.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -226,23 +249,39 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campohora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campominuto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(campodia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(campoidact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campohora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campominuto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(camphora, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(campoidact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addComponent(campida, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(campodia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(campid, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(campdia, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,11 +301,13 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identrenador)
-                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campid))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreentrenador)
-                    .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campdia))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoentrenador)
@@ -274,11 +315,13 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(campominuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(camphora))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telentrenador)
-                    .addComponent(campoidact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campida))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,16 +353,18 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -327,7 +372,8 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        new Menu().setVisible(true);
+       new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
 
@@ -375,7 +421,8 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarActionPerformed
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
-       int cod;
+validar();       
+        int cod;
         boolean encontrado=false;
 
         cod=Integer.parseInt(campoid.getText());
@@ -458,17 +505,20 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
     }//GEN-LAST:event_campominutoKeyTyped
 
     private void campohoraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campohoraKeyReleased
-       int hora=Integer.parseInt(campohora.getText());
+       
+        
+        int hora=Integer.parseInt(campohora.getText());validar();
        if(hora<0 || hora > 23){
            campohora.setText("");
        }  
     }//GEN-LAST:event_campohoraKeyReleased
 
     private void campominutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campominutoKeyReleased
-       int hora=Integer.parseInt(campominuto.getText());
+       int hora=Integer.parseInt(campominuto.getText());validar();
        if(hora<0 || hora > 59){
           campominuto.setText("");
         }
+       validar();
     }//GEN-LAST:event_campominutoKeyReleased
 
     private void campoidactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidactKeyReleased
@@ -522,6 +572,11 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
        if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_campoidactKeyTyped
 
+    private void campodiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campodiaKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_campodiaKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -557,12 +612,70 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
             }
         });
     }
+    public void validar(){
+      
+ 
+      
+        
+        
+        
+               if(campoid.getText().isEmpty())
+        {
+            campid.setText("*");
+        }
+        else
+        {
+            campid.setText("");
+        }
+          if(campodia.getText().isEmpty())
+        {
+            campdia.setText("*");
+        }
+        else
+        {
+            campdia.setText("");
+        }
+                 if(campohora.getText().isEmpty()|| campominuto.getText().isEmpty())
+        {
+            camphora.setText("*");
+        }
+        else
+        {
+            camphora.setText("");
+        }
+          if(campoidact.getText().isEmpty())
+        {
+            campida.setText("*");
+        }
+        else
+        {
+            campida.setText("");
+        }
+  
+     
+                    
+        if(campoid.getText().isEmpty() || campodia.getText().isEmpty()||campohora.getText().isEmpty()
+                ||campohora.getText().isEmpty()||campoidact.getText().isEmpty())
+        {
+            registrar.setEnabled(false);
+          
+        }
+        else
+        {
+            registrar.setEnabled(true);
+           
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLEAR;
     private javax.swing.JLabel HOME;
     private javax.swing.JLabel SAVE;
     private javax.swing.JLabel apellidoentrenador;
+    private javax.swing.JLabel campdia;
+    private javax.swing.JLabel camphora;
+    private javax.swing.JLabel campid;
+    private javax.swing.JLabel campida;
     private javax.swing.JTextField campodia;
     private javax.swing.JTextField campohora;
     private javax.swing.JTextField campoid;

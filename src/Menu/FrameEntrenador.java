@@ -26,6 +26,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
      */
     public FrameEntrenador() {
         initComponents();
+        registrar.setEnabled(false);
     }
    Boolean crear = false;
     /**
@@ -60,6 +61,10 @@ public class FrameEntrenador extends javax.swing.JFrame {
         HOME = new javax.swing.JLabel();
         CLEAR = new javax.swing.JLabel();
         SAVE = new javax.swing.JLabel();
+        campentre = new javax.swing.JLabel();
+        campnom = new javax.swing.JLabel();
+        campape = new javax.swing.JLabel();
+        camptel = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -150,12 +155,27 @@ public class FrameEntrenador extends javax.swing.JFrame {
 
         camponombre.setBackground(new java.awt.Color(204, 204, 204));
         camponombre.setCaretColor(new java.awt.Color(0, 0, 0));
+        camponombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                camponombreKeyReleased(evt);
+            }
+        });
 
         campoapellido.setBackground(new java.awt.Color(204, 204, 204));
         campoapellido.setCaretColor(new java.awt.Color(0, 0, 0));
+        campoapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoapellidoKeyReleased(evt);
+            }
+        });
 
         campotel.setBackground(new java.awt.Color(204, 204, 204));
         campotel.setCaretColor(new java.awt.Color(0, 0, 0));
+        campotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campotelKeyReleased(evt);
+            }
+        });
 
         campocorreo.setBackground(new java.awt.Color(204, 204, 204));
         campocorreo.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -190,6 +210,18 @@ public class FrameEntrenador extends javax.swing.JFrame {
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
         SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
+        campentre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campentre.setForeground(new java.awt.Color(255, 0, 0));
+
+        campnom.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campnom.setForeground(new java.awt.Color(255, 0, 0));
+
+        campape.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        campape.setForeground(new java.awt.Color(255, 0, 0));
+
+        camptel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        camptel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -205,10 +237,18 @@ public class FrameEntrenador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(campoapellido, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campentre, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(camponombre)
                     .addComponent(campotel)
                     .addComponent(campocorreo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(camptel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campape, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campnom, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
@@ -238,19 +278,23 @@ public class FrameEntrenador extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identrenador)
-                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campentre))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreentrenador)
-                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campnom))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoentrenador)
-                    .addComponent(campoapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campape))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telentrenador)
-                    .addComponent(campotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camptel))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
@@ -297,7 +341,8 @@ public class FrameEntrenador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        new Menu().setVisible(true);
+      new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
                                                                         
@@ -312,6 +357,7 @@ public class FrameEntrenador extends javax.swing.JFrame {
 
     private void campoidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyReleased
       int cod;
+      validar();
         boolean encontrado=false;
 
         cod=Integer.parseInt(campoid.getText());
@@ -425,6 +471,28 @@ public class FrameEntrenador extends javax.swing.JFrame {
        if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_campoidKeyTyped
 
+    private void camponombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camponombreKeyReleased
+        // TODO add your handling code here:
+        validar();
+  
+
+    }//GEN-LAST:event_camponombreKeyReleased
+
+    private void campoapellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoapellidoKeyReleased
+        // TODO add your handling code here:
+          validar();
+     
+  
+    }//GEN-LAST:event_campoapellidoKeyReleased
+
+    private void campotelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campotelKeyReleased
+        // TODO add your handling code here:
+          validar();
+          char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    
+    }//GEN-LAST:event_campotelKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -459,17 +527,75 @@ public class FrameEntrenador extends javax.swing.JFrame {
             }
         });
     }
-
+     public void validar(){
+      
+ 
+      
+        
+        
+        
+               if(campoid.getText().isEmpty())
+        {
+            campentre.setText("*");
+        }
+        else
+        {
+            campentre.setText("");
+        }
+          if(camponombre.getText().isEmpty())
+        {
+            campnom.setText("*");
+        }
+        else
+        {
+            campnom.setText("");
+        }
+                 if(campoapellido.getText().isEmpty())
+        {
+            campape.setText("*");
+        }
+        else
+        {
+            campape.setText("");
+        }
+          if(campotel.getText().isEmpty())
+        {
+            camptel.setText("*");
+        }
+        else
+        {
+            camptel.setText("");
+        }
+  
+     
+                    
+        if(campoid.getText().isEmpty() || camponombre.getText().isEmpty()||campoapellido.getText().isEmpty()
+                ||campotel.getText().isEmpty())
+        {
+            registrar.setEnabled(false);
+          
+        }
+        else
+        {
+            registrar.setEnabled(true);
+           
+        }
+        
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JLabel CLEAR;
     javax.swing.JLabel HOME;
     javax.swing.JLabel SAVE;
     javax.swing.JLabel apellidoentrenador;
+    javax.swing.JLabel campape;
+    javax.swing.JLabel campentre;
+    javax.swing.JLabel campnom;
     javax.swing.JTextField campoapellido;
     javax.swing.JTextField campocorreo;
     javax.swing.JTextField campoid;
     javax.swing.JTextField camponombre;
     javax.swing.JTextField campotel;
+    javax.swing.JLabel camptel;
     javax.swing.JLabel correoentrenador;
     javax.swing.JTextPane estatus;
     javax.swing.JLabel identrenador;

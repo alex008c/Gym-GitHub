@@ -20,6 +20,8 @@ public class FrameReserva extends javax.swing.JFrame {
      */
     public FrameReserva() {
         initComponents();
+            registrar.setEnabled(false);
+        this.setLocationRelativeTo(null);
     }
    Boolean crear = false;
 
@@ -61,6 +63,12 @@ public class FrameReserva extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         campomes = new javax.swing.JTextField();
         campoyear = new javax.swing.JTextField();
+        campfecha = new javax.swing.JLabel();
+        campsala = new javax.swing.JLabel();
+        campreserva = new javax.swing.JLabel();
+        camphorario = new javax.swing.JLabel();
+        campestado = new javax.swing.JLabel();
+        campcliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,13 +148,24 @@ public class FrameReserva extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidKeyTyped(evt);
+            }
         });
 
         campoidsala.setBackground(new java.awt.Color(204, 204, 204));
         campoidsala.setCaretColor(new java.awt.Color(0, 0, 0));
+        campoidsala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoidsalaActionPerformed(evt);
+            }
+        });
         campoidsala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidsalaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidsalaKeyTyped(evt);
             }
         });
 
@@ -155,6 +174,9 @@ public class FrameReserva extends javax.swing.JFrame {
         campoidclientere.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidclientereKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidclientereKeyTyped(evt);
             }
         });
 
@@ -221,6 +243,9 @@ public class FrameReserva extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoidestadoreservaKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoidestadoreservaKeyTyped(evt);
+            }
         });
 
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
@@ -253,6 +278,24 @@ public class FrameReserva extends javax.swing.JFrame {
             }
         });
 
+        campfecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campfecha.setForeground(new java.awt.Color(255, 0, 0));
+
+        campsala.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campsala.setForeground(new java.awt.Color(255, 0, 0));
+
+        campreserva.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campreserva.setForeground(new java.awt.Color(255, 0, 0));
+
+        camphorario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        camphorario.setForeground(new java.awt.Color(255, 0, 0));
+
+        campestado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campestado.setForeground(new java.awt.Color(255, 0, 0));
+
+        campcliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campcliente.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -261,48 +304,7 @@ public class FrameReserva extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(apellidoentrenador)
-                                    .addComponent(correoentrenador)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(correoentrenador1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(nombreentrenador, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(identrenador, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addComponent(telentrenador, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(campoidclientere, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoidsala, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(campoidestadoreserva, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(campoidhorareserva, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(campomes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(76, 76, 76)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
@@ -312,24 +314,86 @@ public class FrameReserva extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registrar)))
-                .addGap(15, 15, 15))
+                        .addComponent(registrar)
+                        .addGap(15, 15, 15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(apellidoentrenador)
+                                        .addComponent(correoentrenador)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(correoentrenador1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(nombreentrenador, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(identrenador, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addComponent(telentrenador, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(campoidestadoreserva, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campoidhorareserva, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(campodia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(campomes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(camphorario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campestado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(campoidclientere, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campoidsala, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campreserva, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campsala, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(identrenador)
-                    .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(identrenador)
+                            .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(campreserva)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreentrenador)
-                    .addComponent(campoidsala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nombreentrenador)
+                        .addComponent(campoidsala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campsala))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoentrenador)
-                    .addComponent(campoidclientere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidclientere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campcliente))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campomes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,16 +404,19 @@ public class FrameReserva extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
-                .addGap(21, 21, 21)
+                            .addComponent(jLabel5)
+                            .addComponent(campfecha))))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
-                    .addComponent(campoidhorareserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoidhorareserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camphorario))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador1)
-                    .addComponent(campoidestadoreserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(campoidestadoreserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campestado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -373,17 +440,23 @@ public class FrameReserva extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -391,7 +464,8 @@ public class FrameReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        new Menu().setVisible(true);
+       new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
 
@@ -757,7 +831,8 @@ public class FrameReserva extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void campoidhorareservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidhorareservaKeyTyped
-        //para el año
+       char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();        //para el año
         int year=Integer.parseInt(campoyear.getText());
         if(year<2021 || year>2100)
         {
@@ -768,6 +843,31 @@ public class FrameReserva extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Favor, digitar año. ");
         }
     }//GEN-LAST:event_campoidhorareservaKeyTyped
+
+    private void campoidsalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoidsalaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidsalaActionPerformed
+
+    private void campoidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidKeyTyped
+        // TODO add your handling code here:
+               char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_campoidKeyTyped
+
+    private void campoidsalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidsalaKeyTyped
+       char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidsalaKeyTyped
+
+    private void campoidclientereKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidclientereKeyTyped
+       char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidclientereKeyTyped
+
+    private void campoidestadoreservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidestadoreservaKeyTyped
+       char c=evt.getKeyChar();
+       if(c<'0' || c>'9')evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoidestadoreservaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -803,12 +903,87 @@ public class FrameReserva extends javax.swing.JFrame {
             }
         });
     }
+    public void validar(){
+      
+ 
+      
+        
+        
+        
+               if(campoid.getText().isEmpty())
+        {
+            campreserva.setText("*");
+        }
+        else
+        {
+            campreserva.setText("");
+        }
+          if(campoidsala.getText().isEmpty())
+        {
+            campsala.setText("*");
+        }
+        else
+        {
+            campsala.setText("");
+        }
+                 if(campodia.getText().isEmpty()|| campomes.getText().isEmpty()||campoyear.getText().isEmpty())
+        {
+            campfecha.setText("*");
+        }
+        else
+        {
+            campfecha.setText("");
+        }
+          if(campoidhorareserva.getText().isEmpty())
+        {
+            camphorario.setText("*");
+        }
+        else
+        {
+            camphorario.setText("");
+        }
+             if(campoidestadoreserva.getText().isEmpty())
+        {
+            campestado.setText("*");
+        }
+        else
+        {
+            campestado.setText("");
+        }
+                     if(campoidclientere.getText().isEmpty())
+        {
+            campcliente.setText("*");
+        }
+        else
+        {
+            campcliente.setText("");
+        }
+  
+     
+                    
+        if(campoid.getText().isEmpty() || campoidsala.getText().isEmpty()||campoidclientere.getText().isEmpty()
+                ||campodia.getText().isEmpty()||campomes.getText().isEmpty()||campoyear.getText().isEmpty()
+                ||campoidhorareserva.getText().isEmpty()||campoidestadoreserva.getText().isEmpty())
+        {
+            registrar.setEnabled(false);
+          
+        }
+        else
+        {
+            registrar.setEnabled(true);
+           
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLEAR;
     private javax.swing.JLabel HOME;
     private javax.swing.JLabel SAVE;
     private javax.swing.JLabel apellidoentrenador;
+    private javax.swing.JLabel campcliente;
+    private javax.swing.JLabel campestado;
+    private javax.swing.JLabel campfecha;
+    private javax.swing.JLabel camphorario;
     private javax.swing.JTextField campodia;
     private javax.swing.JTextField campoid;
     private javax.swing.JTextField campoidclientere;
@@ -817,6 +992,8 @@ public class FrameReserva extends javax.swing.JFrame {
     private javax.swing.JTextField campoidsala;
     private javax.swing.JTextField campomes;
     private javax.swing.JTextField campoyear;
+    private javax.swing.JLabel campreserva;
+    private javax.swing.JLabel campsala;
     private javax.swing.JLabel correoentrenador;
     private javax.swing.JLabel correoentrenador1;
     private javax.swing.JTextPane estatus;
