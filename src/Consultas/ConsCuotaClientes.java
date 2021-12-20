@@ -26,9 +26,7 @@ DefaultTableModel tabla;
         initComponents();
             initComponents();
          tabla=( DefaultTableModel)this.jTable1.getModel();
-       
-       
-  
+
     }
 
     /**

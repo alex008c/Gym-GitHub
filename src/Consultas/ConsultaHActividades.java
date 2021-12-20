@@ -77,6 +77,11 @@ public class ConsultaHActividades extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         jButton2.setText("MENU");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         CONSULTAS.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         CONSULTAS.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,6 +199,12 @@ String nomb=txtBuscar.getText();
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+ new ManejoLogin().Leer();
+        
+        this.dispose();          // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
