@@ -55,16 +55,15 @@ int n=1;
         campoidcuota = new javax.swing.JTextField();
         campocobro = new javax.swing.JTextField();
         campocorreo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        estatus = new javax.swing.JTextPane();
         limpiar = new javax.swing.JButton();
         HOME = new javax.swing.JLabel();
         CLEAR = new javax.swing.JLabel();
         SAVE = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +130,11 @@ int n=1;
         registrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         registrar.setForeground(new java.awt.Color(204, 204, 204));
         registrar.setText("Registrar");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
 
         campoid.setBackground(new java.awt.Color(204, 204, 204));
         campoid.setForeground(new java.awt.Color(0, 0, 0));
@@ -151,11 +155,6 @@ int n=1;
 
         campoidcuota.setBackground(new java.awt.Color(204, 204, 204));
         campoidcuota.setCaretColor(new java.awt.Color(0, 0, 0));
-        campoidcuota.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                campoidcuotaKeyReleased(evt);
-            }
-        });
 
         campocobro.setBackground(new java.awt.Color(204, 204, 204));
         campocobro.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -169,21 +168,15 @@ int n=1;
         campocorreo.setCaretColor(new java.awt.Color(0, 0, 0));
         campocorreo.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Estatus");
-
-        estatus.setBackground(new java.awt.Color(51, 51, 51));
-        estatus.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        estatus.setForeground(new java.awt.Color(51, 51, 51));
-        estatus.setCaretColor(new java.awt.Color(102, 102, 102));
-        estatus.setEnabled(false);
-        jScrollPane1.setViewportView(estatus);
-
         limpiar.setBackground(new java.awt.Color(0, 0, 0));
         limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         limpiar.setForeground(new java.awt.Color(204, 204, 204));
         limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
 
         HOME.setBackground(new java.awt.Color(0, 0, 0));
         HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
@@ -194,25 +187,6 @@ int n=1;
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
         SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
-        Tabla.setBackground(new java.awt.Color(102, 102, 102));
-        Tabla.setForeground(new java.awt.Color(255, 255, 255));
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID cobro", "Fecha", "Cantidad", "Concepto", "Status"
-            }
-        ));
-        Tabla.setEnabled(false);
-        Tabla.setGridColor(new java.awt.Color(0, 0, 0));
-        Tabla.setOpaque(false);
-        Tabla.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(Tabla);
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Buscar.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,57 +194,104 @@ int n=1;
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(25, 25, 25));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Detalle Cuota");
+
+        Tabla.setBackground(new java.awt.Color(102, 102, 102));
+        Tabla.setForeground(new java.awt.Color(255, 255, 255));
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID cobro", "Fecha", "Cantidad", "Concepto", "Status", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Tabla.setEnabled(false);
+        Tabla.setGridColor(new java.awt.Color(0, 0, 0));
+        Tabla.setOpaque(false);
+        Tabla.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(Tabla);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apellidoentrenador)
-                            .addComponent(telentrenador)
-                            .addComponent(correoentrenador)
-                            .addComponent(nombreentrenador)
-                            .addComponent(identrenador))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campocobro, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoidcuota, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(apellidoentrenador)
+                    .addComponent(telentrenador)
+                    .addComponent(correoentrenador)
+                    .addComponent(nombreentrenador)
+                    .addComponent(identrenador))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(campocobro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoidcuota, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                        .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(limpiar)
-                        .addGap(73, 73, 73)
-                        .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(registrar)))
+                .addComponent(HOME, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(limpiar)
+                .addGap(73, 73, 73)
+                .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registrar)
                 .addGap(24, 24, 24))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(identrenador)
                     .addComponent(campoid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,10 +312,6 @@ int n=1;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
                     .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -308,8 +325,8 @@ int n=1;
                         .addGap(3, 3, 3)
                         .addComponent(SAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png")));
@@ -321,7 +338,7 @@ int n=1;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -380,12 +397,74 @@ int n=1;
       
     }//GEN-LAST:event_campoidMouseMoved
 
-    private void campoidcuotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcuotaKeyReleased
-        
-    }//GEN-LAST:event_campoidcuotaKeyReleased
+    private void campocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campocobroKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocobroKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int cod;
+        tabla.setRowCount(0);
+        boolean encontrado=false;
+
+        cod=Integer.parseInt(campoidcuota.getText());
+
+        Scanner s;
+        try {
+            File f=new File("Cobros.txt");
+
+            s = new Scanner(f);
+
+            do {
+                String linea = s.nextLine();
+
+                Scanner sl = new Scanner(linea);
+
+                sl.useDelimiter("\\s*;\\s*");
+                try {
+                    String id=sl.next();
+                    String dia=sl.next();
+                    String mes=sl.next();
+                    String anio=sl.next();
+
+                    if(cod==Integer.parseInt(sl.next()))
+                    {
+                        String concepto= sl.next();
+                        String cobro=sl.next();
+                        String estado=sl.next();
+                        double total=0;total+=Double.parseDouble(cobro);
+                        tabla.addRow(new Object [] {id,dia+"/"+mes+"/"+anio,cobro,concepto,estado,total});
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "ID no existe.");
+                    }
+
+                } // fin try
+                catch (Exception  e1)
+                {
+                    JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            }while (s.hasNextLine() ); // fin while
+         
+        
+            s.close();
+            
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        campoidcuota.setText("");
+        campocobro.setText("");
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+int cod;
         boolean encontrado=false;
 
         cod=Integer.parseInt(campoidcuota.getText());
@@ -412,11 +491,26 @@ int n=1;
 
                         if(cod==Integer.parseInt(sl.next()))
                         {
-                          String concepto= sl.next();
-                           String cobro=sl.next();
+                            String concepto=sl.next();
+                            String cobro=sl.next();
                             String estado=sl.next();
-
-                            tabla.addRow(new Object [] {id,dia+"/"+mes+"/"+anio,cobro,concepto,estado});
+                            double total2=0,deu=Double.parseDouble(cobro);
+                            double deuda=Double.parseDouble(campocobro.getText());
+                            
+                            if((deu-deuda)>=0){
+                               
+                                total2=deu-deuda;
+                            
+                            ManejoCobrooo mc=new ManejoCobrooo();
+                            String Nlinea=(id+";"+dia+";"+mes+";"+anio+";"+cod+";"+concepto+";"+total2+";"+estado);
+                            mc.ModificarDatos(Nlinea,campoid.getText());
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"Ingrece una cifra menor o igual al primer cobro");
+                            }   
+                               
+                           
+                            
                             
                         }
                         
@@ -428,19 +522,74 @@ int n=1;
                        
                     }
                 }while (s.hasNextLine() ); // fin while
-            
+        
 
             s.close();
+            
         } // fin try
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        File fNuevo= new File("Cobros2.txt");
+        File fAntiguo= new File("Cobros.txt");
+        fAntiguo.delete();
+        fNuevo.renameTo(fAntiguo);
+        
+        //
 
-    private void campocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campocobroKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocobroKeyReleased
+        try {
+            File f=new File("Cobros.txt");
+            
+           
+            s = new Scanner(f);
+                
+               do {
+                    String linea = s.nextLine();
+
+                    Scanner sl = new Scanner(linea);
+
+                    sl.useDelimiter("\\s*;\\s*");
+                    try {
+                        String id=sl.next();
+                        String dia=sl.next();
+                        String mes=sl.next();
+                        String anio=sl.next();
+                        String codi=sl.next();
+                        String concepto=sl.next();
+                        String cobro=sl.next();
+                        String estado=sl.next();
+                       
+                            if(Double.parseDouble(cobro)==0.0){
+                            ManejoCobrooo mc=new ManejoCobrooo();
+                            String Nlinea=(id+";"+dia+";"+mes+";"+anio+";"+codi+";"+concepto+";"+cobro+";"+"true");
+                            mc.ModificarDatos(Nlinea,campoid.getText());
+                              
+                            }
+                        
+                        
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                }while (s.hasNextLine() ); // fin while
+        
+
+            s.close();
+            
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+        File FNuevo= new File("Cobros2.txt");
+       if(FNuevo.exists()){
+           File FAntiguo= new File("Cobros.txt");
+        FAntiguo.delete();
+        FNuevo.renameTo(FAntiguo);}
+    }//GEN-LAST:event_registrarActionPerformed
 public String FechaActual()
         {
             Date Fecha=new Date();
@@ -496,14 +645,13 @@ public String FechaActual()
     private javax.swing.JTextField campoid;
     private javax.swing.JTextField campoidcuota;
     private javax.swing.JLabel correoentrenador;
-    private javax.swing.JTextPane estatus;
     private javax.swing.JLabel identrenador;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton limpiar;
     private javax.swing.JButton menu;
