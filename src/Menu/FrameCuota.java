@@ -59,7 +59,7 @@ int n=1;
         HOME = new javax.swing.JLabel();
         CLEAR = new javax.swing.JLabel();
         SAVE = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonbuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -155,6 +155,11 @@ int n=1;
 
         campoidcuota.setBackground(new java.awt.Color(204, 204, 204));
         campoidcuota.setCaretColor(new java.awt.Color(0, 0, 0));
+        campoidcuota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoidcuotaKeyReleased(evt);
+            }
+        });
 
         campocobro.setBackground(new java.awt.Color(204, 204, 204));
         campocobro.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -187,10 +192,10 @@ int n=1;
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
         SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Buscar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Buscar.png"))); // NOI18N
+        botonbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonbuscarActionPerformed(evt);
             }
         });
 
@@ -266,11 +271,10 @@ int n=1;
                     .addComponent(campocobro, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoidcuota, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                        .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -303,7 +307,7 @@ int n=1;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apellidoentrenador)
                     .addComponent(campoidcuota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telentrenador)
@@ -312,7 +316,6 @@ int n=1;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correoentrenador)
                     .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,7 +358,8 @@ int n=1;
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        new Menu().setVisible(true);
+        new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
 
@@ -401,7 +405,7 @@ int n=1;
         // TODO add your handling code here:
     }//GEN-LAST:event_campocobroKeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarActionPerformed
         int cod;
         tabla.setRowCount(0);
         boolean encontrado=false;
@@ -456,7 +460,7 @@ int n=1;
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonbuscarActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
         campoidcuota.setText("");
@@ -466,6 +470,7 @@ int n=1;
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
 int cod;
         boolean encontrado=false;
+        double deuda=0;
 
         cod=Integer.parseInt(campoidcuota.getText());
 
@@ -494,10 +499,11 @@ int cod;
                             String concepto=sl.next();
                             String cobro=sl.next();
                             String estado=sl.next();
-                            double total2=0,deu=Double.parseDouble(cobro);
-                            double deuda=Double.parseDouble(campocobro.getText());
+                            double total2=0,
+                                    deu=Double.parseDouble(cobro);
+                             deuda=Double.parseDouble(campocobro.getText());
                             
-                            if((deu-deuda)>=0){
+                            if((deu-deuda)==0){
                                
                                 total2=deu-deuda;
                             
@@ -505,8 +511,8 @@ int cod;
                             String Nlinea=(id+";"+dia+";"+mes+";"+anio+";"+cod+";"+concepto+";"+total2+";"+estado);
                             mc.ModificarDatos(Nlinea,campoid.getText());
                             }
-                            else{
-                                JOptionPane.showMessageDialog(null,"Ingrece una cifra menor o igual al primer cobro");
+                            else if(deuda>deu){
+                                JOptionPane.showMessageDialog(null,"Ingrese una cifra menor o igual al primer cobro");
                             }   
                                
                            
@@ -531,10 +537,7 @@ int cod;
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
-        File fNuevo= new File("Cobros2.txt");
-        File fAntiguo= new File("Cobros.txt");
-        fAntiguo.delete();
-        fNuevo.renameTo(fAntiguo);
+      //////
         
         //
 
@@ -583,13 +586,93 @@ int cod;
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
-        }
-        File FNuevo= new File("Cobros2.txt");
+        }  /*File FNuevo= new File("Cobros2.txt");
        if(FNuevo.exists()){
            File FAntiguo= new File("Cobros.txt");
         FAntiguo.delete();
-        FNuevo.renameTo(FAntiguo);}
+        FNuevo.renameTo(FAntiguo);}*/
+       
+       
+       int codd;
+        boolean encontra=false;
+       
+
+        codd=Integer.parseInt(campoidcuota.getText());
+
+        Scanner z;
+        try {
+            File c=new File("Clientes.txt");
+            
+           
+            z = new Scanner(c);
+                
+               do {
+                    String lineaa = z.nextLine();
+
+                    Scanner sp = new Scanner(lineaa);
+
+                    sp.useDelimiter("\\s*;\\s*");
+                    try {
+                        int id=Integer.parseInt(sp.next());
+ 
+                        if(codd==id)
+                        {
+                            
+                          String nombre=sp.next();
+                        String pat=sp.next();
+                        String mat=sp.next();
+                        String dir=sp.next();
+                        String dia=sp.next();
+                        String mes=sp.next();
+                        String anio=sp.next();
+                        String tel=sp.next();
+                        String cel=sp.next();
+                        String fecha=sp.next();
+                        String stat=sp.next();
+                        String tipo=sp.next();
+                        String correo=sp.next();
+                        double balan=Double.parseDouble(sp.next());
+                        double cuota=Double.parseDouble(sp.next());  
+                        double valorcuota=balan-deuda;
+                        ManejoClientes m=new ManejoClientes();
+                        String nueval=(id+"; "+nombre+"; "+pat+"; "+mat+"; "+dir+"; "+dia+"; "+mes+"; "+anio+"; "+tel+"; "
+                                +cel+"; "+fecha+"; "+stat+"; "+tipo+"; "+correo+"; "+valorcuota+"; "+cuota);
+                        m.ModificarDatos(nueval,String.valueOf(id));
+                           
+                            
+                            
+                        }
+                        
+                        
+                    } // fin try
+                    catch (Exception  e1)
+                    {
+                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+                       
+                    }
+                }while (z.hasNextLine() ); // fin while
+        
+
+            z.close();
+            
+        } // fin try
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
+        }
+      
+         File FNuevoooo= new File("Clientes2.txt");
+       if(FNuevoooo.exists()){
+           File FAntiguooo= new File("Clientes.txt");
+        FAntiguooo.delete();
+        FNuevoooo.renameTo(FAntiguooo);}
+       
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void campoidcuotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcuotaKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_campoidcuotaKeyReleased
 public String FechaActual()
         {
             Date Fecha=new Date();
@@ -639,6 +722,7 @@ public String FechaActual()
     private javax.swing.JLabel SAVE;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel apellidoentrenador;
+    private javax.swing.JButton botonbuscar;
     private javax.swing.JTextField campocobro;
     private javax.swing.JTextField campocorreo;
     private javax.swing.JTextField campofechacuota;
@@ -646,7 +730,6 @@ public String FechaActual()
     private javax.swing.JTextField campoidcuota;
     private javax.swing.JLabel correoentrenador;
     private javax.swing.JLabel identrenador;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

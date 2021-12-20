@@ -126,7 +126,7 @@
                       <Component id="campofechacuota" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="botonbuscar" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -164,7 +164,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="apellidoentrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoidcuota" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="botonbuscar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -340,6 +340,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoidcuotaKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campocobro">
           <Properties>
@@ -421,14 +424,14 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icons/guardar.png&quot;)));"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="botonbuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/Buscar.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonbuscarActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">
