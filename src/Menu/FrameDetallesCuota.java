@@ -5,31 +5,18 @@
  */
 package Menu;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author alex008c
  */
-public class FrameCuota extends javax.swing.JFrame {
+public class FrameDetallesCuota extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrameCuota
+     * Creates new form FrameDetallesCuota
      */
-    DefaultTableModel tabla;
-    public FrameCuota() {
+    public FrameDetallesCuota() {
         initComponents();
-        campofechacuota.setText(FechaActual());
-        tabla=( DefaultTableModel)this.Tabla.getModel();
     }
-int num;
-int n=1;
- ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,14 +61,14 @@ int n=1;
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Cuota");
+        jLabel1.setText("Detalles Cuota");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(167, 167, 167)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -243,9 +230,8 @@ int n=1;
                             .addComponent(campocobro, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoidcuota, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING)))))
+                            .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campofechacuota, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -295,7 +281,6 @@ int n=1;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +319,6 @@ int n=1;
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
@@ -344,27 +328,25 @@ int n=1;
 
     private void campoidMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoidMouseMoved
         Scanner z;
-          
+
         try {
-            
+
             File g=new File("Cuota.txt");
-            
+
             if(!g.exists())
             {
-                
+
                 g.createNewFile();
             }
             z = new Scanner(g);
-          
-            
-                while (z.hasNextLine())
-                {
-                    String linea = z.nextLine();
-                      num++;
-                    Scanner sll = new Scanner(linea);
 
-           
-                }
+            while (z.hasNextLine())
+            {
+                String linea = z.nextLine();
+                num++;
+                Scanner sll = new Scanner(linea);
+
+            }
 
             z.close();
         } // fin try
@@ -372,17 +354,21 @@ int n=1;
         {
             JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e);
         }
-        
-  campoid.setText(String.valueOf(num));
-  num=0;
+
+        campoid.setText(String.valueOf(num));
+        num=0;
         n=Integer.parseInt(campoid.getText());
-       n=n+1;
-      
+        n=n+1;
+
     }//GEN-LAST:event_campoidMouseMoved
 
     private void campoidcuotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoidcuotaKeyReleased
-        
+
     }//GEN-LAST:event_campoidcuotaKeyReleased
+
+    private void campocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campocobroKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocobroKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int cod;
@@ -393,42 +379,38 @@ int n=1;
         Scanner s;
         try {
             File f=new File("Cobros.txt");
-            
-           
+
             s = new Scanner(f);
-                
-               do {
-                    String linea = s.nextLine();
 
-                    Scanner sl = new Scanner(linea);
+            do {
+                String linea = s.nextLine();
 
-                    sl.useDelimiter("\\s*;\\s*");
-                    try {
-                        String id=sl.next();
-                        String dia=sl.next();
-                        String mes=sl.next();
-                        String anio=sl.next();
-                        
+                Scanner sl = new Scanner(linea);
 
-                        if(cod==Integer.parseInt(sl.next()))
-                        {
-                          String concepto= sl.next();
-                           String cobro=sl.next();
-                            String estado=sl.next();
+                sl.useDelimiter("\\s*;\\s*");
+                try {
+                    String id=sl.next();
+                    String dia=sl.next();
+                    String mes=sl.next();
+                    String anio=sl.next();
 
-                            tabla.addRow(new Object [] {id,dia+"/"+mes+"/"+anio,cobro,concepto,estado});
-                            
-                        }
-                        
-                        
-                    } // fin try
-                    catch (Exception  e1)
+                    if(cod==Integer.parseInt(sl.next()))
                     {
-                       JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
-                       
+                        String concepto= sl.next();
+                        String cobro=sl.next();
+                        String estado=sl.next();
+
+                        tabla.addRow(new Object [] {id,dia+"/"+mes+"/"+anio,cobro,concepto,estado});
+
                     }
-                }while (s.hasNextLine() ); // fin while
-            
+
+                } // fin try
+                catch (Exception  e1)
+                {
+                    JOptionPane.showMessageDialog(null,"Error al leer Archivo " + e1);
+
+                }
+            }while (s.hasNextLine() ); // fin while
 
             s.close();
         } // fin try
@@ -438,15 +420,6 @@ int n=1;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void campocobroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campocobroKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocobroKeyReleased
-public String FechaActual()
-        {
-            Date Fecha=new Date();
-            SimpleDateFormat formato=new SimpleDateFormat("dd/MM/YYYY");
-            return formato.format(Fecha);
-        }
     /**
      * @param args the command line arguments
      */
@@ -464,24 +437,22 @@ public String FechaActual()
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDetallesCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDetallesCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDetallesCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDetallesCuota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameCuota().setVisible(true);
+                new FrameDetallesCuota().setVisible(true);
             }
         });
-        
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

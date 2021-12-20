@@ -1170,8 +1170,8 @@ String resp="";
 
                         tipocliente.setText(sl.next());
                         correocliente.setText(sl.next());
+                       valorcuotacliente.setText(sl.next());
                         balancecliente.setText(sl.next());
-                         valorcuotacliente.setText(sl.next());
 
                         encontrado=true;
                         crear = true;

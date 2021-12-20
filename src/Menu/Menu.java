@@ -160,7 +160,7 @@ public class Menu extends javax.swing.JFrame {
         mantenimiento.add(jmenureservas);
 
         jmenureseactividades.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jmenureseactividades.setText("Reversa Actividades");
+        jmenureseactividades.setText("Reserva Actividades");
         mantenimiento.add(jmenureseactividades);
 
         jMenuBar1.add(mantenimiento);

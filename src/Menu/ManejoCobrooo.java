@@ -122,4 +122,102 @@ public void Delay(long milis)
     } // fin metodo delay
 
 
+
+//ModificarDatos2
+public void ModificarDatos2(String LineaNueva,String id)
+{  
+        File fNuevo= new File("Cobros2.txt");
+        File fAntiguo= new File("Cobros.txt");
+        
+        boolean encontrado = false;
+        String nCadena=LineaNueva;
+        int cod=Integer.parseInt(id); 
+    try
+    {
+        
+        if(fAntiguo.exists())
+        {
+        Scanner s = new Scanner(fAntiguo);
+        
+        String linea;
+        
+            while (s.hasNextLine()) {
+                
+                linea=s.nextLine();
+                Scanner sl = new Scanner(linea);
+                 sl.useDelimiter("\\s*;\\s*"); 
+                int codigoArc = Integer.parseInt(sl.next()); 
+                
+             if(cod!=codigoArc) 
+             {  
+             Escribir2(fNuevo,linea); 
+                } 
+            } // fin while
+
+             s.close(); 
+            // Borro el fichero antiguo 
+            borrar(fAntiguo); 
+            //Renombro el fichero auxiliar con el nombre del fichero antiguo 
+            fNuevo.renameTo(fAntiguo); 
+    }
+    else
+    {
+        System.out.println("Fichero no Existe");
+    }
+}catch(Exception e)
+{
+    System.out.println(e);
+}
+             
+    
+}
+    public void Escribir2(File fichero,String zcadena)
+{
+    BufferedWriter br;
+    try
+    {
+        if(!fichero.exists())
+        {
+            fichero.createNewFile();
+        }
+        br=new BufferedWriter(new FileWriter(fichero,true));
+        br.write(zcadena+"\r\n");
+        br.close();
+        
+        
+        
+        
+    }catch(IOException e)
+    {
+        System.out.println("Error"+e);
+    }
+            
+}
+public void borrar2(File fichero)
+{
+    try
+    {
+        if(fichero.exists())
+        {
+            fichero.delete();
+        }
+                    
+        
+    }catch(Exception e)
+    {
+        System.out.println("ERROR" + e);
+    }
+               
+    
+}
+public void Delay2(long milis)
+    {
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    } // fin metodo delay
+
+
 }

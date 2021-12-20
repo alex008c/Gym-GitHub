@@ -203,10 +203,13 @@ public class FrameHorarioActividad extends javax.swing.JFrame {
         jLabel5.setText("Format 24");
 
         SAVE.setBackground(new java.awt.Color(0, 0, 0));
+        SAVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
 
         CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
 
         HOME.setBackground(new java.awt.Color(0, 0, 0));
+        HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
