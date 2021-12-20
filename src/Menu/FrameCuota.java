@@ -465,6 +465,8 @@ int n=1;
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
         campoidcuota.setText("");
         campocobro.setText("");
+        campoidcuota.setText("");
+        
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed

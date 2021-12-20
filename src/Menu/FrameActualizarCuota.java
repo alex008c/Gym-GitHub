@@ -20,6 +20,7 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
      */
     public FrameActualizarCuota() {
         initComponents();
+        registrar.setEnabled(false);
     }
 
     /**
@@ -49,6 +50,8 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         campomes1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         campoyear1 = new javax.swing.JTextField();
+        campmes1 = new javax.swing.JLabel();
+        campmes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +112,11 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         limpiar.setForeground(new java.awt.Color(204, 204, 204));
         limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
 
         HOME.setBackground(new java.awt.Color(0, 0, 0));
         HOME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
@@ -140,6 +148,9 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         campoyear.setForeground(new java.awt.Color(0, 0, 0));
         campoyear.setCaretColor(new java.awt.Color(0, 0, 0));
         campoyear.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoyearKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoyearKeyTyped(evt);
             }
@@ -167,10 +178,21 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         campoyear1.setForeground(new java.awt.Color(0, 0, 0));
         campoyear1.setCaretColor(new java.awt.Color(0, 0, 0));
         campoyear1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoyear1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoyear1KeyTyped(evt);
             }
         });
+
+        campmes1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        campmes1.setForeground(new java.awt.Color(255, 0, 0));
+        campmes1.setText("*");
+
+        campmes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        campmes.setForeground(new java.awt.Color(255, 0, 0));
+        campmes.setText("*");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -202,6 +224,8 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoyear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(campmes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,6 +234,8 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campmes1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -229,7 +255,9 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(campoyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
+                            .addComponent(jLabel7)
+                            .addComponent(campmes1)
+                            .addComponent(campmes))))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +301,7 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
     }//GEN-LAST:event_menuActionPerformed
 
     private void campomesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomesKeyReleased
-        int mes=Integer.parseInt(campomes.getText());
+validar();        int mes=Integer.parseInt(campomes.getText());
         if(mes<1 || mes>12)
         {
             JOptionPane.showMessageDialog(this, "Mes incorrecto");
@@ -293,7 +321,7 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
     }//GEN-LAST:event_campoyearKeyTyped
 
     private void campomes1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campomes1KeyReleased
-        int mes=Integer.parseInt(campomes1.getText());
+     validar();   int mes=Integer.parseInt(campomes1.getText());
         if(mes<1 || mes>12)
         {
             JOptionPane.showMessageDialog(this, "Mes incorrecto");
@@ -385,6 +413,22 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registrarActionPerformed
 
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        // TODO add your handling code here:
+        campomes.setText("");
+        campomes1.setText("");
+        campoyear.setText("");
+        campoyear1.setText("");
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    private void campoyearKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoyearKeyReleased
+validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoyearKeyReleased
+
+    private void campoyear1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoyear1KeyReleased
+validar();        // TODO add your handling code here:
+    }//GEN-LAST:event_campoyear1KeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -419,10 +463,47 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
             }
         });
     }
+    public void validar()
+    {
+        if(campomes.getText().isEmpty()||campoyear.getText().isEmpty())
+        {
+            campmes.setText("*");
+        }
+        else
+        {
+            campmes.setText("");
+        }
+           if(campomes1.getText().isEmpty()||campoyear1.getText().isEmpty())
+        {
+            campmes1.setText("*");
+        }
+        else
+        {
+            campmes1.setText("");
+        }
+           
+           
+           if(campomes.getText().isEmpty()||campoyear.getText().isEmpty()||campomes1.getText().isEmpty()||
+                   campoyear1.getText().isEmpty())
+               
+           {
+               registrar.setEnabled(false);
+    }
+           
+           else
+           {
+                              registrar.setEnabled(true);
+
+           }
+           
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CLEAR;
     private javax.swing.JLabel HOME;
+    private javax.swing.JLabel campmes;
+    private javax.swing.JLabel campmes1;
     private javax.swing.JTextField campomes;
     private javax.swing.JTextField campomes1;
     private javax.swing.JTextField campoyear;
