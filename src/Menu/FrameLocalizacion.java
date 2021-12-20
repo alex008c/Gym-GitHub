@@ -79,6 +79,8 @@ boolean crear=false;
         campid = new javax.swing.JLabel();
         camplugar = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
+        CLEAR = new javax.swing.JLabel();
+        limpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +110,7 @@ boolean crear=false;
         jLabel2.setText("Lugar");
 
         botonguardar.setBackground(new java.awt.Color(0, 0, 0));
+        botonguardar.setForeground(new java.awt.Color(204, 204, 204));
         botonguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/guardar.png"))); // NOI18N
         botonguardar.setText("Guardar");
         botonguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +120,7 @@ boolean crear=false;
         });
 
         botonmenu.setBackground(new java.awt.Color(0, 0, 0));
+        botonmenu.setForeground(new java.awt.Color(204, 204, 204));
         botonmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         botonmenu.setText("Menu");
         botonmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +142,19 @@ boolean crear=false;
         titulo.setForeground(new java.awt.Color(204, 204, 204));
         titulo.setText("Localizacion");
 
+        CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
+
+        limpiar.setBackground(new java.awt.Color(0, 0, 0));
+        limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        limpiar.setForeground(new java.awt.Color(204, 204, 204));
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,18 +173,24 @@ boolean crear=false;
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72))
+                        .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(limpiar)
+                        .addGap(49, 49, 49)
+                        .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel2)))
                         .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idlocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipolocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tipolocalizacion, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(idlocalizacion))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(camplugar)
@@ -185,20 +208,26 @@ boolean crear=false;
                     .addComponent(titulo))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idlocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idlocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(campid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipolocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(camplugar)
-                    .addComponent(jLabel2))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tipolocalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
+
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/limpiar.png")));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -325,6 +354,11 @@ try
  validar();
     }//GEN-LAST:event_tipolocalizacionKeyReleased
 
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        idlocalizacion.setText("");
+        tipolocalizacion.setText("");
+    }//GEN-LAST:event_limpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +402,7 @@ try
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CLEAR;
     private javax.swing.JTextField accion;
     private javax.swing.JButton botonguardar;
     private javax.swing.JButton botonmenu;
@@ -377,6 +412,7 @@ try
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton limpiar;
     private javax.swing.JTextField tipolocalizacion;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

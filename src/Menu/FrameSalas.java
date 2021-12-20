@@ -108,6 +108,8 @@ public void validar()
         camplocal = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         accion = new javax.swing.JTextField();
+        limpiar = new javax.swing.JButton();
+        CLEAR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,6 +170,7 @@ public void validar()
 
         botonaceptar.setBackground(new java.awt.Color(0, 0, 0));
         botonaceptar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonaceptar.setForeground(new java.awt.Color(204, 204, 204));
         botonaceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check_ok_accept_apply_1582.png"))); // NOI18N
         botonaceptar.setText("ACEPTAR");
         botonaceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +181,7 @@ public void validar()
 
         BOTONMENU.setBackground(new java.awt.Color(0, 0, 0));
         BOTONMENU.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BOTONMENU.setForeground(new java.awt.Color(204, 204, 204));
         BOTONMENU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         BOTONMENU.setText("MENU");
         BOTONMENU.addActionListener(new java.awt.event.ActionListener() {
@@ -198,24 +202,33 @@ public void validar()
         camplocal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         camplocal.setForeground(new java.awt.Color(255, 0, 0));
 
-        titulo.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         titulo.setForeground(new java.awt.Color(204, 204, 204));
         titulo.setText("Salas");
 
         accion.setEditable(false);
-        accion.setOpaque(true);
+
+        limpiar.setBackground(new java.awt.Color(0, 0, 0));
+        limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        limpiar.setForeground(new java.awt.Color(204, 204, 204));
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+
+        CLEAR.setBackground(new java.awt.Color(0, 0, 0));
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Limpiar.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap(106, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
@@ -230,7 +243,10 @@ public void validar()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(descripcionsala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nombresala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idsala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(idsala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(91, 91, 91)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -243,20 +259,24 @@ public void validar()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(BOTONMENU, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(limpiar)
+                .addGap(66, 66, 66)
                 .addComponent(botonaceptar)
-                .addGap(53, 53, 53)
-                .addComponent(BOTONMENU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(165, 165, 165))
+                .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo)
-                    .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(accion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idsala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,12 +298,18 @@ public void validar()
                     .addComponent(localizacionsala, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(camplocal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BOTONMENU, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CLEAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
         );
+
+        CLEAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/limpiar.png")));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -485,6 +511,14 @@ char c=evt.getKeyChar();
         validar();
     }//GEN-LAST:event_descripcionsalaKeyReleased
 
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        idsala.setText("");
+        nombresala.setText("");
+        descripcionsala.setText("");
+        localizacionsala.setText("");
+        
+    }//GEN-LAST:event_limpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -533,6 +567,7 @@ char c=evt.getKeyChar();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BOTONMENU;
+    private javax.swing.JLabel CLEAR;
     private javax.swing.JTextField accion;
     private javax.swing.JButton botonaceptar;
     private javax.swing.JLabel campdescrip;
@@ -545,6 +580,7 @@ char c=evt.getKeyChar();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton limpiar;
     private javax.swing.JTextField localizacionsala;
     private javax.swing.JTextField nombresala;
     private javax.swing.JLabel titulo;

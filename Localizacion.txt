@@ -1,1 +1,5 @@
 100; Santiagoooo
+1;La Vega
+2;Primer piso
+3;Segundo Piso
+4;Sexto Piso
