@@ -208,6 +208,11 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         jactualizarcobro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jactualizarcobro.setText("Actualizar Cuota");
+        jactualizarcobro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jactualizarcobroActionPerformed(evt);
+            }
+        });
         procesos.add(jactualizarcobro);
 
         jMenuBar1.add(procesos);
@@ -450,6 +455,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         new ConsuBalancePendiente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cclientespendienteActionPerformed
+
+    private void jactualizarcobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jactualizarcobroActionPerformed
+new FrameActualizarCuota().setVisible(true);
+this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jactualizarcobroActionPerformed
 
     /**
      * @param args the command line arguments

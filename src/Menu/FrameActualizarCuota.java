@@ -274,7 +274,8 @@ public class FrameActualizarCuota extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        new Menu().setVisible(true);
+        new ManejoLogin().Leer();
+        
         this.dispose();
     }//GEN-LAST:event_menuActionPerformed
 

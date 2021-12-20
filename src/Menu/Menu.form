@@ -254,6 +254,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar Cuota"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jactualizarcobroActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
